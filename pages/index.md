@@ -3,7 +3,7 @@ layout: default
 permalink: /
 ---
 
-<!-- {% include landing.html %} -->
+{% include landing.html %}
 
 
 <div class="row justify-content-center align-items-center p-4">
