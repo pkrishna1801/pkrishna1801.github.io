@@ -3,7 +3,7 @@ layout: default
 permalink: /
 ---
 
-{% include landing.html %}
+<!-- {% include landing.html %} -->
 
 
 <div class="row justify-content-center align-items-center p-4">
@@ -15,10 +15,10 @@ permalink: /
       I build intelligent systems at the intersection of deep learning, healthcare, and molecular modeling.
     </p>
     
-    <div class="mb-5">
+    <!-- <div class="mb-5">
       <a href="{{ site.baseurl }}/projects" class="btn btn-primary btn-lg mx-2 mb-2">View Projects</a>
       <a href="{{ site.baseurl }}/about" class="btn btn-outline-primary btn-lg mx-2 mb-2">About Me</a>
-    </div>
+    </div> -->
   </div>
 </div>
 
