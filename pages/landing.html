@@ -3,20 +3,12 @@ layout: default
 ---
 
 <style>
-    --primary-color: #2c3e50;
-    --accent-color: #3498db;
-    --light-bg: #f8f9fa;
-    --border-color: #e1e8ed;
-  }
-
   .hero-section {
-    background: var(--bg-color, #ffffff);
-    color: var(--text-color, #2c3e50);
     padding: 80px 0 60px;
     margin: -2rem -15px 0;
     position: relative;
     overflow: hidden;
-    border-bottom: 1px solid var(--border-color, #e1e8ed);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
   }
 
   .hero-section::before {
@@ -36,8 +28,7 @@ layout: default
   }
 
   .badge-custom {
-    background: #2c3e50;
-    color: white;
+    background: rgba(128, 128, 128, 0.2);
     padding: 8px 16px;
     border-radius: 20px;
     display: inline-block;
@@ -47,16 +38,15 @@ layout: default
   }
 
   .stat-card {
-    background: var(--bg-color, #ffffff);
     border-radius: 12px;
     padding: 25px 20px;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color, #e1e8ed);
+    border: 1px solid rgba(128, 128, 128, 0.2);
     margin-top: -40px;
     position: relative;
     z-index: 2;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .stat-card:hover {
@@ -67,13 +57,12 @@ layout: default
   .stat-number {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--text-color, #2c3e50);
     line-height: 1;
     margin-bottom: 8px;
   }
 
   .stat-label {
-    color: var(--text-muted, #6c757d);
+    opacity: 0.7;
     font-size: 0.85rem;
   }
 
@@ -89,16 +78,15 @@ layout: default
   }
 
   .section-subtitle {
-    color: #6c757d;
+    opacity: 0.7;
     font-size: 1.1rem;
   }
 
   .expertise-card {
-    background: var(--bg-color, #ffffff);
     border-radius: 16px;
     padding: 30px;
     height: 100%;
-    border: 1px solid var(--border-color, #e9ecef);
+    border: 1px solid rgba(128, 128, 128, 0.2);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -111,13 +99,13 @@ layout: default
     left: 0;
     width: 4px;
     height: 0;
-    background: #3498db;
+    background: var(--primary, #007bff);
     transition: height 0.3s ease;
   }
 
   .expertise-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   }
 
   .expertise-card:hover::before {
@@ -127,21 +115,19 @@ layout: default
   .expertise-icon {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #3498db;
+    color: var(--primary, #007bff);
   }
 
   .research-highlight {
-    background: var(--bg-color, #ffffff);
     border-radius: 20px;
     padding: 40px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color, #e1e8ed);
+    border: 1px solid rgba(128, 128, 128, 0.2);
   }
 
   .metric-badge {
-    background: var(--bg-light, #f8f9fa);
-    color: var(--text-color, #2c3e50);
-    border: 1px solid var(--border-color, #e1e8ed);
+    background: rgba(128, 128, 128, 0.1);
+    border: 1px solid rgba(128, 128, 128, 0.2);
     padding: 6px 12px;
     border-radius: 8px;
     font-size: 0.85rem;
@@ -170,9 +156,9 @@ layout: default
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: #3498db;
-    border: 3px solid white;
-    box-shadow: 0 0 0 2px #3498db;
+    background: var(--primary, #007bff);
+    border: 3px solid var(--bg-color, white);
+    box-shadow: 0 0 0 2px var(--primary, #007bff);
   }
 
   .timeline-item::after {
@@ -182,7 +168,7 @@ layout: default
     top: 20px;
     width: 2px;
     height: calc(100% + 10px);
-    background: #e9ecef;
+    background: rgba(128, 128, 128, 0.2);
   }
 
   .timeline-item:last-child::after {
@@ -190,7 +176,7 @@ layout: default
   }
 
   .btn-gradient {
-    background: #2c3e50;
+    background: var(--primary, #007bff);
     border: none;
     color: white;
     padding: 12px 32px;
@@ -203,14 +189,14 @@ layout: default
 
   .btn-gradient:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
-    background: #34495e;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    opacity: 0.9;
     color: white;
     text-decoration: none;
   }
 
   .contact-card {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: var(--primary, #007bff);
     color: white;
     border-radius: 20px;
     padding: 50px;
@@ -238,9 +224,8 @@ layout: default
   }
 
   .tech-stack-badge {
-    background: var(--bg-light, #f8f9fa);
-    color: var(--text-color, #2c3e50);
-    border: 1px solid var(--border-color, #e1e8ed);
+    background: rgba(128, 128, 128, 0.1);
+    border: 1px solid rgba(128, 128, 128, 0.2);
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.85rem;
