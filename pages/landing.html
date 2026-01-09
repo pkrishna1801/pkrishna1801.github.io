@@ -39,7 +39,7 @@ layout: default
 
   .stat-card {
     border-radius: 12px;
-    padding: 25px 20px;
+    padding: 30px 20px;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(128, 128, 128, 0.2);
@@ -47,6 +47,11 @@ layout: default
     position: relative;
     z-index: 2;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .stat-card:hover {
@@ -55,15 +60,17 @@ layout: default
   }
 
   .stat-number {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 700;
     line-height: 1;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    white-space: nowrap;
   }
 
   .stat-label {
     opacity: 0.7;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
   }
 
   .section-header {
@@ -153,12 +160,11 @@ layout: default
     position: absolute;
     left: 15px;
     top: 8px;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: var(--primary, #007bff);
-    border: 3px solid var(--bg-color, white);
-    box-shadow: 0 0 0 2px var(--primary, #007bff);
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
   }
 
   .timeline-item::after {
@@ -232,6 +238,10 @@ layout: default
     font-weight: 500;
     display: inline-block;
     margin: 5px;
+  }
+
+  .section-alt-bg {
+    background: rgba(128, 128, 128, 0.05);
   }
 
   @media (max-width: 768px) {
@@ -315,7 +325,7 @@ layout: default
 </section>
 
 <!-- Current Research -->
-<section class="py-5 bg-light" id="research">
+<section class="py-5 section-alt-bg" id="research">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Current Research</h2>
@@ -324,35 +334,28 @@ layout: default
     <div class="row justify-content-center">
       <div class="col-lg-10">
         <div class="research-highlight">
-          <div class="row align-items-center">
-            <div class="col-md-2 text-center mb-4 mb-md-0">
-              <div style="font-size: 4rem;">🧠</div>
-            </div>
-            <div class="col-md-10">
-              <h3 class="font-weight-bold mb-3">Non-Autoregressive Text Generation Using Diffusion Models</h3>
-              <p class="text-muted mb-3">
-                <i class="fas fa-user-tie mr-2"></i>Advisor: Prof. Dino Konstantopoulos | 
-                <i class="fas fa-calendar-alt ml-3 mr-2"></i>Jan 2025 - Dec 2025
-              </p>
-              <p class="mb-4">
-                Designing continuous-embedding diffusion models for parallel text generation in BERT embedding space, 
-                achieving significant improvements in semantic fidelity and inference speed through architectural 
-                innovations and advanced sampling techniques.
-              </p>
-              <div class="mb-3">
-                <span class="metric-badge"><i class="fas fa-chart-line mr-1"></i> 0.93 BERT Similarity</span>
-                <span class="metric-badge"><i class="fas fa-tachometer-alt mr-1"></i> 50× Faster Inference</span>
-                <span class="metric-badge"><i class="fas fa-brain mr-1"></i> 83M Parameters</span>
-                <span class="metric-badge"><i class="fas fa-check-circle mr-1"></i> Successfully Defended</span>
-              </div>
-              <div>
-                <span class="tech-stack-badge">PyTorch</span>
-                <span class="tech-stack-badge">Diffusion Models</span>
-                <span class="tech-stack-badge">BERT</span>
-                <span class="tech-stack-badge">DPM-Solver++</span>
-                <span class="tech-stack-badge">U-Net</span>
-              </div>
-            </div>
+          <h3 class="font-weight-bold mb-3">Non-Autoregressive Text Generation Using Diffusion Models</h3>
+          <p class="text-muted mb-3">
+            <i class="fas fa-user-tie mr-2"></i>Advisor: Prof. Dino Konstantopoulos | 
+            <i class="fas fa-calendar-alt ml-3 mr-2"></i>Jan 2025 - Dec 2025
+          </p>
+          <p class="mb-4">
+            Designing continuous-embedding diffusion models for parallel text generation in BERT embedding space, 
+            achieving significant improvements in semantic fidelity and inference speed through architectural 
+            innovations and advanced sampling techniques.
+          </p>
+          <div class="mb-3">
+            <span class="metric-badge"><i class="fas fa-chart-line mr-1"></i> 0.93 BERT Similarity</span>
+            <span class="metric-badge"><i class="fas fa-tachometer-alt mr-1"></i> 50× Faster Inference</span>
+            <span class="metric-badge"><i class="fas fa-brain mr-1"></i> 83M Parameters</span>
+            <span class="metric-badge"><i class="fas fa-check-circle mr-1"></i> Successfully Defended</span>
+          </div>
+          <div>
+            <span class="tech-stack-badge">PyTorch</span>
+            <span class="tech-stack-badge">Diffusion Models</span>
+            <span class="tech-stack-badge">BERT</span>
+            <span class="tech-stack-badge">DPM-Solver++</span>
+            <span class="tech-stack-badge">U-Net</span>
           </div>
         </div>
       </div>
@@ -418,7 +421,7 @@ layout: default
 </section>
 
 <!-- Experience Timeline -->
-<section class="py-5 bg-light">
+<section class="py-5 section-alt-bg">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Professional Journey</h2>
