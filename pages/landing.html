@@ -3,7 +3,6 @@ layout: default
 ---
 
 <style>
-  :root {
     --primary-color: #2c3e50;
     --accent-color: #3498db;
     --light-bg: #f8f9fa;
@@ -11,13 +10,13 @@ layout: default
   }
 
   .hero-section {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    color: #2c3e50;
+    background: var(--bg-color, #ffffff);
+    color: var(--text-color, #2c3e50);
     padding: 80px 0 60px;
     margin: -2rem -15px 0;
     position: relative;
     overflow: hidden;
-    border-bottom: 1px solid #e1e8ed;
+    border-bottom: 1px solid var(--border-color, #e1e8ed);
   }
 
   .hero-section::before {
@@ -27,8 +26,8 @@ layout: default
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(44,62,80,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-    opacity: 1;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(128,128,128,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.5;
   }
 
   .hero-content {
@@ -48,12 +47,12 @@ layout: default
   }
 
   .stat-card {
-    background: white;
+    background: var(--bg-color, #ffffff);
     border-radius: 12px;
     padding: 25px 20px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e1e8ed;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color, #e1e8ed);
     margin-top: -40px;
     position: relative;
     z-index: 2;
@@ -62,19 +61,19 @@ layout: default
 
   .stat-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
   .stat-number {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #2c3e50;
+    color: var(--text-color, #2c3e50);
     line-height: 1;
     margin-bottom: 8px;
   }
 
   .stat-label {
-    color: #6c757d;
+    color: var(--text-muted, #6c757d);
     font-size: 0.85rem;
   }
 
@@ -95,11 +94,11 @@ layout: default
   }
 
   .expertise-card {
-    background: white;
+    background: var(--bg-color, #ffffff);
     border-radius: 16px;
     padding: 30px;
     height: 100%;
-    border: 1px solid #e9ecef;
+    border: 1px solid var(--border-color, #e9ecef);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -132,17 +131,17 @@ layout: default
   }
 
   .research-highlight {
-    background: white;
+    background: var(--bg-color, #ffffff);
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-    border: 1px solid #e1e8ed;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color, #e1e8ed);
   }
 
   .metric-badge {
-    background: #f8f9fa;
-    color: #2c3e50;
-    border: 1px solid #e1e8ed;
+    background: var(--bg-light, #f8f9fa);
+    color: var(--text-color, #2c3e50);
+    border: 1px solid var(--border-color, #e1e8ed);
     padding: 6px 12px;
     border-radius: 8px;
     font-size: 0.85rem;
@@ -239,9 +238,9 @@ layout: default
   }
 
   .tech-stack-badge {
-    background: white;
-    color: #2c3e50;
-    border: 1px solid #e1e8ed;
+    background: var(--bg-light, #f8f9fa);
+    color: var(--text-color, #2c3e50);
+    border: 1px solid var(--border-color, #e1e8ed);
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -273,10 +272,10 @@ layout: default
         </div>
         <h1 class="display-3 font-weight-bold mb-3">{{ site.author.name }}</h1>
         <h2 class="h3 mb-4">Machine Learning Engineer & AI Researcher</h2>
-        <p class="lead mb-4" style="font-size: 1.2rem; color: #2c3e50;">
+        <p class="lead mb-4" style="font-size: 1.2rem;">
           Specializing in <strong>Diffusion Models</strong>, <strong>Generative AI</strong>, and <strong>Production ML Systems</strong>
         </p>
-        <p class="mb-5" style="color: #6c757d;">
+        <p class="mb-5 text-muted">
           Turning complex research into scalable, production-ready AI solutions in healthcare, molecular modeling, and NLP
         </p>
         <div class="d-flex flex-wrap justify-content-center">
@@ -299,31 +298,31 @@ layout: default
 </section>
 
 <!-- Stats Section -->
-<section class="py-5" style="background: white;">
+<section class="py-5">
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-6 mb-4 mb-md-0">
         <div class="stat-card">
-          <div class="stat-number">92.3%</div>
-          <div class="stat-label">Validation Loss Reduction</div>
+          <div class="stat-number">3+ Years</div>
+          <div class="stat-label">Experience</div>
         </div>
       </div>
       <div class="col-md-3 col-6 mb-4 mb-md-0">
         <div class="stat-card">
-          <div class="stat-number">1M+</div>
-          <div class="stat-label">Daily Transactions Processed</div>
+          <div class="stat-number">5+ Projects</div>
+          <div class="stat-label">Completed</div>
         </div>
       </div>
       <div class="col-md-3 col-6">
         <div class="stat-card">
-          <div class="stat-number">50×</div>
-          <div class="stat-label">Faster Inference Speed</div>
+          <div class="stat-number">20+ Students</div>
+          <div class="stat-label">Taught</div>
         </div>
       </div>
       <div class="col-md-3 col-6">
         <div class="stat-card">
-          <div class="stat-number">2+ Years</div>
-          <div class="stat-label">Industry Experience</div>
+          <div class="stat-number">83M</div>
+          <div class="stat-label">Model Parameters</div>
         </div>
       </div>
     </div>
@@ -331,7 +330,7 @@ layout: default
 </section>
 
 <!-- Current Research -->
-<section class="py-5" id="research" style="background: #f8f9fa;">
+<section class="py-5 bg-light" id="research">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Current Research</h2>
@@ -377,7 +376,7 @@ layout: default
 </section>
 
 <!-- Core Expertise -->
-<section class="py-5" style="background: white;">
+<section class="py-5">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Core Expertise</h2>
@@ -434,7 +433,7 @@ layout: default
 </section>
 
 <!-- Experience Timeline -->
-<section class="py-5" style="background: #f8f9fa;">
+<section class="py-5 bg-light">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Professional Journey</h2>
@@ -470,6 +469,24 @@ layout: default
               monitoring dashboards.
             </p>
           </div>
+          <div class="timeline-item">
+            <h5 class="font-weight-bold">Software Engineering Intern</h5>
+            <p class="text-muted mb-2">Capgemini | Mar 2021 - May 2021</p>
+            <p class="mb-0">
+              Designed and built scalable multi-tenant microservices with RESTful APIs. 
+              Implemented secure OAuth2 and JWT-based authentication ensuring data protection 
+              and access control.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h5 class="font-weight-bold">Digital Signal Processing Engineer Intern</h5>
+            <p class="text-muted mb-2">PathPartner Technology | Feb 2020 - Apr 2020</p>
+            <p class="mb-0">
+              Developed and optimized C code for image processing on C66x DSP, achieving 
+              16.4-microsecond execution time. Reduced cycle count to 4096 cycles per block, 
+              achieving 4× speedup through SIMD and loop unrolling techniques.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -477,7 +494,7 @@ layout: default
 </section>
 
 <!-- Contact Section -->
-<section class="py-5" style="background: white;">
+<section class="py-5">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8">
