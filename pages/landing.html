@@ -1,147 +1,615 @@
-<div class="row justify-content-center align-items-center p-4">
-  <div class="col-lg-8 text-center">
-    <h1 class="display-3 font-weight-bold mb-3">Hi, I'm {{ site.author.name }}</h1>
-    <h2 class="lead mb-4">ML Engineer & AI Researcher</h2>
-    <p class="lead text-muted mb-5">
-      Specializing in transforming complex research concepts into scalable, production-ready AI solutions. 
-      I build intelligent systems at the intersection of deep learning, healthcare, and molecular modeling.
-    </p>
-    
-    <div class="mb-5">
-      <a href="{{ site.baseurl }}/projects" class="btn btn-primary btn-lg mx-2 mb-2">View Projects</a>
-      <a href="{{ site.baseurl }}/about" class="btn btn-outline-primary btn-lg mx-2 mb-2">About Me</a>
-      <a href="{{ site.baseurl }}/assets/Prarthana_Krishnamurthy_Resume.pdf" class="btn btn-outline-dark btn-lg mx-2 mb-2">View Resume</a>
-    </div>
-  </div>
-</div>
+---
+layout: default
+---
 
-<!-- What I Do Section -->
-<div class="row mt-5 mb-5">
-  <div class="col-12 text-center mb-4">
-    <h2 class="font-weight-bold">What I Do</h2>
-  </div>
-</div>
+<style>
+  :root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
 
-<div class="row mb-5">
-  <div class="col-lg-4 col-md-6 mb-4">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body text-center">
-        <div class="mb-3" style="font-size: 3rem;">🏥</div>
-        <h5 class="card-title font-weight-bold">Medical Imaging</h5>
-        <p class="card-text">Creating diffusion models and deep learning solutions for improved diagnostic visualization and analysis</p>
+  .hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 80px 0 60px;
+    margin: -2rem -15px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .badge-custom {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    margin-top: -40px;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #667eea;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    color: #6c757d;
+    font-size: 0.85rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtitle {
+    color: #6c757d;
+    font-size: 1.1rem;
+  }
+
+  .expertise-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    height: 100%;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .expertise-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background: linear-gradient(180deg, #667eea, #764ba2);
+    transition: height 0.3s ease;
+  }
+
+  .expertise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .expertise-card:hover::before {
+    height: 100%;
+  }
+
+  .expertise-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .research-highlight {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+  }
+
+  .project-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .project-header {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 25px;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .project-tag {
+    background: #667eea;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 6px;
+    margin-bottom: 6px;
+  }
+
+  .project-body {
+    padding: 25px;
+  }
+
+  .metric-badge {
+    background: #f1f3f5;
+    color: #667eea;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 8px;
+    margin-top: 8px;
+  }
+
+  .timeline {
+    position: relative;
+    padding: 20px 0;
+  }
+
+  .timeline-item {
+    padding-left: 50px;
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #667eea;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px #667eea;
+  }
+
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 2px;
+    height: calc(100% + 10px);
+    background: #e9ecef;
+  }
+
+  .timeline-item:last-child::after {
+    display: none;
+  }
+
+  .btn-gradient {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+    color: white;
+    text-decoration: none;
+  }
+
+  .contact-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 20px;
+    padding: 50px;
+    text-align: center;
+  }
+
+  .social-link {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .social-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    color: white;
+  }
+
+  .tech-stack-badge {
+    background: #f1f3f5;
+    color: #495057;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+    margin: 5px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 60px 0 40px;
+    }
+    .section-title {
+      font-size: 2rem;
+    }
+    .stat-number {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center hero-content">
+      <div class="col-lg-10 mx-auto text-center">
+        <div class="badge-custom">
+          <i class="fas fa-graduation-cap mr-2"></i> MS Student & Research Assistant at Northeastern University
+        </div>
+        <h1 class="display-3 font-weight-bold mb-3">{{ site.author.name }}</h1>
+        <h2 class="h3 mb-4" style="opacity: 0.95;">Machine Learning Engineer & AI Researcher</h2>
+        <p class="lead mb-4" style="font-size: 1.2rem; opacity: 0.9;">
+          Specializing in <strong>Diffusion Models</strong>, <strong>Generative AI</strong>, and <strong>Production ML Systems</strong>
+        </p>
+        <p class="mb-5" style="opacity: 0.85;">
+          Bridging the gap between cutting-edge research and scalable AI solutions in healthcare, NLP, and computer vision
+        </p>
+        <div class="d-flex flex-wrap justify-content-center">
+          <a href="#research" class="btn btn-light btn-lg mx-2 mb-2 px-4">
+            <i class="fas fa-flask mr-2"></i>Research
+          </a>
+          <a href="{{ site.baseurl }}/projects" class="btn btn-outline-light btn-lg mx-2 mb-2 px-4">
+            <i class="fas fa-code mr-2"></i>Projects
+          </a>
+          <a href="{{ site.baseurl }}/about" class="btn btn-outline-light btn-lg mx-2 mb-2 px-4">
+            <i class="fas fa-user mr-2"></i>About
+          </a>
+          {% if site.author.resume %}
+          <a href="{{ site.baseurl }}/{{ site.author.resume }}" class="btn btn-outline-light btn-lg mx-2 mb-2 px-4" target="_blank">
+            <i class="fas fa-file-pdf mr-2"></i>Resume
+          </a>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
-  
-  <div class="col-lg-4 col-md-6 mb-4">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body text-center">
-        <div class="mb-3" style="font-size: 3rem;">🧬</div>
-        <h5 class="card-title font-weight-bold">Molecular Modeling</h5>
-        <p class="card-text">Implementing graph neural networks for molecular property prediction and drug discovery applications</p>
+</section>
+
+<!-- Stats Section -->
+<section class="py-5" style="background: #f8f9fa;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-6 mb-4 mb-md-0">
+        <div class="stat-card">
+          <div class="stat-number">92.3%</div>
+          <div class="stat-label">Validation Loss Reduction</div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 mb-4 mb-md-0">
+        <div class="stat-card">
+          <div class="stat-number">1M+</div>
+          <div class="stat-label">Daily Transactions Processed</div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <div class="stat-number">50×</div>
+          <div class="stat-label">Faster Inference Speed</div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <div class="stat-number">2+ Years</div>
+          <div class="stat-label">Industry Experience</div>
+        </div>
       </div>
     </div>
   </div>
-  
-  <div class="col-lg-4 col-md-6 mb-4">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body text-center">
-        <div class="mb-3" style="font-size: 3rem;">🤖</div>
-        <h5 class="card-title font-weight-bold">RAG Systems</h5>
-        <p class="card-text">Building retrieval-augmented generation systems for more reliable and context-aware AI applications</p>
+</section>
+
+<!-- Current Research -->
+<section class="py-5" id="research">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Current Research</h2>
+      <p class="section-subtitle">Master's Thesis at Northeastern University</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="research-highlight">
+          <div class="row align-items-center">
+            <div class="col-md-2 text-center mb-4 mb-md-0">
+              <div style="font-size: 4rem;">🧠</div>
+            </div>
+            <div class="col-md-10">
+              <h3 class="font-weight-bold mb-3">Non-Autoregressive Text Generation Using Diffusion Models</h3>
+              <p class="text-muted mb-3">
+                <i class="fas fa-user-tie mr-2"></i>Advisor: Prof. Dino Konstantopoulos | 
+                <i class="fas fa-calendar-alt ml-3 mr-2"></i>Jan 2025 - Dec 2025
+              </p>
+              <p class="mb-4">
+                Designing continuous-embedding diffusion models for parallel text generation in BERT embedding space, 
+                achieving significant improvements in semantic fidelity and inference speed through architectural 
+                innovations and advanced sampling techniques.
+              </p>
+              <div class="mb-3">
+                <span class="metric-badge"><i class="fas fa-chart-line mr-1"></i> 0.93 BERT Similarity</span>
+                <span class="metric-badge"><i class="fas fa-tachometer-alt mr-1"></i> 50× Faster Inference</span>
+                <span class="metric-badge"><i class="fas fa-brain mr-1"></i> 83M Parameters</span>
+                <span class="metric-badge"><i class="fas fa-check-circle mr-1"></i> Successfully Defended</span>
+              </div>
+              <div>
+                <span class="tech-stack-badge">PyTorch</span>
+                <span class="tech-stack-badge">Diffusion Models</span>
+                <span class="tech-stack-badge">BERT</span>
+                <span class="tech-stack-badge">DPM-Solver++</span>
+                <span class="tech-stack-badge">U-Net</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
+
+<!-- Core Expertise -->
+<section class="py-5" style="background: #f8f9fa;">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Core Expertise</h2>
+      <p class="section-subtitle">Where research meets production-grade engineering</p>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="expertise-card">
+          <div class="expertise-icon">
+            <i class="fas fa-magic"></i>
+          </div>
+          <h4 class="font-weight-bold mb-3">Diffusion Models & Generative AI</h4>
+          <p class="text-muted mb-3">
+            Expert in designing, training, and optimizing diffusion models for text and image generation. 
+            Specialized in noise scheduling, architectural tuning, and advanced sampling techniques.
+          </p>
+          <div class="small text-muted">
+            <strong>Key Skills:</strong> DDPM, DPM-Solver++, U-Net architectures, continuous embeddings
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="expertise-card">
+          <div class="expertise-icon">
+            <i class="fas fa-hospital"></i>
+          </div>
+          <h4 class="font-weight-bold mb-3">Medical Imaging & Computer Vision</h4>
+          <p class="text-muted mb-3">
+            Building deep learning solutions for medical image synthesis, segmentation, and analysis. 
+            Experience with MRI synthesis, tumor detection, and diagnostic visualization.
+          </p>
+          <div class="small text-muted">
+            <strong>Key Skills:</strong> Image-to-image translation, U-Net segmentation, PSNR/SSIM optimization
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="expertise-card">
+          <div class="expertise-icon">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <h4 class="font-weight-bold mb-3">MLOps & Cloud Infrastructure</h4>
+          <p class="text-muted mb-3">
+            Production-ready ML deployment with containerization, orchestration, and monitoring. 
+            Built scalable systems processing millions of transactions on AWS and Azure.
+          </p>
+          <div class="small text-muted">
+            <strong>Key Skills:</strong> Docker, Kubernetes, AWS/Azure, CI/CD, distributed training
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Featured Projects -->
-<div class="row mt-5 mb-4">
-  <div class="col-12 text-center mb-4">
-    <h2 class="font-weight-bold">Featured Projects</h2>
-    <p class="text-muted">Explore some of my recent work in AI and machine learning</p>
+<section class="py-5" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">Research and engineering work spanning generative AI, healthcare, and production systems</p>
+    </div>
+    <div class="row mb-4">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="project-card">
+          <div class="project-header">
+            <h5 class="font-weight-bold mb-3">🧠 MRI Synthesis</h5>
+            <div>
+              <span class="project-tag">Diffusion Models</span>
+              <span class="project-tag">Healthcare</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <p class="text-muted mb-0">
+              Diffusion-based image translation for T1-to-T2 MRI synthesis with PSNR of 23.8
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="project-card">
+          <div class="project-header">
+            <h5 class="font-weight-bold mb-3">🔬 Tumor Segmentation</h5>
+            <div>
+              <span class="project-tag">HPC</span>
+              <span class="project-tag">Distributed Training</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <p class="text-muted mb-0">
+              8-GPU distributed U-Net achieving 95% accuracy with 40% faster training
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="project-card">
+          <div class="project-header">
+            <h5 class="font-weight-bold mb-3">🤖 HR Assistant</h5>
+            <div>
+              <span class="project-tag">RAG</span>
+              <span class="project-tag">LLMs</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <p class="text-muted mb-0">
+              Intelligent assistant with retrieval-augmented generation for automated query resolution
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <a href="{{ site.baseurl }}/projects" class="btn btn-gradient btn-lg px-5">
+          <i class="fas fa-arrow-right mr-2"></i>View All Projects
+        </a>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-<div class="row mb-5">
-  <div class="col-lg-6 mb-4">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <h5 class="card-title font-weight-bold">🤖 Agentic HR Assistant</h5>
-        <p class="card-text">Intelligent HR assistant leveraging RAG and LLM agents for automated query resolution and document processing</p>
-        <a href="{{ site.baseurl }}/projects" class="btn btn-sm btn-outline-primary">Learn More →</a>
+<!-- Experience Timeline -->
+<section class="py-5" style="background: #f8f9fa;">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Professional Journey</h2>
+      <p class="section-subtitle">From data engineering to ML research</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="timeline">
+          <div class="timeline-item">
+            <h5 class="font-weight-bold">ML Research Assistant</h5>
+            <p class="text-muted mb-2">Northeastern University | Jan 2025 - Dec 2025</p>
+            <p class="mb-0">
+              Designed and trained diffusion models for non-autoregressive text generation, 
+              achieving 92.3% reduction in validation loss and 50× faster inference through 
+              architectural innovations.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h5 class="font-weight-bold">Graduate Teaching Assistant</h5>
+            <p class="text-muted mb-2">Northeastern University | May 2025 - Aug 2025</p>
+            <p class="mb-0">
+              Designed multi-cloud ML labs for 20+ students, engineered MLOps pipelines with 
+              Jenkins and Terraform. Selected as top-performing TA for modernizing advanced 
+              cloud computing course.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h5 class="font-weight-bold">Data Engineer</h5>
+            <p class="text-muted mb-2">Société Générale | Sep 2021 - Dec 2023</p>
+            <p class="mb-0">
+              Built and deployed 3+ containerized enterprise applications on Azure Kubernetes Service, 
+              processing 1M+ daily transactions. Reduced incident response time by 30% through real-time 
+              monitoring dashboards.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  
-  <div class="col-lg-6 mb-4">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <h5 class="card-title font-weight-bold">🧠 MRI Synthesis</h5>
-        <p class="card-text">Advanced diffusion models for medical image synthesis and enhancement</p>
-        <a href="{{ site.baseurl }}/projects" class="btn btn-sm btn-outline-primary">Learn More →</a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col-lg-6 mb-4">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <h5 class="card-title font-weight-bold">🔬 Molecular Property Prediction</h5>
-        <p class="card-text">Graph neural networks for predicting molecular properties in drug discovery</p>
-        <a href="{{ site.baseurl }}/projects" class="btn btn-sm btn-outline-primary">Learn More →</a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col-lg-6 mb-4">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <h5 class="card-title font-weight-bold">🛒 Product Recommendation Engine</h5>
-        <p class="card-text">Production-ready recommendation system using collaborative filtering and deep learning</p>
-        <a href="{{ site.baseurl }}/projects" class="btn btn-sm btn-outline-primary">Learn More →</a>
-      </div>
-    </div>
-  </div>
-</div>
+</section>
 
-<!-- Background -->
-<div class="row mt-5 mb-5 bg-light p-5">
-  <div class="col-lg-8 mx-auto text-center">
-    <h2 class="font-weight-bold mb-4">My Journey</h2>
-    <p class="lead">
-      Currently pursuing M.S. in Computer Software Engineering at <strong>Northeastern University</strong>, 
-      I blend academic research with industry experience from <strong>Societe Generale</strong>, 
-      where I built cloud-native systems processing over 1M daily transactions.
-    </p>
-    <p class="lead">
-      My passion lies in making AI systems that are not just intelligent, but also interpretable, 
-      ethical, and aligned with human needs.
-    </p>
-    <a href="{{ site.baseurl }}/about" class="btn btn-primary mt-3">Read My Full Story →</a>
-  </div>
-</div>
-
-<!-- Call to Action -->
-<div class="row mt-5 mb-5">
-  <div class="col-12 text-center">
-    <h3 class="font-weight-bold mb-3">Let's Connect</h3>
-    <p class="lead text-muted mb-4">Interested in collaborating or discussing AI projects?</p>
-    <div>
-      {% if site.author.email %}
-      <a href="mailto:{{ site.author.email }}" class="btn btn-outline-dark mx-2 mb-2">
-        <i class="fas fa-envelope"></i> Email Me
-      </a>
-      {% endif %}
-      {% if site.author.linkedin %}
-      <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank" class="btn btn-outline-dark mx-2 mb-2">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-      {% endif %}
-      {% if site.author.github %}
-      <a href="https://github.com/{{ site.author.github }}" target="_blank" class="btn btn-outline-dark mx-2 mb-2">
-        <i class="fab fa-github"></i> GitHub
-      </a>
-      {% endif %}
+<!-- Contact Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="contact-card">
+          <h2 class="font-weight-bold mb-3">Let's Build Something Amazing</h2>
+          <p class="lead mb-4" style="opacity: 0.9;">
+            Open to ML Engineer and Applied Scientist roles in generative AI, computer vision, and production ML systems
+          </p>
+          <div class="mb-4">
+            {% if site.author.email %}
+            <a href="mailto:{{ site.author.email }}" class="social-link">
+              <i class="fas fa-envelope"></i>
+            </a>
+            {% endif %}
+            {% if site.author.linkedin %}
+            <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank" class="social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            {% endif %}
+            {% if site.author.github %}
+            <a href="https://github.com/{{ site.author.github }}" target="_blank" class="social-link">
+              <i class="fab fa-github"></i>
+            </a>
+            {% endif %}
+          </div>
+          {% if site.author.email %}
+          <a href="mailto:{{ site.author.email }}" class="btn btn-light btn-lg px-5">
+            Get In Touch
+          </a>
+          {% endif %}
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
