@@ -4,16 +4,20 @@ layout: default
 
 <style>
   :root {
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+    --light-bg: #f8f9fa;
+    --border-color: #e1e8ed;
   }
 
   .hero-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    color: #2c3e50;
     padding: 80px 0 60px;
     margin: -2rem -15px 0;
     position: relative;
     overflow: hidden;
+    border-bottom: 1px solid #e1e8ed;
   }
 
   .hero-section::before {
@@ -23,8 +27,8 @@ layout: default
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-    opacity: 0.3;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(44,62,80,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 1;
   }
 
   .hero-content {
@@ -33,8 +37,8 @@ layout: default
   }
 
   .badge-custom {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+    background: #2c3e50;
+    color: white;
     padding: 8px 16px;
     border-radius: 20px;
     display: inline-block;
@@ -48,7 +52,8 @@ layout: default
     border-radius: 12px;
     padding: 25px 20px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e1e8ed;
     margin-top: -40px;
     position: relative;
     z-index: 2;
@@ -57,12 +62,13 @@ layout: default
 
   .stat-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   .stat-number {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #667eea;
+    color: #2c3e50;
     line-height: 1;
     margin-bottom: 8px;
   }
@@ -106,13 +112,13 @@ layout: default
     left: 0;
     width: 4px;
     height: 0;
-    background: linear-gradient(180deg, #667eea, #764ba2);
+    background: #3498db;
     transition: height 0.3s ease;
   }
 
   .expertise-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
   }
 
   .expertise-card:hover::before {
@@ -122,59 +128,21 @@ layout: default
   .expertise-icon {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #3498db;
   }
 
   .research-highlight {
     background: white;
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e9ecef;
-  }
-
-  .project-card {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid #e9ecef;
-    transition: all 0.3s ease;
-    height: 100%;
-  }
-
-  .project-card:hover {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-    transform: translateY(-3px);
-  }
-
-  .project-header {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 25px;
-    border-bottom: 1px solid #e9ecef;
-  }
-
-  .project-tag {
-    background: #667eea;
-    color: white;
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    display: inline-block;
-    margin-right: 6px;
-    margin-bottom: 6px;
-  }
-
-  .project-body {
-    padding: 25px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e1e8ed;
   }
 
   .metric-badge {
-    background: #f1f3f5;
-    color: #667eea;
+    background: #f8f9fa;
+    color: #2c3e50;
+    border: 1px solid #e1e8ed;
     padding: 6px 12px;
     border-radius: 8px;
     font-size: 0.85rem;
@@ -203,9 +171,9 @@ layout: default
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: #667eea;
+    background: #3498db;
     border: 3px solid white;
-    box-shadow: 0 0 0 2px #667eea;
+    box-shadow: 0 0 0 2px #3498db;
   }
 
   .timeline-item::after {
@@ -223,7 +191,7 @@ layout: default
   }
 
   .btn-gradient {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: #2c3e50;
     border: none;
     color: white;
     padding: 12px 32px;
@@ -236,13 +204,14 @@ layout: default
 
   .btn-gradient:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
+    background: #34495e;
     color: white;
     text-decoration: none;
   }
 
   .contact-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     color: white;
     border-radius: 20px;
     padding: 50px;
@@ -251,8 +220,7 @@ layout: default
 
   .social-link {
     color: white;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.15);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -265,14 +233,15 @@ layout: default
   }
 
   .social-link:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.25);
     transform: translateY(-3px);
     color: white;
   }
 
   .tech-stack-badge {
-    background: #f1f3f5;
-    color: #495057;
+    background: white;
+    color: #2c3e50;
+    border: 1px solid #e1e8ed;
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -303,28 +272,26 @@ layout: default
           <i class="fas fa-graduation-cap mr-2"></i> MS Student & Research Assistant at Northeastern University
         </div>
         <h1 class="display-3 font-weight-bold mb-3">{{ site.author.name }}</h1>
-        <h2 class="h3 mb-4" style="opacity: 0.95;">Machine Learning Engineer & AI Researcher</h2>
-        <p class="lead mb-4" style="font-size: 1.2rem; opacity: 0.9;">
+        <h2 class="h3 mb-4">Machine Learning Engineer & AI Researcher</h2>
+        <p class="lead mb-4" style="font-size: 1.2rem; color: #2c3e50;">
           Specializing in <strong>Diffusion Models</strong>, <strong>Generative AI</strong>, and <strong>Production ML Systems</strong>
         </p>
-        <p class="mb-5" style="opacity: 0.85;">
-          Bridging the gap between cutting-edge research and scalable AI solutions in healthcare, NLP, and computer vision
+        <p class="mb-5" style="color: #6c757d;">
+          Turning complex research into scalable, production-ready AI solutions in healthcare, molecular modeling, and NLP
         </p>
         <div class="d-flex flex-wrap justify-content-center">
-          <a href="#research" class="btn btn-light btn-lg mx-2 mb-2 px-4">
+          <a href="#research" class="btn btn-dark btn-lg mx-2 mb-2 px-4">
             <i class="fas fa-flask mr-2"></i>Research
           </a>
-          <a href="{{ site.baseurl }}/projects" class="btn btn-outline-light btn-lg mx-2 mb-2 px-4">
+          <a href="/projects" class="btn btn-outline-dark btn-lg mx-2 mb-2 px-4">
             <i class="fas fa-code mr-2"></i>Projects
           </a>
-          <a href="{{ site.baseurl }}/about" class="btn btn-outline-light btn-lg mx-2 mb-2 px-4">
+          <a href="/about" class="btn btn-outline-dark btn-lg mx-2 mb-2 px-4">
             <i class="fas fa-user mr-2"></i>About
           </a>
-          {% if site.author.resume %}
-          <a href="{{ site.baseurl }}/{{ site.author.resume }}" class="btn btn-outline-light btn-lg mx-2 mb-2 px-4" target="_blank">
-            <i class="fas fa-file-pdf mr-2"></i>Resume
+          <a href="/blog" class="btn btn-outline-dark btn-lg mx-2 mb-2 px-4">
+            <i class="fas fa-blog mr-2"></i>Blog
           </a>
-          {% endif %}
         </div>
       </div>
     </div>
@@ -332,7 +299,7 @@ layout: default
 </section>
 
 <!-- Stats Section -->
-<section class="py-5" style="background: #f8f9fa;">
+<section class="py-5" style="background: white;">
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-6 mb-4 mb-md-0">
@@ -364,7 +331,7 @@ layout: default
 </section>
 
 <!-- Current Research -->
-<section class="py-5" id="research">
+<section class="py-5" id="research" style="background: #f8f9fa;">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Current Research</h2>
@@ -410,7 +377,7 @@ layout: default
 </section>
 
 <!-- Core Expertise -->
-<section class="py-5" style="background: #f8f9fa;">
+<section class="py-5" style="background: white;">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Core Expertise</h2>
@@ -466,73 +433,6 @@ layout: default
   </div>
 </section>
 
-<!-- Featured Projects -->
-<section class="py-5" id="projects">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Featured Projects</h2>
-      <p class="section-subtitle">Research and engineering work spanning generative AI, healthcare, and production systems</p>
-    </div>
-    <div class="row mb-4">
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="project-card">
-          <div class="project-header">
-            <h5 class="font-weight-bold mb-3">🧠 MRI Synthesis</h5>
-            <div>
-              <span class="project-tag">Diffusion Models</span>
-              <span class="project-tag">Healthcare</span>
-            </div>
-          </div>
-          <div class="project-body">
-            <p class="text-muted mb-0">
-              Diffusion-based image translation for T1-to-T2 MRI synthesis with PSNR of 23.8
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="project-card">
-          <div class="project-header">
-            <h5 class="font-weight-bold mb-3">🔬 Tumor Segmentation</h5>
-            <div>
-              <span class="project-tag">HPC</span>
-              <span class="project-tag">Distributed Training</span>
-            </div>
-          </div>
-          <div class="project-body">
-            <p class="text-muted mb-0">
-              8-GPU distributed U-Net achieving 95% accuracy with 40% faster training
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="project-card">
-          <div class="project-header">
-            <h5 class="font-weight-bold mb-3">🤖 HR Assistant</h5>
-            <div>
-              <span class="project-tag">RAG</span>
-              <span class="project-tag">LLMs</span>
-            </div>
-          </div>
-          <div class="project-body">
-            <p class="text-muted mb-0">
-              Intelligent assistant with retrieval-augmented generation for automated query resolution
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 text-center">
-        <a href="{{ site.baseurl }}/projects" class="btn btn-gradient btn-lg px-5">
-          <i class="fas fa-arrow-right mr-2"></i>View All Projects
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Experience Timeline -->
 <section class="py-5" style="background: #f8f9fa;">
   <div class="container">
@@ -577,13 +477,13 @@ layout: default
 </section>
 
 <!-- Contact Section -->
-<section class="py-5">
+<section class="py-5" style="background: white;">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8">
         <div class="contact-card">
           <h2 class="font-weight-bold mb-3">Let's Build Something Amazing</h2>
-          <p class="lead mb-4" style="opacity: 0.9;">
+          <p class="lead mb-4" style="opacity: 0.95;">
             Open to ML Engineer and Applied Scientist roles in generative AI, computer vision, and production ML systems
           </p>
           <div class="mb-4">
@@ -602,9 +502,14 @@ layout: default
               <i class="fab fa-github"></i>
             </a>
             {% endif %}
+            {% if site.author.behance %}
+            <a href="https://www.behance.net/{{ site.author.behance }}" target="_blank" class="social-link">
+              <i class="fab fa-behance"></i>
+            </a>
+            {% endif %}
           </div>
           {% if site.author.email %}
-          <a href="mailto:{{ site.author.email }}" class="btn btn-light btn-lg px-5">
+          <a href="mailto:{{ site.author.email }}" class="btn btn-light btn-lg px-5" style="font-weight: 600;">
             Get In Touch
           </a>
           {% endif %}
