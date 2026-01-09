@@ -252,7 +252,60 @@
       font-size: 2rem;
     }
   }
+
+  .profile-photo-container {
+    display: inline-block;
+    position: relative;
+  }
+
+  .profile-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .profile-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .profile-photo {
+      width: 140px;
+      height: 140px;
+      border-width: 4px;
+    }
+  }
+
 </style>
+
+<!-- Hero Section -->
+ <!-- 
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center hero-content">
+      <div class="col-lg-10 mx-auto text-center">
+        <div class="badge-custom">
+          <i class="fas fa-graduation-cap mr-2"></i> MS Student & Research Assistant at Northeastern University
+        </div>
+
+        
+        <h1 class="display-3 font-weight-bold mb-3">{{ site.author.name }}</h1>
+        <h2 class="h3 mb-4">Machine Learning Engineer & AI Researcher</h2>
+        <p class="lead mb-4" style="font-size: 1.2rem;">
+          Specializing in <strong>Diffusion Models</strong>, <strong>Generative AI</strong>, and <strong>Production ML Systems</strong>
+        </p>
+        <p class="mb-5 text-muted">
+          Turning complex research into scalable, production-ready AI solutions in healthcare, molecular modeling, and NLP
+        </p>
+      </div>
+    </div>
+  </div>
+</section> -->
 
 <!-- Hero Section -->
 <section class="hero-section">
@@ -262,6 +315,12 @@
         <div class="badge-custom">
           <i class="fas fa-graduation-cap mr-2"></i> MS Student & Research Assistant at Northeastern University
         </div>
+        
+        <!-- Profile Photo -->
+        <div class="profile-photo-container mb-4">
+          <img src="{{ site.author.image }}" alt="{{ site.author.name }}" class="profile-photo">
+        </div>
+        
         <h1 class="display-3 font-weight-bold mb-3">{{ site.author.name }}</h1>
         <h2 class="h3 mb-4">Machine Learning Engineer & AI Researcher</h2>
         <p class="lead mb-4" style="font-size: 1.2rem;">
@@ -300,7 +359,6 @@
             <span class="metric-badge"><i class="fas fa-chart-line mr-1"></i> 0.93 BERT Similarity</span>
             <span class="metric-badge"><i class="fas fa-tachometer-alt mr-1"></i> 50× Faster Inference</span>
             <span class="metric-badge"><i class="fas fa-brain mr-1"></i> 83M Parameters</span>
-            <span class="metric-badge"><i class="fas fa-check-circle mr-1"></i> Successfully Defended</span>
           </div>
           <div>
             <span class="tech-stack-badge">PyTorch</span>
