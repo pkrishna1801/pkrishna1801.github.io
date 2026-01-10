@@ -1,36 +1,208 @@
-- title: Graduate Student, Northeastern University, USA
-  from: 2024
+# - title: Graduate Student, Northeastern University, USA
+#   from: 2024
+#   to: Present
+#   description: >
+#     Currently pursuing my M.S. in Computer Software Engineering with a focus on 
+#     deep learning applications in healthcare and molecular modeling. Engaged in 
+#     research that explores the intersection of diffusion models, graph neural 
+#     networks, and large language models to solve complex problems in medical 
+#     imaging and drug discovery.
+
+# - title: Software Data Engineer, Societe Generale, India
+#   from: 2021
+#   to: 2023
+#   description: >
+#     Former Software Data Engineer with expertise in
+#     cloud migration, data pipeline automation, and real-time analytics systems.
+#     Specialized in modernizing enterprise applications on Microsoft Azure while
+#     ensuring minimal downtime and optimized deployment cycles. Experienced in 
+#     developing transaction processing systems that handle over 1M daily 
+#     transactions with AWS S3 integration for secure data management.
+#     Passionate about creating technical solutions that empower non-technical
+#     stakeholders, demonstrated through implementing Elasticsearch and Kibana
+#     monitoring systems that reduced incident resolution time by 30% and enabled
+#     self-service analytics.
+    
+# - title: Student, Visvesvaraya Technological University, India
+#   from: 2017
+#   to: 2021
+#   description: >
+#     My foundation was built at BMS Institute of Technology in Bangalore, 
+#     where I earned my Bachelor's in Electronics and Communication Engineering.
+#     During this time, I developed a strong understanding of neural networks,
+#     artificial intelligence, and digital image processing. My undergraduate 
+#     coursework and projects in adaptive image processing using technologies
+#     like GoogleNet and CLAHE laid the groundwork for my current specialization
+#     in deep learning and computer vision.
+
+
+
+- title: ML Research Assistant
+  company: Northeastern University
+  location: Boston, MA, USA
+  from: January 2025
+  to: December 2025
+  description: >
+    Designed and trained diffusion models for non-autoregressive text generation 
+    in BERT embedding space, achieving 92.3% reduction in validation loss and 50× 
+    faster inference through architectural innovations. Implemented advanced sampling 
+    techniques using DPM-Solver++ and optimized U-Net architectures for continuous 
+    embedding generation. Research focuses on achieving semantic fidelity while 
+    maintaining computational efficiency for production deployment.
+  technologies:
+    - PyTorch
+    - Diffusion Models
+    - BERT
+    - DPM-Solver++
+    - U-Net
+  achievements:
+    - 0.93 BERT Similarity Score
+    - 50× faster inference speed
+    - 83M parameter model
+
+- title: Graduate Teaching Assistant
+  company: Northeastern University
+  location: Boston, MA, USA
+  from: May 2025
+  to: August 2025
+  description: >
+    Selected as top-performing TA for Advanced Cloud Computing course. Designed 
+    comprehensive multi-cloud ML labs for 20+ graduate students covering AWS, Azure, 
+    and GCP platforms. Engineered production-grade MLOps pipelines using Jenkins, 
+    Terraform, and Docker. Modernized course curriculum to include hands-on experience 
+    with distributed training, model deployment, and cloud-native ML architectures. 
+    Mentored students on best practices for building scalable ML systems.
+  technologies:
+    - AWS
+    - Azure
+    - GCP
+    - Jenkins
+    - Terraform
+    - Docker
+    - Kubernetes
+  achievements:
+    - Taught 20+ graduate students
+    - Designed 5+ hands-on cloud labs
+    - Selected as top-performing TA
+
+- title: Graduate Student
+  company: Northeastern University
+  location: Boston, MA, USA
+  from: January 2024
   to: Present
   description: >
-    Currently pursuing my M.S. in Computer Software Engineering with a focus on 
-    deep learning applications in healthcare and molecular modeling. Engaged in 
-    research that explores the intersection of diffusion models, graph neural 
-    networks, and large language models to solve complex problems in medical 
-    imaging and drug discovery.
+    Currently pursuing M.S. in Computer Software Engineering with a focus on deep 
+    learning applications in healthcare and molecular modeling. Engaged in cutting-edge 
+    research exploring the intersection of diffusion models, graph neural networks, 
+    and large language models to solve complex problems in medical imaging and drug 
+    discovery. Coursework includes Advanced Machine Learning, Deep Learning Systems, 
+    Computer Vision, and Natural Language Processing.
+  technologies:
+    - PyTorch
+    - TensorFlow
+    - Diffusion Models
+    - Graph Neural Networks
+    - Large Language Models
+  achievements:
+    - Published thesis on diffusion models for text generation
+    - Research in medical imaging and molecular modeling
 
-- title: Software Data Engineer, Societe Generale, India
-  from: 2021
-  to: 2023
+- title: Software Data Engineer
+  company: Société Générale
+  location: Bangalore, India
+  from: September 2021
+  to: December 2023
   description: >
-    Former Software Data Engineer with expertise in
-    cloud migration, data pipeline automation, and real-time analytics systems.
-    Specialized in modernizing enterprise applications on Microsoft Azure while
-    ensuring minimal downtime and optimized deployment cycles. Experienced in 
-    developing transaction processing systems that handle over 1M daily 
-    transactions with AWS S3 integration for secure data management.
-    Passionate about creating technical solutions that empower non-technical
-    stakeholders, demonstrated through implementing Elasticsearch and Kibana
-    monitoring systems that reduced incident resolution time by 30% and enabled
-    self-service analytics.
-    
-- title: Student, Visvesvaraya Technological University, India
-  from: 2017
-  to: 2021
+    Built and deployed 3+ containerized enterprise applications on Azure Kubernetes 
+    Service, processing 1M+ daily transactions with 99.9% uptime. Specialized in cloud 
+    migration, data pipeline automation, and real-time analytics systems. Modernized 
+    legacy enterprise applications on Microsoft Azure while ensuring minimal downtime 
+    and optimized deployment cycles. Developed transaction processing systems with 
+    AWS S3 integration for secure data management. Implemented Elasticsearch and Kibana 
+    monitoring dashboards that reduced incident resolution time by 30% and enabled 
+    self-service analytics for non-technical stakeholders.
+  technologies:
+    - Azure Kubernetes Service
+    - AWS S3
+    - Elasticsearch
+    - Kibana
+    - Docker
+    - Python
+    - SQL
+  achievements:
+    - Deployed 3+ containerized applications
+    - Processed 1M+ daily transactions
+    - Reduced incident response time by 30%
+    - Achieved 99.9% uptime
+
+- title: Software Engineering Intern
+  company: Capgemini
+  location: India
+  from: March 2021
+  to: May 2021
   description: >
-    My foundation was built at BMS Institute of Technology in Bangalore, 
-    where I earned my Bachelor's in Electronics and Communication Engineering.
-    During this time, I developed a strong understanding of neural networks,
-    artificial intelligence, and digital image processing. My undergraduate 
-    coursework and projects in adaptive image processing using technologies
-    like GoogleNet and CLAHE laid the groundwork for my current specialization
-    in deep learning and computer vision.
+    Designed and built scalable multi-tenant microservices architecture with RESTful 
+    APIs serving multiple client applications. Implemented secure OAuth2 and JWT-based 
+    authentication and authorization systems ensuring data protection and granular 
+    access control. Developed backend services using Spring Boot and Node.js with 
+    PostgreSQL database integration. Gained hands-on experience with Agile development 
+    methodologies and CI/CD pipelines.
+  technologies:
+    - Spring Boot
+    - Node.js
+    - PostgreSQL
+    - OAuth2
+    - JWT
+    - RESTful APIs
+  achievements:
+    - Built multi-tenant microservices architecture
+    - Implemented secure authentication system
+
+- title: Digital Signal Processing Engineer Intern
+  company: PathPartner Technology
+  location: India
+  from: February 2020
+  to: April 2020
+  description: >
+    Developed and optimized C code for real-time image processing algorithms on Texas 
+    Instruments C66x DSP platform. Achieved 16.4-microsecond execution time for block 
+    processing through advanced optimization techniques. Reduced cycle count to 4096 
+    cycles per block, achieving 4× speedup through SIMD vectorization and loop unrolling. 
+    Implemented efficient memory access patterns and cache optimization strategies for 
+    embedded vision applications.
+  technologies:
+    - C
+    - Texas Instruments C66x DSP
+    - SIMD
+    - Image Processing
+    - Embedded Systems
+  achievements:
+    - 16.4-microsecond execution time
+    - 4× speedup through optimization
+    - 4096 cycles per block processing
+
+- title: Bachelor of Engineering, Electronics and Communication
+  company: BMS Institute of Technology (Visvesvaraya Technological University)
+  location: Bangalore, India
+  from: August 2017
+  to: July 2021
+  description: >
+    Earned Bachelor's degree in Electronics and Communication Engineering with 
+    specialization in neural networks, artificial intelligence, and digital image 
+    processing. Developed strong foundation through coursework in Machine Learning, 
+    Digital Signal Processing, Computer Vision, and Embedded Systems. Undergraduate 
+    research and projects in adaptive image processing using GoogleNet architecture 
+    and CLAHE (Contrast Limited Adaptive Histogram Equalization) laid the groundwork 
+    for current specialization in deep learning and computer vision. Completed senior 
+    thesis on adaptive image enhancement techniques for medical imaging applications.
+  technologies:
+    - Python
+    - MATLAB
+    - TensorFlow
+    - OpenCV
+    - GoogleNet
+    - CLAHE
+  achievements:
+    - Graduated with honors
+    - Research in adaptive image processing
+    - Foundation in neural networks and AI
