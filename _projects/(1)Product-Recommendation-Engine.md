@@ -1,7 +1,7 @@
 ---
 name: Product Recommendation Engine
 tools: [Flask, React, Heroku, Vercel, chat-GPT4o ]
-image: ./_images/Product.png
+image: https://www.unite.ai/wp-content/uploads/2020/08/RecommendationEngine.png
 description:
     # Built RNN-based text generation model for Kannada language
     # Trained custom CBOW embeddings for improved word representation
