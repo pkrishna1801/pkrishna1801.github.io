@@ -1,460 +1,335 @@
 <style>
-  .hero-section {
-    padding: 80px 0 60px;
-    margin: -2rem -15px 0;
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0f;
+    color: #e0e0e0;
+    overflow-x: hidden;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+  /* Shared grid background for ALL sections */
+  section {
     position: relative;
     overflow: hidden;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    padding: 80px 0;
   }
-
-  .hero-section::before {
+  section::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(128,128,128,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-    opacity: 0.5;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(128,128,128,0.08)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    pointer-events: none;
+    z-index: 0;
   }
+  section > .container { position: relative; z-index: 1; }
 
-  .hero-content {
-    position: relative;
-    z-index: 1;
-  }
-
-  .badge-custom {
-    background: rgba(128, 128, 128, 0.2);
-    padding: 8px 16px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 20px;
-    font-weight: 500;
-    font-size: 0.9rem;
-  }
-
-  .stat-card {
-    border-radius: 12px;
-    padding: 30px 20px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(128, 128, 128, 0.2);
-    margin-top: -40px;
-    position: relative;
-    z-index: 2;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 140px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  .stat-number {
-    font-size: 2.2rem;
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 10px;
-    white-space: nowrap;
-  }
-
-  .stat-label {
-    opacity: 0.7;
-    font-size: 0.9rem;
-    white-space: nowrap;
-  }
-
-  .section-header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-
-  .section-subtitle {
-    opacity: 0.7;
-    font-size: 1.1rem;
-  }
-
-  .expertise-card {
-    border-radius: 16px;
-    padding: 30px;
-    height: 100%;
-    border: 1px solid rgba(128, 128, 128, 0.2);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .expertise-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 0;
-    background: var(--primary, #007bff);
-    transition: height 0.3s ease;
-  }
-
-  .expertise-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  }
-
-  .expertise-card:hover::before {
-    height: 100%;
-  }
-
-  .expertise-icon {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: var(--primary, #007bff);
-  }
-
-  .research-highlight {
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(128, 128, 128, 0.2);
-    background: transparent;
-  }
-
-  .metric-badge {
-    background: rgba(128, 128, 128, 0.1);
-    border: 1px solid rgba(128, 128, 128, 0.2);
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    display: inline-block;
-    margin-right: 8px;
-    margin-top: 8px;
-  }
-
-  .timeline {
-    position: relative;
-    padding: 20px 0;
-  }
-
-  .timeline-item {
-    padding-left: 50px;
-    position: relative;
-    margin-bottom: 30px;
-  }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: 15px;
-    top: 8px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--primary, #007bff);
-    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
-  }
-
-  .timeline-item::after {
-    content: '';
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    width: 2px;
-    height: calc(100% + 10px);
-    background: rgba(128, 128, 128, 0.2);
-  }
-
-  .timeline-item:last-child::after {
-    display: none;
-  }
-
-  .btn-gradient {
-    background: var(--primary, #007bff);
-    border: none;
-    color: white;
-    padding: 12px 32px;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-  }
-
-  .btn-gradient:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-    opacity: 0.9;
-    color: white;
-    text-decoration: none;
-  }
-
-  .contact-card {
-    background: var(--primary, #007bff);
-    color: white;
-    border-radius: 20px;
-    padding: 50px;
-    text-align: center;
-  }
-
-  .social-link {
-    color: white;
-    background: rgba(255, 255, 255, 0.15);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 8px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-  }
-
-  .social-link:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: translateY(-3px);
-    color: white;
-  }
-
-  .tech-stack-badge {
-    background: rgba(128, 128, 128, 0.1);
-    border: 1px solid rgba(128, 128, 128, 0.2);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    display: inline-block;
-    margin: 5px;
-  }
-
-  .section-alt-bg {
-    background: rgba(128, 128, 128, 0.05);
-  }
-
-  @media (max-width: 768px) {
-    .hero-section {
-      padding: 60px 0 40px;
-    }
-    .section-title {
-      font-size: 2rem;
-    }
-    .stat-number {
-      font-size: 2rem;
-    }
-  }
-
-  .profile-photo-container {
-    display: inline-block;
-    position: relative;
-  }
+  /* Hero */
+  .hero-section { padding: 100px 0 80px; border-bottom: 1px solid rgba(128,128,128,0.15); }
+  .hero-section::before { opacity: 0.7; }
 
   .profile-photo {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid rgba(255, 255, 255, 0.9);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 170px; height: 170px; border-radius: 50%; object-fit: cover;
+    border: 4px solid rgba(255,255,255,0.15);
+    box-shadow: 0 0 40px rgba(59,130,246,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .profile-photo:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(59,130,246,0.25); }
+
+  .hero-title { font-size: 3.2rem; font-weight: 800; margin: 20px 0 8px; color: #fff; }
+  .hero-subtitle { font-size: 1.3rem; color: #94a3b8; margin-bottom: 16px; }
+  .hero-desc { font-size: 1.05rem; color: #94a3b8; max-width: 650px; margin: 0 auto; line-height: 1.6; }
+  .hero-desc strong { color: #60a5fa; }
+
+  .text-center { text-align: center; }
+
+  /* Section headers */
+  .section-header { text-align: center; margin-bottom: 50px; }
+  .section-title { font-size: 2.4rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .section-subtitle { color: #64748b; font-size: 1.05rem; }
+
+  /* Research */
+  .research-card {
+    border-radius: 16px; padding: 40px;
+    border: 1px solid rgba(128,128,128,0.15);
+    background: rgba(255,255,255,0.03);
+    max-width: 900px; margin: 0 auto;
+  }
+  .research-card h3 { font-size: 1.5rem; color: #fff; margin-bottom: 10px; }
+  .research-meta { color: #64748b; font-size: 0.9rem; margin-bottom: 16px; }
+  .research-desc { color: #94a3b8; line-height: 1.7; margin-bottom: 20px; }
+
+  .metric-badge {
+    display: inline-block; background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.25); padding: 6px 14px;
+    border-radius: 8px; font-size: 0.85rem; font-weight: 600;
+    color: #60a5fa; margin: 4px 4px;
+  }
+  .tech-badge {
+    display: inline-block; background: rgba(128,128,128,0.1);
+    border: 1px solid rgba(128,128,128,0.2); padding: 6px 14px;
+    border-radius: 20px; font-size: 0.82rem; color: #94a3b8; margin: 3px;
   }
 
-  .profile-photo:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  /* Expertise — 4 in a row */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 1024px) { .expertise-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .expertise-grid { grid-template-columns: 1fr; } }
+
+  .expertise-card {
+    border-radius: 14px; padding: 28px; height: 100%;
+    border: 1px solid rgba(128,128,128,0.15);
+    background: rgba(255,255,255,0.03);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .expertise-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0;
+    background: #3b82f6; transition: height 0.3s;
+  }
+  .expertise-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    border-color: rgba(59,130,246,0.3);
+  }
+  .expertise-card:hover::before { height: 100%; }
+
+  .expertise-icon { font-size: 2rem; color: #3b82f6; margin-bottom: 16px; }
+  .expertise-card h4 { font-size: 1.05rem; color: #fff; margin-bottom: 10px; font-weight: 700; }
+  .expertise-card p { color: #94a3b8; font-size: 0.88rem; line-height: 1.6; margin-bottom: 12px; }
+  .expertise-card .skills { font-size: 0.8rem; color: #64748b; }
+  .expertise-card .skills strong { color: #94a3b8; }
+
+  /* Highlights — horizontal scroll */
+  .highlights-scroll {
+    display: flex; gap: 24px; overflow-x: auto;
+    padding: 10px 0 20px; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .highlights-scroll::-webkit-scrollbar { height: 6px; }
+  .highlights-scroll::-webkit-scrollbar-track { background: rgba(128,128,128,0.1); border-radius: 3px; }
+  .highlights-scroll::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.4); border-radius: 3px; }
+
+  .highlight-card {
+    flex: 0 0 380px; scroll-snap-align: start;
+    border: 1px solid rgba(128,128,128,0.15);
+    border-radius: 16px; overflow: hidden;
+    background: rgba(255,255,255,0.03);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .highlight-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .highlight-preview {
+    width: 100%; height: 260px; object-fit: cover; object-position: top;
+    border-bottom: 1px solid rgba(128,128,128,0.15);
+    background: #1a1a24;
+  }
+  .highlight-info { padding: 20px; }
+  .highlight-info h4 { color: #fff; font-size: 1rem; margin-bottom: 6px; }
+  .highlight-info p { color: #64748b; font-size: 0.85rem; margin-bottom: 12px; }
+  .highlight-tag {
+    display: inline-block; background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.2);
+    padding: 3px 10px; border-radius: 12px;
+    font-size: 0.75rem; color: #60a5fa; margin-right: 6px;
   }
 
-  @media (max-width: 768px) {
-    .profile-photo {
-      width: 140px;
-      height: 140px;
-      border-width: 4px;
-    }
+  /* Contact */
+  .contact-card {
+    background: linear-gradient(135deg, #1e3a5f 0%, #1a1a2e 100%);
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 20px; padding: 50px; text-align: center;
+    max-width: 700px; margin: 0 auto;
   }
+  .contact-card h2 { color: #fff; font-size: 2rem; margin-bottom: 12px; }
+  .contact-card .lead { color: #94a3b8; font-size: 1rem; margin-bottom: 24px; }
 
+  .social-link {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); color: #fff;
+    margin: 0 6px; text-decoration: none; font-size: 1.1rem;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .social-link:hover { background: rgba(59,130,246,0.4); transform: translateY(-3px); }
+
+  .btn-cta {
+    display: inline-block; margin-top: 20px;
+    background: #3b82f6; color: #fff; border: none;
+    padding: 14px 36px; border-radius: 10px; font-weight: 600;
+    font-size: 1rem; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59,130,246,0.35); }
+
+  .scroll-hint {
+    display: flex; align-items: center; gap: 8px;
+    color: #64748b; font-size: 0.85rem; margin-bottom: 16px;
+  }
+  .scroll-hint i { animation: bounceX 1.5s infinite; }
+  @keyframes bounceX { 0%,100%{transform:translateX(0)} 50%{transform:translateX(6px)} }
 </style>
 
-
-<!-- Hero Section -->
+<!-- Hero -->
 <section class="hero-section">
-  <div class="container">
-    <div class="row align-items-center hero-content">
-      <div class="col-lg-10 mx-auto text-center">
-        <!-- <div class="badge-custom">
-          <i class="fas fa-graduation-cap mr-2"></i> MS Student & Research Assistant at Northeastern University
-        </div> -->
-        
-        <!-- Profile Photo -->
-        <div class="profile-photo-container mb-4">
-          <img src="{{ site.author.image }}" alt="{{ site.author.name }}" class="profile-photo">
-        </div>
-        
-        <h1 class="display-3 font-weight-bold mb-3">{{ site.author.name }}</h1>
-        <h2 class="h3 mb-4">Machine Learning Engineer & AI Researcher</h2>
-        <p class="lead mb-4" style="font-size: 1.2rem;">
-          Specializing in <strong>Large Language Models</strong>, <strong>Diffusion Models</strong>, <strong>Generative AI</strong>, and <strong>Production ML Systems</strong>
-        </p>
-      </div>
-    </div>
+  <div class="container text-center">
+    <img src="https://via.placeholder.com/170/1a1a2e/3b82f6?text=PK" alt="Prarthana Krishnamurthy" class="profile-photo">
+    <h1 class="hero-title">Prarthana Krishnamurthy</h1>
+    <h2 class="hero-subtitle">Machine Learning Engineer & AI Researcher</h2>
+    <p class="hero-desc">
+      Specializing in <strong>Large Language Models</strong>, <strong>Diffusion Models</strong>, <strong>Generative AI</strong>, and <strong>Production ML Systems</strong>
+    </p>
   </div>
 </section>
 
-
-<!-- Current Research -->
-<section class="py-5 section-alt-bg" id="research">
+<!-- Research -->
+<section id="research">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Current Research</h2>
       <p class="section-subtitle">Master's Thesis at Northeastern University</p>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <div class="research-highlight">
-          <h3 class="font-weight-bold mb-3">Non-Autoregressive Text Generation Using Diffusion Models</h3>
-          <p class="text-muted mb-3">
-            <i class="fas fa-user-tie mr-2"></i>Advisor: Prof. Dino Konstantopoulos | 
-            <i class="fas fa-calendar-alt ml-3 mr-2"></i>Jan 2025 - Dec 2025
-          </p>
-          <p class="mb-4">
-            Designing continuous-embedding diffusion models for parallel text generation in BERT embedding space, 
-            achieving significant improvements in semantic fidelity and inference speed through architectural 
-            innovations and advanced sampling techniques.
-          </p>
-          <div class="mb-3">
-            <span class="metric-badge"><i class="fas fa-chart-line mr-1"></i> 0.93 BERT Similarity</span>
-            <span class="metric-badge"><i class="fas fa-tachometer-alt mr-1"></i> 50× Faster Inference</span>
-            <span class="metric-badge"><i class="fas fa-brain mr-1"></i> 83M Parameters</span>
-          </div>
-          <div>
-            <span class="tech-stack-badge">PyTorch</span>
-            <span class="tech-stack-badge">Diffusion Models</span>
-            <span class="tech-stack-badge">BERT</span>
-            <span class="tech-stack-badge">DPM-Solver++</span>
-            <span class="tech-stack-badge">U-Net</span>
-          </div>
-        </div>
+    <div class="research-card">
+      <h3>Non-Autoregressive Text Generation Using Diffusion Models</h3>
+      <div class="research-meta">
+        Advisor: Prof. Dino Konstantopoulos &nbsp;|&nbsp; Jan 2025 – Dec 2025
+      </div>
+      <p class="research-desc">
+        Designing continuous-embedding diffusion models for parallel text generation in BERT embedding space, 
+        achieving significant improvements in semantic fidelity and inference speed through architectural 
+        innovations and advanced sampling techniques.
+      </p>
+      <div style="margin-bottom:14px">
+        <span class="metric-badge">0.93 BERT Similarity</span>
+        <span class="metric-badge">50× Faster Inference</span>
+        <span class="metric-badge">83M Parameters</span>
+      </div>
+      <div>
+        <span class="tech-badge">PyTorch</span>
+        <span class="tech-badge">Diffusion Models</span>
+        <span class="tech-badge">BERT</span>
+        <span class="tech-badge">DPM-Solver++</span>
+        <span class="tech-badge">U-Net</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Core Expertise -->
-<section class="py-5">
+<!-- Core Expertise — all 4 in one row -->
+<section id="expertise">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Core Expertise</h2>
       <p class="section-subtitle">Where research meets production-grade engineering</p>
     </div>
-    <div class="row">
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="expertise-card">
-          <div class="expertise-icon">
-            <i class="fas fa-magic"></i>
-          </div>
-          <h4 class="font-weight-bold mb-3">Diffusion Models & Generative AI</h4>
-          <p class="text-muted mb-3">
-            Expert in designing, training, and optimizing diffusion models for text and image generation. 
-            Specialized in noise scheduling, architectural tuning, and advanced sampling techniques.
-          </p>
-          <div class="small text-muted">
-            <strong>Key Skills:</strong> DDPM, DPM-Solver++, U-Net architectures, continuous embeddings
-          </div>
-        </div>
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <div class="expertise-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+        <h4>Diffusion Models & Generative AI</h4>
+        <p>Expert in designing, training, and optimizing diffusion models for text and image generation. Specialized in noise scheduling, architectural tuning, and advanced sampling.</p>
+        <div class="skills"><strong>Key Skills:</strong> DDPM, DPM-Solver++, U-Net, continuous embeddings</div>
       </div>
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="expertise-card">
-          <div class="expertise-icon">
-            <i class="fas fa-hospital"></i>
-          </div>
-          <h4 class="font-weight-bold mb-3">Medical Imaging & Computer Vision</h4>
-          <p class="text-muted mb-3">
-            Building deep learning solutions for medical image synthesis, segmentation, and analysis. 
-            Experience with MRI synthesis, tumor detection, and diagnostic visualization.
-          </p>
-          <div class="small text-muted">
-            <strong>Key Skills:</strong> Image-to-image translation, U-Net segmentation, PSNR/SSIM optimization
-          </div>
-        </div>
+      <div class="expertise-card">
+        <div class="expertise-icon"><i class="fas fa-hospital"></i></div>
+        <h4>Medical Imaging & Computer Vision</h4>
+        <p>Building deep learning solutions for medical image synthesis, segmentation, and analysis. Experience with MRI synthesis, tumor detection, and diagnostic visualization.</p>
+        <div class="skills"><strong>Key Skills:</strong> Image-to-image translation, U-Net segmentation, PSNR/SSIM</div>
       </div>
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="expertise-card">
-          <div class="expertise-icon">
-            <i class="fas fa-brain"></i>
-          </div>
-          <h4 class="font-weight-bold mb-3">Large Language Models & NLP</h4>
-          <p class="text-muted mb-3">
-            Deep expertise in training, fine-tuning, and scaling large language models from scratch. 
-            Specialized in pre-training dynamics, efficient adaptation methods, and alignment optimization.
-          </p>
-          <div class="small text-muted">
-            <strong>Key Skills:</strong> Transformer architectures, LoRA/QLoRA, RLHF/DPO, distributed training, tokenizer design
-          </div>
-        </div>
+      <div class="expertise-card">
+        <div class="expertise-icon"><i class="fas fa-brain"></i></div>
+        <h4>Large Language Models & NLP</h4>
+        <p>Deep expertise in training, fine-tuning, and scaling large language models from scratch. Specialized in pre-training dynamics, efficient adaptation, and alignment.</p>
+        <div class="skills"><strong>Key Skills:</strong> Transformers, LoRA/QLoRA, RLHF/DPO, distributed training</div>
       </div>
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="expertise-card">
-          <div class="expertise-icon">
-            <i class="fas fa-cloud"></i>
-          </div>
-          <h4 class="font-weight-bold mb-3">MLOps & Cloud Infrastructure</h4>
-          <p class="text-muted mb-3">
-            Production-ready ML deployment with containerization, orchestration, and monitoring. 
-            Built scalable systems processing millions of transactions on AWS and Azure.
-          </p>
-          <div class="small text-muted">
-            <strong>Key Skills:</strong> Docker, Kubernetes, AWS/Azure, CI/CD, distributed training
-          </div>
-        </div>
+      <div class="expertise-card">
+        <div class="expertise-icon"><i class="fas fa-cloud"></i></div>
+        <h4>MLOps & Cloud Infrastructure</h4>
+        <p>Production-ready ML deployment with containerization, orchestration, and monitoring. Built scalable systems processing millions of transactions on AWS and Azure.</p>
+        <div class="skills"><strong>Key Skills:</strong> Docker, Kubernetes, AWS/Azure, CI/CD, distributed training</div>
       </div>
     </div>
   </div>
 </section>
 
-
-
-<!-- Contact Section -->
-<section class="py-5">
+<!-- Highlights — horizontally scrollable -->
+<section id="highlights">
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="contact-card">
-          <h2 class="font-weight-bold mb-3">Let's Build Something Amazing</h2>
-          <p class="lead mb-4" style="opacity: 0.95;">
-            Open to ML Engineer and Applied Scientist roles in generative AI, computer vision, and production ML systems
-          </p>
-          <div class="mb-4">
-            {% if site.author.email %}
-            <a href="mailto:{{ site.author.email }}" class="social-link">
-              <i class="fas fa-envelope"></i>
-            </a>
-            {% endif %}
-            {% if site.author.linkedin %}
-            <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank" class="social-link">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            {% endif %}
-            {% if site.author.github %}
-            <a href="https://github.com/{{ site.author.github }}" target="_blank" class="social-link">
-              <i class="fab fa-github"></i>
-            </a>
-            {% endif %}
-          </div>
-          {% if site.author.email %}
-          <a href="mailto:{{ site.author.email }}" class="btn btn-light btn-lg px-5" style="font-weight: 600;">
-            Get In Touch
-          </a>
-          {% endif %}
+    <div class="section-header">
+      <h2 class="section-title">Highlights</h2>
+      <p class="section-subtitle">Credentials, recommendations, and milestones</p>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll to explore</span>
+      <i class="fas fa-arrow-right"></i>
+    </div>
+    <div class="highlights-scroll">
+      <!-- Card 1: Diploma -->
+      <div class="highlight-card">
+        <img src="https://via.placeholder.com/380x260/111122/3b82f6?text=MS+Diploma" alt="MS Diploma" class="highlight-preview">
+        <div class="highlight-info">
+          <h4>Master of Science in Information Systems</h4>
+          <p>Northeastern University, College of Engineering — December 2025</p>
+          <span class="highlight-tag">Degree</span>
+          <span class="highlight-tag">GPA 3.84</span>
+        </div>
+      </div>
+      <!-- Card 2: Recommendation Letter -->
+      <div class="highlight-card">
+        <img src="https://via.placeholder.com/380x260/111122/3b82f6?text=Recommendation+Letter" alt="Recommendation" class="highlight-preview">
+        <div class="highlight-info">
+          <h4>Letter of Recommendation</h4>
+          <p>Prof. Dino Konstantopoulos — Teaching Professor, Northeastern University</p>
+          <span class="highlight-tag">Faculty Endorsement</span>
+          <span class="highlight-tag">Jan 2026</span>
+        </div>
+      </div>
+      <!-- Card 3: Resume -->
+      <div class="highlight-card">
+        <img src="https://via.placeholder.com/380x260/111122/3b82f6?text=Resume" alt="Resume" class="highlight-preview">
+        <div class="highlight-info">
+          <h4>Professional Resume</h4>
+          <p>ML Research, Data Engineering at Société Générale, Cloud & DevOps</p>
+          <span class="highlight-tag">Experience</span>
+          <span class="highlight-tag">Publications</span>
+        </div>
+      </div>
+      <!-- Card 4: Thesis -->
+      <div class="highlight-card">
+        <img src="https://via.placeholder.com/380x260/111122/3b82f6?text=Master%27s+Thesis" alt="Thesis" class="highlight-preview">
+        <div class="highlight-info">
+          <h4>Master's Thesis Publication</h4>
+          <p>Non-Autoregressive Text Generation Using Diffusion Models — ProQuest 2025</p>
+          <span class="highlight-tag">Research</span>
+          <span class="highlight-tag">83M Params</span>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-card">
+      <h2>Let's Build Something Amazing</h2>
+      <p class="lead">Open to ML Engineer and Applied Scientist roles in generative AI, computer vision, and production ML systems</p>
+      <div style="margin-bottom: 8px;">
+        <a href="mailto:krishnamurthy.p@northeastern.edu" class="social-link"><i class="fas fa-envelope"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+      </div>
+      <a href="mailto:krishnamurthy.p@northeastern.edu" class="btn-cta">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
