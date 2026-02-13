@@ -131,8 +131,15 @@
   .highlight-preview {
     width: 100%; height: 260px; object-fit: cover; object-position: top;
     border-bottom: 1px solid rgba(128,128,128,0.15);
-    background: #1a1a24;
+    background: #1a1a24; border: none;
   }
+  .thesis-placeholder {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: #60a5fa; gap: 8px;
+  }
+  .thesis-placeholder i { font-size: 3rem; }
+  .thesis-placeholder span { font-size: 1.1rem; font-weight: 600; color: #e0e0e0; }
+  .thesis-placeholder small { color: #64748b; font-size: 0.85rem; }
   .highlight-info { padding: 20px; }
   .highlight-info h4 { color: #fff; font-size: 1rem; margin-bottom: 6px; }
   .highlight-info p { color: #64748b; font-size: 0.85rem; margin-bottom: 12px; }
@@ -177,6 +184,13 @@
   }
   .scroll-hint i { animation: bounceX 1.5s infinite; }
   @keyframes bounceX { 0%,100%{transform:translateX(0)} 50%{transform:translateX(6px)} }
+
+  .highlight-link {
+    display: inline-block; margin-top: 10px;
+    color: #60a5fa; font-size: 0.85rem; font-weight: 600;
+    text-decoration: none; transition: color 0.2s;
+  }
+  .highlight-link:hover { color: #93c5fd; }
 </style>
 
 <!-- Hero -->
@@ -274,42 +288,50 @@
     <div class="highlights-scroll">
       <!-- Card 1: Diploma -->
       <div class="highlight-card">
-        <img src="https://drive.google.com/file/d/1md2wJmGABuxSMxVUDmzjF_ytofqimPsz/view?usp=sharing" alt="MS Diploma" class="highlight-preview">
+        <iframe src="https://drive.google.com/file/d/1md2wJmGABuxSMxVUDmzjF_ytofqimPsz/preview" class="highlight-preview" allow="autoplay" loading="lazy"></iframe>
         <div class="highlight-info">
           <h4>Master of Science in Information Systems</h4>
           <p>Northeastern University, College of Engineering — December 2025</p>
           <span class="highlight-tag">Degree</span>
           <span class="highlight-tag">GPA 3.84</span>
+          <a href="https://drive.google.com/file/d/1md2wJmGABuxSMxVUDmzjF_ytofqimPsz/view?usp=sharing" target="_blank" class="highlight-link">View Full PDF ↗</a>
         </div>
       </div>
       <!-- Card 2: Recommendation Letter -->
       <div class="highlight-card">
-        <img src="https://drive.google.com/file/d/1GjBu_u-TpPAOunYpPEcWhbjTJN_FToL5/view?usp=sharing" alt="Recommendation" class="highlight-preview">
+        <iframe src="https://drive.google.com/file/d/1GjBu_u-TpPAOunYpPEcWhbjTJN_FToL5/preview" class="highlight-preview" allow="autoplay" loading="lazy"></iframe>
         <div class="highlight-info">
           <h4>Letter of Recommendation</h4>
           <p>Prof. Dino Konstantopoulos — Teaching Professor, Northeastern University</p>
           <span class="highlight-tag">Faculty Endorsement</span>
           <span class="highlight-tag">Jan 2026</span>
+          <a href="https://drive.google.com/file/d/1GjBu_u-TpPAOunYpPEcWhbjTJN_FToL5/view?usp=sharing" target="_blank" class="highlight-link">View Full PDF ↗</a>
         </div>
       </div>
       <!-- Card 3: Resume -->
       <div class="highlight-card">
-        <img src="https://drive.google.com/file/d/1n4CL6uXNISB9mxKkoY1qQyOlrNhPGLxi/view?usp=sharing" alt="Resume" class="highlight-preview">
+        <iframe src="https://drive.google.com/file/d/1n4CL6uXNISB9mxKkoY1qQyOlrNhPGLxi/preview" class="highlight-preview" allow="autoplay" loading="lazy"></iframe>
         <div class="highlight-info">
           <h4>Professional Resume</h4>
           <p>ML Research, Data Engineering at Société Générale, Cloud & DevOps</p>
           <span class="highlight-tag">Experience</span>
           <span class="highlight-tag">Publications</span>
+          <a href="https://drive.google.com/file/d/1n4CL6uXNISB9mxKkoY1qQyOlrNhPGLxi/view?usp=sharing" target="_blank" class="highlight-link">View Full PDF ↗</a>
         </div>
       </div>
       <!-- Card 4: Thesis -->
       <div class="highlight-card">
-        <img src="https://www.proquest.com/openview/c4a7c3f9ffc3778747ec546c0b1820d5/1?pq-origsite=gscholar&cbl=18750&diss=y" alt="Thesis" class="highlight-preview">
+        <div class="highlight-preview thesis-placeholder">
+          <i class="fas fa-file-alt"></i>
+          <span>Master's Thesis</span>
+          <small>ProQuest Publication</small>
+        </div>
         <div class="highlight-info">
           <h4>Master's Thesis Publication</h4>
           <p>Non-Autoregressive Text Generation Using Diffusion Models — ProQuest 2025</p>
           <span class="highlight-tag">Research</span>
           <span class="highlight-tag">83M Params</span>
+          <a href="https://www.proquest.com/openview/c4a7c3f9ffc3778747ec546c0b1820d5/1?pq-origsite=gscholar&cbl=18750&diss=y" target="_blank" class="highlight-link">View on ProQuest ↗</a>
         </div>
       </div>
     </div>
