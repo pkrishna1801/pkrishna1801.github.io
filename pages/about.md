@@ -8,12 +8,12 @@ weight: 3
 
 <!-- rest of about content -->
 
----
+<!-- ---
 layout: page
 title: About
 permalink: /about/
 weight: 3
----
+--- -->
 
 # **About Me**
 
