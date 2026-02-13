@@ -1,17 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prarthana Krishnamurthy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
-  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    /* background: #0a0a0f;
-    color: #e0e0e0; */
+    background: #0a0a0f;
+    color: #e0e0e0;
     overflow-x: hidden;
   }
-
   .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-  /* Shared grid background for ALL sections */
+  /* ══════════════════════════════════════
+     THREE.JS CANVAS + NAVBAR
+     ══════════════════════════════════════ */
+  #bg-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ── Simulated portfolYOU Navbar ── */
+  .pfy-navbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 36px;
+    background: rgba(10, 10, 15, 0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+  }
+  .pfy-navbar .brand {
+    font-weight: 700; font-size: 1.05rem; color: #fff;
+    text-decoration: none;
+  }
+  .pfy-nav-links { display: flex; gap: 6px; align-items: center; }
+  .pfy-nav-links a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .pfy-nav-links a:hover { color: #fff; background: rgba(255,255,255,0.07); }
+
+  /* Nav highlight animation */
+  .pfy-nav-links a.nav-glow {
+    animation: navGlow 2s ease-in-out forwards;
+  }
+  @keyframes navGlow {
+    0%   { background: rgba(59,130,246,0); box-shadow: 0 0 0 0 rgba(59,130,246,0); color: #9ca3af; transform: scale(1); }
+    12%  { background: rgba(59,130,246,0.3); box-shadow: 0 0 24px 6px rgba(59,130,246,0.45); color: #fff; transform: scale(1.15); }
+    30%  { background: rgba(59,130,246,0.18); box-shadow: 0 0 16px 3px rgba(59,130,246,0.3); color: #fff; transform: scale(1.08); }
+    60%  { background: rgba(59,130,246,0.08); box-shadow: 0 0 8px 1px rgba(59,130,246,0.15); color: #ddd; transform: scale(1.02); }
+    100% { background: rgba(59,130,246,0); box-shadow: 0 0 0 0 rgba(59,130,246,0); color: #9ca3af; transform: scale(1); }
+  }
+
+  /* Arrow pointer under nav links */
+  .nav-arrow {
+    position: absolute;
+    bottom: -22px; left: 50%;
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+    font-size: 1rem;
+    color: #3b82f6;
+    filter: drop-shadow(0 0 6px rgba(59,130,246,0.7));
+  }
+  .pfy-nav-links a.nav-glow .nav-arrow {
+    animation: arrowPop 2s ease-in-out forwards;
+  }
+  @keyframes arrowPop {
+    0%   { opacity: 0; transform: translateX(-50%) scale(0) translateY(6px); }
+    12%  { opacity: 1; transform: translateX(-50%) scale(1.3) translateY(0); }
+    40%  { opacity: 1; transform: translateX(-50%) scale(1) translateY(-2px); }
+    70%  { opacity: 0.4; transform: translateX(-50%) scale(0.8) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) scale(0); }
+  }
+
+  /* Connector lines */
+  .connector-line {
+    position: fixed;
+    height: 2.5px;
+    background: linear-gradient(90deg, rgba(59,130,246,0.9), rgba(99,130,246,0.5));
+    transform-origin: left center;
+    z-index: 90;
+    pointer-events: none;
+    border-radius: 2px;
+    opacity: 0;
+    filter: drop-shadow(0 0 8px rgba(59,130,246,0.6));
+  }
+  .connector-line.shoot {
+    animation: lineShoot 0.7s ease-out forwards;
+  }
+  @keyframes lineShoot {
+    0%   { opacity: 0; clip-path: inset(0 100% 0 0); }
+    25%  { opacity: 1; clip-path: inset(0 50% 0 0); }
+    60%  { opacity: 1; clip-path: inset(0 0 0 0); }
+    100% { opacity: 0; clip-path: inset(0 0 0 0); }
+  }
+
+  /* Particle burst */
+  .burst-particle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 95;
+  }
+
+  /* ══════════════════════════════════════
+     SECTIONS (your existing styles)
+     ══════════════════════════════════════ */
   section {
     position: relative;
     overflow: hidden;
@@ -28,7 +140,7 @@
   section > .container { position: relative; z-index: 1; }
 
   /* Hero */
-  .hero-section { padding: 100px 0 80px; border-bottom: 1px solid rgba(128,128,128,0.15); }
+  .hero-section { padding: 130px 0 80px; border-bottom: 1px solid rgba(128,128,128,0.15); }
   .hero-section::before { opacity: 0.7; }
 
   .profile-photo {
@@ -43,15 +155,90 @@
   .hero-subtitle { font-size: 1.3rem; color: #94a3b8; margin-bottom: 16px; }
   .hero-desc { font-size: 1.05rem; color: #94a3b8; max-width: 650px; margin: 0 auto; line-height: 1.6; }
   .hero-desc strong { color: #60a5fa; }
-
   .text-center { text-align: center; }
 
-  /* Section headers */
+  /* ── 3D CTA BUTTON ── */
+  .cta-wrapper {
+    perspective: 900px;
+    margin-top: 44px;
+  }
+  .cta-3d-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 40px;
+    font-size: 1.08rem;
+    font-weight: 700;
+    font-family: inherit;
+    color: #fff;
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 40%, #60a5fa 100%);
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow:
+      0 7px 0 #1d4ed8,
+      0 10px 25px rgba(59,130,246,0.3),
+      0 0 50px rgba(59,130,246,0.1);
+    animation: btnFloat 3.5s ease-in-out infinite;
+    outline: none;
+    letter-spacing: -0.3px;
+  }
+  .cta-3d-btn::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 55%);
+    pointer-events: none;
+  }
+  .cta-3d-btn .btn-icon {
+    font-size: 1.2rem;
+    animation: iconPulse 2.5s ease-in-out infinite;
+  }
+  @keyframes iconPulse {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    50%      { transform: scale(1.2) rotate(8deg); opacity: 0.85; }
+  }
+  @keyframes btnFloat {
+    0%, 100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
+    20%      { transform: translateY(-7px) rotateX(2deg) rotateY(-2deg); }
+    50%      { transform: translateY(-3px) rotateX(-2deg) rotateY(3deg); }
+    75%      { transform: translateY(-9px) rotateX(3deg) rotateY(-1deg); }
+  }
+  .cta-3d-btn:hover {
+    animation-play-state: paused;
+    transform: translateY(-5px) rotateX(8deg) scale(1.05);
+    box-shadow:
+      0 12px 0 #1d4ed8,
+      0 16px 35px rgba(59,130,246,0.45),
+      0 0 70px rgba(59,130,246,0.2);
+  }
+  .cta-3d-btn:active {
+    transform: translateY(3px) rotateX(0deg) scale(0.97);
+    box-shadow:
+      0 2px 0 #1d4ed8,
+      0 4px 10px rgba(59,130,246,0.25);
+    transition: transform 0.06s, box-shadow 0.06s;
+  }
+  .cta-3d-btn .ripple-effect {
+    position: absolute; border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: scale(0);
+    animation: rippleExpand 0.6s ease-out forwards;
+    pointer-events: none;
+  }
+  @keyframes rippleExpand { to { transform: scale(4); opacity: 0; } }
+
+  /* ══════════════════════════════════════
+     REST OF YOUR EXISTING STYLES
+     ══════════════════════════════════════ */
   .section-header { text-align: center; margin-bottom: 50px; }
-  .section-title { font-size: 2.4rem; font-weight: 700;  margin-bottom: 8px; }
+  .section-title { font-size: 2.4rem; font-weight: 700; margin-bottom: 8px; }
   .section-subtitle { color: #64748b; font-size: 1.05rem; }
 
-  /* Research */
   .research-card {
     border-radius: 16px; padding: 40px;
     border: 1px solid rgba(128,128,128,0.15);
@@ -61,12 +248,11 @@
   .research-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
   .research-meta { color: #64748b; font-size: 0.9rem; margin-bottom: 16px; }
   .research-desc { color: #94a3b8; line-height: 1.7; margin-bottom: 20px; }
-
   .metric-badge {
     display: inline-block; background: rgba(59,130,246,0.1);
     border: 1px solid rgba(59,130,246,0.25); padding: 6px 14px;
     border-radius: 8px; font-size: 0.85rem; font-weight: 600;
-    color: #60a5fa; margin: 4px 4px;
+    color: #60a5fa; margin: 4px;
   }
   .tech-badge {
     display: inline-block; background: rgba(128,128,128,0.1);
@@ -74,15 +260,9 @@
     border-radius: 20px; font-size: 0.82rem; color: #94a3b8; margin: 3px;
   }
 
-  /* Expertise — 4 in a row */
-  .expertise-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
+  .expertise-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   @media (max-width: 1024px) { .expertise-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) { .expertise-grid { grid-template-columns: 1fr; } }
-
   .expertise-card {
     border-radius: 14px; padding: 28px; height: 100%;
     border: 1px solid rgba(128,128,128,0.15);
@@ -100,14 +280,12 @@
     border-color: rgba(59,130,246,0.3);
   }
   .expertise-card:hover::before { height: 100%; }
-
   .expertise-icon { font-size: 2rem; color: #3b82f6; margin-bottom: 16px; }
   .expertise-card h4 { font-size: 1.05rem; margin-bottom: 10px; font-weight: 700; }
   .expertise-card p { color: #94a3b8; font-size: 0.88rem; line-height: 1.6; margin-bottom: 12px; }
   .expertise-card .skills { font-size: 0.8rem; color: #64748b; }
   .expertise-card .skills strong { color: #94a3b8; }
 
-  /* Highlights — horizontal scroll */
   .highlights-scroll {
     display: flex; gap: 24px; overflow-x: auto;
     padding: 10px 0 20px; scroll-snap-type: x mandatory;
@@ -116,7 +294,6 @@
   .highlights-scroll::-webkit-scrollbar { height: 6px; }
   .highlights-scroll::-webkit-scrollbar-track { background: rgba(128,128,128,0.1); border-radius: 3px; }
   .highlights-scroll::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.4); border-radius: 3px; }
-
   .highlight-card {
     flex: 0 0 350px; scroll-snap-align: start;
     border: 1px solid rgba(128,128,128,0.15);
@@ -124,10 +301,7 @@
     background: rgba(128,128,128,0.05);
     transition: transform 0.3s, box-shadow 0.3s;
   }
-  .highlight-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  }
+  .highlight-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
   .highlight-preview {
     width: 100%; height: 320px; object-fit: cover; object-position: top;
     border-bottom: 1px solid rgba(128,128,128,0.15);
@@ -138,7 +312,7 @@
     color: #60a5fa; gap: 8px;
   }
   .thesis-placeholder i { font-size: 3rem; }
-  .thesis-placeholder span { font-size: 1.1rem; font-weight: 600;}
+  .thesis-placeholder span { font-size: 1.1rem; font-weight: 600; }
   .thesis-placeholder small { color: #64748b; font-size: 0.85rem; }
   .highlight-info { padding: 20px; }
   .highlight-info h4 { font-size: 1rem; margin-bottom: 6px; }
@@ -149,10 +323,14 @@
     padding: 3px 10px; border-radius: 12px;
     font-size: 0.75rem; color: #60a5fa; margin-right: 6px;
   }
+  .highlight-link {
+    display: inline-block; margin-top: 10px;
+    color: #60a5fa; font-size: 0.85rem; font-weight: 600;
+    text-decoration: none; transition: color 0.2s;
+  }
+  .highlight-link:hover { color: #93c5fd; }
 
-  /* Contact */
   .contact-card {
-    /* background: linear-gradient(135deg, #1e3a5f 0%, #1a1a2e 100%); */
     background: linear-gradient(135deg, rgba(59,130,246,0.15) 0%, rgba(128,128,128,0.08) 100%);
     border: 1px solid rgba(59,130,246,0.2);
     border-radius: 20px; padding: 50px; text-align: center;
@@ -160,16 +338,14 @@
   }
   .contact-card h2 { font-size: 2rem; margin-bottom: 12px; }
   .contact-card .lead { color: #94a3b8; font-size: 1rem; margin-bottom: 24px; }
-
   .social-link {
     display: inline-flex; align-items: center; justify-content: center;
     width: 48px; height: 48px; border-radius: 50%;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.1); color: #e0e0e0;
     margin: 0 6px; text-decoration: none; font-size: 1.1rem;
     transition: background 0.3s, transform 0.3s;
   }
   .social-link:hover { background: rgba(59,130,246,0.4); transform: translateY(-3px); }
-
   .btn-cta {
     display: inline-block; margin-top: 20px;
     background: #3b82f6; color: #fff; border: none;
@@ -178,37 +354,52 @@
     transition: transform 0.2s, box-shadow 0.2s;
   }
   .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59,130,246,0.35); }
-
   .scroll-hint {
     display: flex; align-items: center; gap: 8px;
     color: #64748b; font-size: 0.85rem; margin-bottom: 16px;
   }
   .scroll-hint i { animation: bounceX 1.5s infinite; }
   @keyframes bounceX { 0%,100%{transform:translateX(0)} 50%{transform:translateX(6px)} }
-
-  .highlight-link {
-    display: inline-block; margin-top: 10px;
-    color: #60a5fa; font-size: 0.85rem; font-weight: 600;
-    text-decoration: none; transition: color 0.2s;
-  }
-  .highlight-link:hover { color: #93c5fd; }
 </style>
+</head>
+<body>
 
-<!-- Hero -->
+<!-- THREE.JS BACKGROUND -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAVBAR (mirrors portfolYOU — replace with your _includes/navbar.html) -->
+<nav class="pfy-navbar">
+  <a href="/" class="brand">Prarthana Krishnamurthy</a>
+  <div class="pfy-nav-links">
+    <a href="/projects" id="nav-projects">Projects <span class="nav-arrow">▲</span></a>
+    <a href="/blog" id="nav-blog">Blog <span class="nav-arrow">▲</span></a>
+    <a href="/about" id="nav-about">About <span class="nav-arrow">▲</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
 <section class="hero-section">
   <div class="container text-center">
-    <div class="profile-photo-container mb-4">
-          <img src="{{ site.author.image }}" alt="{{ site.author.name }}" class="profile-photo">
+    <div class="profile-photo-container" style="margin-bottom:16px;">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&crop=face" alt="Prarthana" class="profile-photo">
     </div>
     <h1 class="hero-title">Prarthana Krishnamurthy</h1>
     <h2 class="hero-subtitle">Machine Learning Engineer & AI Researcher</h2>
     <p class="hero-desc">
       Specializing in <strong>Large Language Models</strong>, <strong>Diffusion Models</strong>, <strong>Generative AI</strong>, and <strong>Production ML Systems</strong>
     </p>
+
+    <!-- ★ 3D CTA BUTTON ★ -->
+    <div class="cta-wrapper">
+      <button class="cta-3d-btn" id="knowMoreBtn">
+        <span class="btn-icon">✨</span>
+        Want to know more about me?
+      </button>
+    </div>
   </div>
 </section>
 
-<!-- Highlights — horizontally scrollable -->
+<!-- HIGHLIGHTS -->
 <section id="highlights">
   <div class="container">
     <div class="section-header">
@@ -220,29 +411,22 @@
       <i class="fas fa-arrow-right"></i>
     </div>
     <div class="highlights-scroll">
-      <!-- Card 2: Recommendation Letter -->
       <div class="highlight-card">
         <iframe src="https://drive.google.com/file/d/1GjBu_u-TpPAOunYpPEcWhbjTJN_FToL5/preview" class="highlight-preview" allow="autoplay" loading="lazy"></iframe>
         <div class="highlight-info">
           <h4>Letter of Recommendation</h4>
           <p>Prof. Dino Konstantopoulos — Teaching Professor, Northeastern University</p>
-          <!-- <span class="highlight-tag">Faculty Endorsement</span>
-          <span class="highlight-tag">Jan 2026</span> -->
           <a href="https://drive.google.com/file/d/1GjBu_u-TpPAOunYpPEcWhbjTJN_FToL5/view?usp=sharing" target="_blank" class="highlight-link">View Full PDF ↗</a>
         </div>
       </div>
-      <!-- Card 3: Resume -->
       <div class="highlight-card">
         <iframe src="https://drive.google.com/file/d/1n4CL6uXNISB9mxKkoY1qQyOlrNhPGLxi/preview" class="highlight-preview" allow="autoplay" loading="lazy"></iframe>
         <div class="highlight-info">
           <h4>Professional Resume</h4>
           <p>ML Research, Data Engineering at Société Générale, Cloud & DevOps</p>
-          <!-- <span class="highlight-tag">Experience</span>
-          <span class="highlight-tag">Publications</span> -->
           <a href="https://drive.google.com/file/d/1n4CL6uXNISB9mxKkoY1qQyOlrNhPGLxi/view?usp=sharing" target="_blank" class="highlight-link">View Full PDF ↗</a>
         </div>
       </div>
-      <!-- Card 4: Thesis -->
       <div class="highlight-card">
         <div class="highlight-preview thesis-placeholder">
           <i class="fas fa-file-alt"></i>
@@ -252,19 +436,14 @@
         <div class="highlight-info">
           <h4>Master's Thesis Publication</h4>
           <p>Non-Autoregressive Text Generation Using Diffusion Models — ProQuest 2025</p>
-          <!-- <span class="highlight-tag">Research</span>
-          <span class="highlight-tag">83M Params</span> -->
           <a href="https://www.proquest.com/openview/c4a7c3f9ffc3778747ec546c0b1820d5/1?pq-origsite=gscholar&cbl=18750&diss=y" target="_blank" class="highlight-link">View on ProQuest ↗</a>
         </div>
       </div>
-      <!-- Card 1: Diploma -->
       <div class="highlight-card">
         <iframe src="https://drive.google.com/file/d/1md2wJmGABuxSMxVUDmzjF_ytofqimPsz/preview" class="highlight-preview" allow="autoplay" loading="lazy"></iframe>
         <div class="highlight-info">
           <h4>Master of Science in Information Systems</h4>
           <p>Northeastern University, College of Engineering — December 2025</p>
-          <!-- <span class="highlight-tag">Degree</span>
-          <span class="highlight-tag">GPA 3.84</span> -->
           <a href="https://drive.google.com/file/d/1md2wJmGABuxSMxVUDmzjF_ytofqimPsz/view?usp=sharing" target="_blank" class="highlight-link">View Full PDF ↗</a>
         </div>
       </div>
@@ -272,7 +451,7 @@
   </div>
 </section>
 
-<!-- Research -->
+<!-- RESEARCH -->
 <section id="research">
   <div class="container">
     <div class="section-header">
@@ -281,9 +460,7 @@
     </div>
     <div class="research-card">
       <h3>Non-Autoregressive Text Generation Using Diffusion Models</h3>
-      <div class="research-meta">
-        Advisor: Prof. Dino Konstantopoulos &nbsp;|&nbsp; Jan 2025 – Dec 2025
-      </div>
+      <div class="research-meta">Advisor: Prof. Dino Konstantopoulos &nbsp;|&nbsp; Jan 2025 – Dec 2025</div>
       <p class="research-desc">
         Designing continuous-embedding diffusion models for parallel text generation in BERT embedding space, 
         achieving significant improvements in semantic fidelity and inference speed through architectural 
@@ -291,8 +468,8 @@
       </p>
       <div style="margin-bottom:14px">
         <span class="metric-badge">0.93 BERT Similarity</span>
-        <span class="metric-badge">ROUGE-L: 0.742 </span>
-        <span class="metric-badge">BLEU-4: 0.267 </span>
+        <span class="metric-badge">ROUGE-L: 0.742</span>
+        <span class="metric-badge">BLEU-4: 0.267</span>
       </div>
       <div>
         <span class="tech-badge">PyTorch</span>
@@ -305,7 +482,7 @@
   </div>
 </section>
 
-<!-- Core Expertise — all 4 in one row -->
+<!-- EXPERTISE -->
 <section id="expertise">
   <div class="container">
     <div class="section-header">
@@ -316,34 +493,32 @@
       <div class="expertise-card">
         <div class="expertise-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
         <h4>Diffusion Models & Generative AI</h4>
-        <p>Expert in designing, training, and optimizing diffusion models for text and image generation. Specialized in noise scheduling, architectural tuning, and advanced sampling.</p>
+        <p>Expert in designing, training, and optimizing diffusion models for text and image generation.</p>
         <div class="skills"><strong>Key Skills:</strong> DDPM, DPM-Solver++, U-Net, continuous embeddings</div>
       </div>
       <div class="expertise-card">
         <div class="expertise-icon"><i class="fas fa-brain"></i></div>
         <h4>Large Language Models & NLP</h4>
-        <p>Deep expertise in training, fine-tuning, and scaling large language models from scratch. Specialized in pre-training dynamics, efficient adaptation, and alignment.</p>
+        <p>Deep expertise in training, fine-tuning, and scaling large language models from scratch.</p>
         <div class="skills"><strong>Key Skills:</strong> Transformers, LoRA/QLoRA, RLHF/DPO, distributed training</div>
       </div>
       <div class="expertise-card">
         <div class="expertise-icon"><i class="fas fa-cloud"></i></div>
         <h4>MLOps & Cloud Infrastructure</h4>
-        <p>Production-ready ML deployment with containerization, orchestration, and monitoring. Built scalable systems processing millions of transactions on AWS and Azure.</p>
-        <div class="skills"><strong>Key Skills:</strong> Docker, Kubernetes, AWS/Azure, CI/CD, distributed training</div>
+        <p>Production-ready ML deployment with containerization, orchestration, and monitoring.</p>
+        <div class="skills"><strong>Key Skills:</strong> Docker, Kubernetes, AWS/Azure, CI/CD</div>
       </div>
       <div class="expertise-card">
         <div class="expertise-icon"><i class="fas fa-hospital"></i></div>
         <h4>Medical Imaging & Computer Vision</h4>
-        <p>Building deep learning solutions for medical image synthesis, segmentation, and analysis. Experience with MRI synthesis, tumor detection, and diagnostic visualization.</p>
+        <p>Building deep learning solutions for medical image synthesis, segmentation, and analysis.</p>
         <div class="skills"><strong>Key Skills:</strong> Image-to-image translation, U-Net segmentation, PSNR/SSIM</div>
       </div>
     </div>
   </div>
 </section>
 
-
-
-<!-- Contact -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <div class="contact-card">
@@ -359,4 +534,163 @@
   </div>
 </section>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+/* ═══════════════════════════════════════
+   THREE.JS — Floating Wireframe Background
+   ═══════════════════════════════════════ */
+(function () {
+  const canvas = document.getElementById('bg-canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 100);
+  camera.position.z = 30;
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  const materials = [
+    new THREE.MeshStandardMaterial({ color: 0x3b82f6, wireframe: true, transparent: true, opacity: 0.18 }),
+    new THREE.MeshStandardMaterial({ color: 0x6366f1, wireframe: true, transparent: true, opacity: 0.14 }),
+    new THREE.MeshStandardMaterial({ color: 0x60a5fa, wireframe: true, transparent: true, opacity: 0.12 }),
+  ];
+  const geometries = [
+    new THREE.IcosahedronGeometry(3, 1),
+    new THREE.OctahedronGeometry(2.5, 0),
+    new THREE.TorusGeometry(2, 0.6, 8, 20),
+    new THREE.TetrahedronGeometry(2, 0),
+    new THREE.DodecahedronGeometry(2, 0),
+    new THREE.TorusKnotGeometry(1.5, 0.5, 50, 8),
+  ];
+
+  const shapes = [];
+  for (let i = 0; i < 14; i++) {
+    const mesh = new THREE.Mesh(geometries[i % geometries.length], materials[i % materials.length]);
+    mesh.position.set((Math.random() - 0.5) * 44, (Math.random() - 0.5) * 32, (Math.random() - 0.5) * 20);
+    mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
+    mesh.userData = {
+      rx: (Math.random() - 0.5) * 0.007,
+      ry: (Math.random() - 0.5) * 0.005,
+      phase: Math.random() * Math.PI * 2,
+      speed: 0.3 + Math.random() * 0.5,
+      amp: 0.4 + Math.random() * 1.2,
+    };
+    group.add(mesh);
+    shapes.push(mesh);
+  }
+
+  // star-field particles
+  const pGeo = new THREE.BufferGeometry();
+  const positions = new Float32Array(250 * 3);
+  for (let i = 0; i < positions.length; i++) positions[i] = (Math.random() - 0.5) * 60;
+  pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  scene.add(new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0x3b82f6, size: 0.07, transparent: true, opacity: 0.45 })));
+
+  scene.add(new THREE.AmbientLight(0x3b82f6, 0.4));
+  const dir = new THREE.DirectionalLight(0xffffff, 0.25);
+  dir.position.set(5, 5, 5);
+  scene.add(dir);
+
+  let mx = 0, my = 0;
+  document.addEventListener('mousemove', e => {
+    mx = (e.clientX / window.innerWidth - 0.5) * 2;
+    my = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  (function animate(t) {
+    requestAnimationFrame(animate);
+    const time = t * 0.001;
+    group.rotation.y += (mx * 0.04 - group.rotation.y) * 0.018;
+    group.rotation.x += (-my * 0.025 - group.rotation.x) * 0.018;
+    shapes.forEach(m => {
+      m.rotation.x += m.userData.rx;
+      m.rotation.y += m.userData.ry;
+      m.position.y += Math.sin(time * m.userData.speed + m.userData.phase) * 0.008 * m.userData.amp;
+    });
+    renderer.render(scene, camera);
+  })(0);
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+})();
+
+/* ═══════════════════════════════════════
+   CTA BUTTON → Nav Highlight Interaction
+   ═══════════════════════════════════════ */
+const btn = document.getElementById('knowMoreBtn');
+const navTargets = [
+  document.getElementById('nav-projects'),
+  document.getElementById('nav-blog'),
+  document.getElementById('nav-about'),
+];
+
+btn.addEventListener('click', function (e) {
+  const btnRect = btn.getBoundingClientRect();
+  const cx = btnRect.left + btnRect.width / 2;
+  const cy = btnRect.top + btnRect.height / 2;
+
+  // 1) Ripple on button
+  const rip = document.createElement('span');
+  rip.className = 'ripple-effect';
+  rip.style.left = (e.clientX - btnRect.left) + 'px';
+  rip.style.top = (e.clientY - btnRect.top) + 'px';
+  rip.style.width = rip.style.height = '18px';
+  btn.appendChild(rip);
+  setTimeout(() => rip.remove(), 600);
+
+  // 2) Particle burst
+  const colors = ['#3b82f6', '#60a5fa', '#93c5fd', '#2563eb', '#fff'];
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'burst-particle';
+    p.style.left = cx + 'px';
+    p.style.top = cy + 'px';
+    p.style.background = colors[i % colors.length];
+    const s = 3 + Math.random() * 5;
+    p.style.width = p.style.height = s + 'px';
+    document.body.appendChild(p);
+    const angle = (Math.PI * 2 / 18) * i + (Math.random() - 0.5) * 0.4;
+    const dist = 50 + Math.random() * 90;
+    p.animate([
+      { transform: 'translate(0,0) scale(1)', opacity: 1 },
+      { transform: `translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px) scale(0)`, opacity: 0 }
+    ], { duration: 550 + Math.random() * 250, easing: 'cubic-bezier(0,.8,.3,1)' });
+    setTimeout(() => p.remove(), 850);
+  }
+
+  // 3) Connector lines + nav glow (staggered)
+  navTargets.forEach((link, i) => {
+    setTimeout(() => {
+      const lr = link.getBoundingClientRect();
+      const ex = lr.left + lr.width / 2;
+      const ey = lr.top + lr.height / 2;
+      const dx = ex - cx, dy = ey - cy;
+      const len = Math.sqrt(dx * dx + dy * dy);
+      const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+      const line = document.createElement('div');
+      line.className = 'connector-line';
+      line.style.left = cx + 'px';
+      line.style.top = cy + 'px';
+      line.style.width = len + 'px';
+      line.style.transform = `rotate(${angle}deg)`;
+      document.body.appendChild(line);
+      requestAnimationFrame(() => line.classList.add('shoot'));
+      setTimeout(() => line.remove(), 900);
+
+      // glow on nav link
+      link.classList.remove('nav-glow');
+      void link.offsetWidth;
+      link.classList.add('nav-glow');
+      setTimeout(() => link.classList.remove('nav-glow'), 2200);
+    }, i * 200);
+  });
+});
+</script>
+</body>
+</html>
