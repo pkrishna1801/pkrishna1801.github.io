@@ -1,9 +1,3 @@
-<!-- ---
-layout: default
-title: Home
---- -->
-
-
 <!-- THREE.JS CDN — also add this to _includes/head.html -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
@@ -12,13 +6,19 @@ title: Home
      3D BACKGROUND + CTA BUTTON + NAV FX
      ══════════════════════════════════════ */
 
-  /* Three.js canvas behind everything */
+  /* FIX 1: z-index: -1 keeps canvas behind ALL content (was 0, caused blue wash) */
   #bg-canvas {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
+  }
+
+  /* FIX 2: Ensure all content layers sit above the canvas */
+  main, .wrapper, .page-content, nav, .navbar, footer {
+    position: relative;
+    z-index: 1;
   }
 
   /* Nav link highlight animation (targets real portfolYOU navbar) */
@@ -69,6 +69,7 @@ title: Home
     position: relative;
     overflow: hidden;
     padding: 80px 0;
+    z-index: 1; /* FIX 3: sections above canvas */
   }
   section::before {
     content: '';
@@ -317,10 +318,10 @@ title: Home
       <strong>Generative AI</strong>, and <strong>Production ML Systems</strong>
     </p>
 
-    <!-- ★ 3D CTA BUTTON ★ -->
+    <!-- ★ 3D CTA BUTTON — FIX 4: closed the <span> tag properly ★ -->
     <div class="cta-wrapper">
       <button class="cta-3d-btn" id="knowMoreBtn">
-        <span class="btn-icon">
+        <span class="btn-icon">🚀</span>
         View My Portfolio
       </button>
     </div>
@@ -470,7 +471,9 @@ title: Home
    ═══════════════════════════════════════ */
 (function () {
   const canvas = document.getElementById('bg-canvas');
-  if (!canvas) return;
+  if (!canvas || canvas.__bgInit) return;
+  canvas.__bgInit = true;
+
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -482,10 +485,11 @@ title: Home
   const group = new THREE.Group();
   scene.add(group);
 
+  /* FIX 5: Reduced opacity so shapes don't create a blue wash over content */
   const materials = [
-    new THREE.MeshStandardMaterial({ color: 0x3b82f6, wireframe: true, transparent: true, opacity: 0.18 }),
-    new THREE.MeshStandardMaterial({ color: 0x6366f1, wireframe: true, transparent: true, opacity: 0.14 }),
-    new THREE.MeshStandardMaterial({ color: 0x60a5fa, wireframe: true, transparent: true, opacity: 0.12 }),
+    new THREE.MeshStandardMaterial({ color: 0x3b82f6, wireframe: true, transparent: true, opacity: 0.10 }),
+    new THREE.MeshStandardMaterial({ color: 0x6366f1, wireframe: true, transparent: true, opacity: 0.08 }),
+    new THREE.MeshStandardMaterial({ color: 0x60a5fa, wireframe: true, transparent: true, opacity: 0.07 }),
   ];
   const geometries = [
     new THREE.IcosahedronGeometry(3, 1),
@@ -516,10 +520,10 @@ title: Home
   const positions = new Float32Array(250 * 3);
   for (let i = 0; i < positions.length; i++) positions[i] = (Math.random() - 0.5) * 60;
   pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  scene.add(new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0x3b82f6, size: 0.07, transparent: true, opacity: 0.45 })));
+  scene.add(new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0x3b82f6, size: 0.07, transparent: true, opacity: 0.35 })));
 
-  scene.add(new THREE.AmbientLight(0x3b82f6, 0.4));
-  const dir = new THREE.DirectionalLight(0xffffff, 0.25);
+  scene.add(new THREE.AmbientLight(0x3b82f6, 0.3));
+  const dir = new THREE.DirectionalLight(0xffffff, 0.2);
   dir.position.set(5, 5, 5);
   scene.add(dir);
 
@@ -557,7 +561,6 @@ title: Home
   const btn = document.getElementById('knowMoreBtn');
   if (!btn) return;
 
-  // Find the REAL portfolYOU nav links by matching text content
   function findNavLinks() {
     const targets = ['projects', 'blog', 'about'];
     const allLinks = document.querySelectorAll('.navbar-nav .nav-link, .nav-item .nav-link, nav a');
@@ -572,7 +575,6 @@ title: Home
       }
     });
 
-    // Fallback: if portfolYOU structure changed, try broader search
     if (found.length === 0) {
       document.querySelectorAll('a.nav-link').forEach(link => {
         const text = link.textContent.trim().toLowerCase();
@@ -640,7 +642,6 @@ title: Home
         requestAnimationFrame(() => line.classList.add('shoot'));
         setTimeout(() => line.remove(), 900);
 
-        // Glow on the REAL nav link
         link.classList.remove('nav-glow');
         void link.offsetWidth;
         link.classList.add('nav-glow');
