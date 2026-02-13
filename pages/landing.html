@@ -39,7 +39,7 @@
   }
   .profile-photo:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(59,130,246,0.25); }
 
-  .hero-title { font-size: 3.2rem; font-weight: 800; margin: 20px 0 8px; color: #fff; }
+  .hero-title { font-size: 3.2rem; font-weight: 800; margin: 20px 0 8px; }
   .hero-subtitle { font-size: 1.3rem; color: #94a3b8; margin-bottom: 16px; }
   .hero-desc { font-size: 1.05rem; color: #94a3b8; max-width: 650px; margin: 0 auto; line-height: 1.6; }
   .hero-desc strong { color: #60a5fa; }
@@ -48,17 +48,17 @@
 
   /* Section headers */
   .section-header { text-align: center; margin-bottom: 50px; }
-  .section-title { font-size: 2.4rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .section-title { font-size: 2.4rem; font-weight: 700;  margin-bottom: 8px; }
   .section-subtitle { color: #64748b; font-size: 1.05rem; }
 
   /* Research */
   .research-card {
     border-radius: 16px; padding: 40px;
     border: 1px solid rgba(128,128,128,0.15);
-    background: rgba(255,255,255,0.03);
+    background: rgba(128,128,128,0.05);
     max-width: 900px; margin: 0 auto;
   }
-  .research-card h3 { font-size: 1.5rem; color: #fff; margin-bottom: 10px; }
+  .research-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
   .research-meta { color: #64748b; font-size: 0.9rem; margin-bottom: 16px; }
   .research-desc { color: #94a3b8; line-height: 1.7; margin-bottom: 20px; }
 
@@ -86,7 +86,7 @@
   .expertise-card {
     border-radius: 14px; padding: 28px; height: 100%;
     border: 1px solid rgba(128,128,128,0.15);
-    background: rgba(255,255,255,0.03);
+    background: rgba(128,128,128,0.05);
     transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
     position: relative; overflow: hidden;
   }
@@ -102,7 +102,7 @@
   .expertise-card:hover::before { height: 100%; }
 
   .expertise-icon { font-size: 2rem; color: #3b82f6; margin-bottom: 16px; }
-  .expertise-card h4 { font-size: 1.05rem; color: #fff; margin-bottom: 10px; font-weight: 700; }
+  .expertise-card h4 { font-size: 1.05rem; margin-bottom: 10px; font-weight: 700; }
   .expertise-card p { color: #94a3b8; font-size: 0.88rem; line-height: 1.6; margin-bottom: 12px; }
   .expertise-card .skills { font-size: 0.8rem; color: #64748b; }
   .expertise-card .skills strong { color: #94a3b8; }
@@ -121,7 +121,7 @@
     flex: 0 0 380px; scroll-snap-align: start;
     border: 1px solid rgba(128,128,128,0.15);
     border-radius: 16px; overflow: hidden;
-    background: rgba(255,255,255,0.03);
+    background: rgba(128,128,128,0.05);
     transition: transform 0.3s, box-shadow 0.3s;
   }
   .highlight-card:hover {
@@ -131,17 +131,17 @@
   .highlight-preview {
     width: 100%; height: 260px; object-fit: cover; object-position: top;
     border-bottom: 1px solid rgba(128,128,128,0.15);
-    background: #1a1a24; border: none;
+    background: rgba(128,128,128,0.08); border: none;
   }
   .thesis-placeholder {
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     color: #60a5fa; gap: 8px;
   }
   .thesis-placeholder i { font-size: 3rem; }
-  .thesis-placeholder span { font-size: 1.1rem; font-weight: 600; color: #e0e0e0; }
+  .thesis-placeholder span { font-size: 1.1rem; font-weight: 600;}
   .thesis-placeholder small { color: #64748b; font-size: 0.85rem; }
   .highlight-info { padding: 20px; }
-  .highlight-info h4 { color: #fff; font-size: 1rem; margin-bottom: 6px; }
+  .highlight-info h4 { font-size: 1rem; margin-bottom: 6px; }
   .highlight-info p { color: #64748b; font-size: 0.85rem; margin-bottom: 12px; }
   .highlight-tag {
     display: inline-block; background: rgba(59,130,246,0.1);
@@ -152,18 +152,19 @@
 
   /* Contact */
   .contact-card {
-    background: linear-gradient(135deg, #1e3a5f 0%, #1a1a2e 100%);
+    /* background: linear-gradient(135deg, #1e3a5f 0%, #1a1a2e 100%); */
+    background: linear-gradient(135deg, rgba(59,130,246,0.15) 0%, rgba(128,128,128,0.08) 100%);
     border: 1px solid rgba(59,130,246,0.2);
     border-radius: 20px; padding: 50px; text-align: center;
     max-width: 700px; margin: 0 auto;
   }
-  .contact-card h2 { color: #fff; font-size: 2rem; margin-bottom: 12px; }
+  .contact-card h2 { font-size: 2rem; margin-bottom: 12px; }
   .contact-card .lead { color: #94a3b8; font-size: 1rem; margin-bottom: 24px; }
 
   .social-link {
     display: inline-flex; align-items: center; justify-content: center;
     width: 48px; height: 48px; border-radius: 50%;
-    background: rgba(255,255,255,0.1); color: #fff;
+    background: rgba(255,255,255,0.1);
     margin: 0 6px; text-decoration: none; font-size: 1.1rem;
     transition: background 0.3s, transform 0.3s;
   }
