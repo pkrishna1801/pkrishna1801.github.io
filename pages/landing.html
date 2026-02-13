@@ -118,7 +118,7 @@
   .highlights-scroll::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.4); border-radius: 3px; }
 
   .highlight-card {
-    flex: 0 0 380px; scroll-snap-align: start;
+    flex: 0 0 480px; scroll-snap-align: start;
     border: 1px solid rgba(128,128,128,0.15);
     border-radius: 16px; overflow: hidden;
     background: rgba(255,255,255,0.03);
@@ -129,7 +129,7 @@
     box-shadow: 0 8px 24px rgba(0,0,0,0.3);
   }
   .highlight-preview {
-    width: 100%; height: 260px; object-fit: cover; object-position: top;
+    width: 100%; height: 520px; object-fit: cover; object-position: top;
     border-bottom: 1px solid rgba(128,128,128,0.15);
     background: #1a1a24; border: none;
   }
@@ -140,9 +140,9 @@
   .thesis-placeholder i { font-size: 3rem; }
   .thesis-placeholder span { font-size: 1.1rem; font-weight: 600; color: #e0e0e0; }
   .thesis-placeholder small { color: #64748b; font-size: 0.85rem; }
-  .highlight-info { padding: 20px; }
-  .highlight-info h4 { color: #fff; font-size: 1rem; margin-bottom: 6px; }
-  .highlight-info p { color: #64748b; font-size: 0.85rem; margin-bottom: 12px; }
+  .highlight-info { padding: 14px 20px 16px; }
+  .highlight-info h4 { color: #fff; font-size: 0.95rem; margin-bottom: 4px; }
+  .highlight-info p { color: #64748b; font-size: 0.8rem; margin-bottom: 8px; }
   .highlight-tag {
     display: inline-block; background: rgba(59,130,246,0.1);
     border: 1px solid rgba(59,130,246,0.2);
@@ -196,78 +196,12 @@
 <!-- Hero -->
 <section class="hero-section">
   <div class="container text-center">
-    <div class="profile-photo-container mb-4">
-          <img src="{{ site.author.image }}" alt="{{ site.author.name }}" class="profile-photo">
-    </div>
+    <img src="https://via.placeholder.com/170/1a1a2e/3b82f6?text=PK" alt="Prarthana Krishnamurthy" class="profile-photo">
     <h1 class="hero-title">Prarthana Krishnamurthy</h1>
     <h2 class="hero-subtitle">Machine Learning Engineer & AI Researcher</h2>
     <p class="hero-desc">
       Specializing in <strong>Large Language Models</strong>, <strong>Diffusion Models</strong>, <strong>Generative AI</strong>, and <strong>Production ML Systems</strong>
     </p>
-  </div>
-</section>
-
-<!-- Highlights — horizontally scrollable -->
-<section id="highlights">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Highlights</h2>
-      <p class="section-subtitle">Credentials, recommendations, and milestones</p>
-    </div>
-    <div class="scroll-hint">
-      <span>Scroll to explore</span>
-      <i class="fas fa-arrow-right"></i>
-    </div>
-    <div class="highlights-scroll">
-      <!-- Card 1: Diploma -->
-      <div class="highlight-card">
-        <iframe src="https://drive.google.com/file/d/1md2wJmGABuxSMxVUDmzjF_ytofqimPsz/preview" class="highlight-preview" allow="autoplay" loading="lazy"></iframe>
-        <div class="highlight-info">
-          <h4>Master of Science in Information Systems</h4>
-          <p>Northeastern University, College of Engineering — December 2025</p>
-          <span class="highlight-tag">Degree</span>
-          <span class="highlight-tag">GPA 3.84</span>
-          <a href="https://drive.google.com/file/d/1md2wJmGABuxSMxVUDmzjF_ytofqimPsz/view?usp=sharing" target="_blank" class="highlight-link">View Full PDF ↗</a>
-        </div>
-      </div>
-      <!-- Card 2: Recommendation Letter -->
-      <div class="highlight-card">
-        <iframe src="https://drive.google.com/file/d/1GjBu_u-TpPAOunYpPEcWhbjTJN_FToL5/preview" class="highlight-preview" allow="autoplay" loading="lazy"></iframe>
-        <div class="highlight-info">
-          <h4>Letter of Recommendation</h4>
-          <p>Prof. Dino Konstantopoulos — Teaching Professor, Northeastern University</p>
-          <span class="highlight-tag">Faculty Endorsement</span>
-          <span class="highlight-tag">Jan 2026</span>
-          <a href="https://drive.google.com/file/d/1GjBu_u-TpPAOunYpPEcWhbjTJN_FToL5/view?usp=sharing" target="_blank" class="highlight-link">View Full PDF ↗</a>
-        </div>
-      </div>
-      <!-- Card 3: Resume -->
-      <div class="highlight-card">
-        <iframe src="https://drive.google.com/file/d/1n4CL6uXNISB9mxKkoY1qQyOlrNhPGLxi/preview" class="highlight-preview" allow="autoplay" loading="lazy"></iframe>
-        <div class="highlight-info">
-          <h4>Professional Resume</h4>
-          <p>ML Research, Data Engineering at Société Générale, Cloud & DevOps</p>
-          <span class="highlight-tag">Experience</span>
-          <span class="highlight-tag">Publications</span>
-          <a href="https://drive.google.com/file/d/1n4CL6uXNISB9mxKkoY1qQyOlrNhPGLxi/view?usp=sharing" target="_blank" class="highlight-link">View Full PDF ↗</a>
-        </div>
-      </div>
-      <!-- Card 4: Thesis -->
-      <div class="highlight-card">
-        <div class="highlight-preview thesis-placeholder">
-          <i class="fas fa-file-alt"></i>
-          <span>Master's Thesis</span>
-          <small>ProQuest Publication</small>
-        </div>
-        <div class="highlight-info">
-          <h4>Master's Thesis Publication</h4>
-          <p>Non-Autoregressive Text Generation Using Diffusion Models — ProQuest 2025</p>
-          <span class="highlight-tag">Research</span>
-          <span class="highlight-tag">83M Params</span>
-          <a href="https://www.proquest.com/openview/c4a7c3f9ffc3778747ec546c0b1820d5/1?pq-origsite=gscholar&cbl=18750&diss=y" target="_blank" class="highlight-link">View on ProQuest ↗</a>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -340,7 +274,69 @@
   </div>
 </section>
 
-
+<!-- Highlights — horizontally scrollable -->
+<section id="highlights">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Highlights</h2>
+      <p class="section-subtitle">Credentials, recommendations, and milestones</p>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll to explore</span>
+      <i class="fas fa-arrow-right"></i>
+    </div>
+    <div class="highlights-scroll">
+      <!-- Card 1: Diploma -->
+      <div class="highlight-card">
+        <iframe src="https://drive.google.com/file/d/1md2wJmGABuxSMxVUDmzjF_ytofqimPsz/preview" class="highlight-preview" allow="autoplay" loading="lazy"></iframe>
+        <div class="highlight-info">
+          <h4>Master of Science in Information Systems</h4>
+          <p>Northeastern University, College of Engineering — December 2025</p>
+          <span class="highlight-tag">Degree</span>
+          <span class="highlight-tag">GPA 3.84</span>
+          <a href="https://drive.google.com/file/d/1md2wJmGABuxSMxVUDmzjF_ytofqimPsz/view?usp=sharing" target="_blank" class="highlight-link">View Full PDF ↗</a>
+        </div>
+      </div>
+      <!-- Card 2: Recommendation Letter -->
+      <div class="highlight-card">
+        <iframe src="https://drive.google.com/file/d/1GjBu_u-TpPAOunYpPEcWhbjTJN_FToL5/preview" class="highlight-preview" allow="autoplay" loading="lazy"></iframe>
+        <div class="highlight-info">
+          <h4>Letter of Recommendation</h4>
+          <p>Prof. Dino Konstantopoulos — Teaching Professor, Northeastern University</p>
+          <span class="highlight-tag">Faculty Endorsement</span>
+          <span class="highlight-tag">Jan 2026</span>
+          <a href="https://drive.google.com/file/d/1GjBu_u-TpPAOunYpPEcWhbjTJN_FToL5/view?usp=sharing" target="_blank" class="highlight-link">View Full PDF ↗</a>
+        </div>
+      </div>
+      <!-- Card 3: Resume -->
+      <div class="highlight-card">
+        <iframe src="https://drive.google.com/file/d/1n4CL6uXNISB9mxKkoY1qQyOlrNhPGLxi/preview" class="highlight-preview" allow="autoplay" loading="lazy"></iframe>
+        <div class="highlight-info">
+          <h4>Professional Resume</h4>
+          <p>ML Research, Data Engineering at Société Générale, Cloud & DevOps</p>
+          <span class="highlight-tag">Experience</span>
+          <span class="highlight-tag">Publications</span>
+          <a href="https://drive.google.com/file/d/1n4CL6uXNISB9mxKkoY1qQyOlrNhPGLxi/view?usp=sharing" target="_blank" class="highlight-link">View Full PDF ↗</a>
+        </div>
+      </div>
+      <!-- Card 4: Thesis -->
+      <div class="highlight-card">
+        <div class="highlight-preview thesis-placeholder">
+          <i class="fas fa-file-alt"></i>
+          <span>Master's Thesis</span>
+          <small>ProQuest Publication</small>
+        </div>
+        <div class="highlight-info">
+          <h4>Master's Thesis Publication</h4>
+          <p>Non-Autoregressive Text Generation Using Diffusion Models — ProQuest 2025</p>
+          <span class="highlight-tag">Research</span>
+          <span class="highlight-tag">83M Params</span>
+          <a href="https://www.proquest.com/openview/c4a7c3f9ffc3778747ec546c0b1820d5/1?pq-origsite=gscholar&cbl=18750&diss=y" target="_blank" class="highlight-link">View on ProQuest ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Contact -->
 <section id="contact">
