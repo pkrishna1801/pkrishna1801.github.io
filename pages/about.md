@@ -1,4 +1,14 @@
 ---
+layout: default
+title: About
+permalink: /about/
+weight: 3
+---
+{% include 3d-background.html %}
+
+<!-- rest of about content -->
+
+---
 layout: page
 title: About
 permalink: /about/
