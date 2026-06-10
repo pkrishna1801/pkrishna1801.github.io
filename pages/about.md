@@ -8,15 +8,15 @@ weight: 3
 # **About Me**
 
 Hi I am **{{ site.author.name }}** :wave:,<br>
-ML Engineer and AI Researcher specializing in transforming complex research concepts into scalable, production-ready solutions. 
+I build machine learning systems that go the full distance, from research-grade modeling to production deployment.
+Right now I'm applying ML to computational drug discovery at Alkermes, where I've built end-to-end pipelines for compound prioritization and shipped them as fast, containerized APIs running on HPC infrastructure.
+Before that, I trained a text diffusion model on 8× A100 GPUs for my master's research, and spent two years as a data engineer processing 1M+ daily transactions in production.
+What I bring:
+🔹 ML modeling — diffusion models, GNNs, deep learning (PyTorch)
+🔹 MLOps & deployment — Docker, Kubernetes, AWS, Terraform, FastAPI
+🔹 Data engineering — Spark, Airflow, Kafka, Elasticsearch
+I'm most useful in the gap between a model that works in a notebook and one that works in the real world.
 
-My expertise spans:
-   * Medical Imaging: Creating diffusion models for improved diagnostic visualization
-   * Molecular Modeling: Implementing graph neural networks for property prediction
-   * Retrieval-Augmented Generation: Building systems for more reliable AI
-
-I bring a methodical approach to problem-solving, combining theoretical understanding with hands-on implementation. I'm particularly fascinated by making large language models more reliable through techniques like retrieval augmentation and structured knowledge representation.
-My passion lies in building AI systems that are not just intelligent but also interpretable, ethical, and aligned with human needs. I'm seeking opportunities to apply my expertise in deep learning and MLOps to solve meaningful problems in healthcare, scientific research, or enterprise systems.
 
 <div class="row">
 {% include about/skills.html title="Programming Skills" source=site.data.programming-skills %}

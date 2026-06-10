@@ -35,7 +35,25 @@
 #     like GoogleNet and CLAHE laid the groundwork for my current specialization
 #     in deep learning and computer vision.
 
-
+- title: Machine learning Engineer- 
+  company: Alkermes Inc
+  location: Waltham, MA, USA
+  from: May 2026
+  to: July 2026
+  description: >
+    Building and benchmarking end-to-end machine learning pipelines for
+    computational drug discovery using Chemprop (DMPNN) in PyTorch. Exposed an existing ML workflow as REST endpoints with a
+    FastAPI service, bringing average request latency from about 2 seconds down
+    to 500 ms. Re-architected the ML codebase to standardize data flow between
+    components, making it easier to add new models and API endpoints.
+    Containerized the application with Docker, deployed it on HPC infrastructure
+    under Linux, and built a Dash dashboard to visualize model outputs.
+  technologies:
+    - PyTorch
+    - Chemprop
+    - RDKIT
+    - FastAPI
+    - Docker
 
 - title: ML Research Assistant
   company: Northeastern University
