@@ -15,7 +15,7 @@ What I bring: <br>
 🔹 ML modeling — diffusion models, GNNs, deep learning (PyTorch) <br>
 🔹 MLOps & deployment — Docker, Kubernetes, AWS, Terraform, FastAPI <br>
 🔹 Data engineering — Spark, Airflow, Kafka, Elasticsearch <br>
-I'm most useful in the gap between a model that works in a notebook and one that works in the real world. </br>
+I'm most useful in the gap between a model that works in a notebook and one that works in the real world. <br>
 
 
 <div class="row">
