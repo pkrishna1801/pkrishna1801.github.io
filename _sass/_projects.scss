@@ -1,0 +1,42 @@
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.project.card {
+  border-radius: $rounded-borders;
+  text-decoration: none !important;
+  margin: 0;
+
+  .card-img-top {
+    border-radius: $rounded-borders $rounded-borders 0 0;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  .card-text[id$="-desc"] {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-text[id$="-tools"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    .badge {
+      margin-left: 0;
+    }
+  }
+
+  transition: transform 400ms;
+
+  &:hover:not(.post) {
+    transform: translateY(-8px);
+    box-shadow: -2px 8px 40px -12px rgba(0, 0, 0, 0.24);
+  }
+}

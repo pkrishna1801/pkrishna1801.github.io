@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#212327"/>
+      <stop offset="100%" stop-color="#141517"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="46%" r="55%">
+      <stop offset="0%" stop-color="#4dabf7" stop-opacity="0.38"/>
+      <stop offset="55%" stop-color="#4dabf7" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#4dabf7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#base)"/>
+  <ellipse cx="400" cy="196" rx="260" ry="180" fill="url(#glow)"/>
+  <path d="M 730,20 A 90,90 0 0 1 780,70" stroke="#4dabf7" stroke-opacity="0.35" stroke-width="2" fill="none"/>
+  <circle cx="760" cy="45" r="3" fill="#4dabf7" fill-opacity="0.5"/>
+  <g stroke="#4dabf7" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+    <path d="M 330,130 L 330,150 M 330,130 L 350,130" stroke-width="4"/>
+    <path d="M 470,130 L 470,150 M 470,130 L 450,130" stroke-width="4"/>
+    <path d="M 330,280 L 330,260 M 330,280 L 350,280" stroke-width="4"/>
+    <path d="M 470,280 L 470,260 M 470,280 L 450,280" stroke-width="4"/>
+    <path d="M 344,163 C 328,152 314,168 317,190 C 319,207 306,222 318,238 C 335,258 372,264 402,257 C 432,250 458,238 461,210 C 464,185 452,160 430,148 C 411,138 384,140 366,148 C 358,152 351,157 344,163 Z" stroke-width="5"/>
+    <circle cx="404" cy="188" r="26" stroke-dasharray="6 7"/>
+    <circle cx="404" cy="188" r="9" fill="#4dabf7" stroke="none"/>
+
+  </g>
+  <rect x="48" y="348" width="227" height="38" rx="9" fill="#4dabf7" fill-opacity="0.13" stroke="#4dabf7" stroke-opacity="0.55" stroke-width="1.5"/>
+  <text x="161.5" y="373" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1.5" fill="#4dabf7">MEDICAL IMAGING</text>
+</svg>
