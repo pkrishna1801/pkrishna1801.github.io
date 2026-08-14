@@ -1,3 +1,38 @@
+<style>
+  .project-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 24px !important;
+  }
+
+  .project-grid .project.card {
+    margin: 0 !important;
+  }
+
+  .project-grid .project.card .card-img-top {
+    width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: cover !important;
+  }
+
+  .project-grid .project.card .card-text[id$="-desc"] {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .project-grid .project.card .card-text[id$="-tools"] {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .project-grid .project.card .card-text[id$="-tools"] .badge {
+    margin-left: 0 !important;
+  }
+</style>
+
 <div class="project-grid mt-5">
 
   <!-- Remote Projects -->
