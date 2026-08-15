@@ -200,7 +200,7 @@
     border-radius: 20px; font-size: 0.82rem; color: #94a3b8; margin: 3px;
   }
 
-  .expertise-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
   @media (max-width: 1024px) { .expertise-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) { .expertise-grid { grid-template-columns: 1fr; } }
   .expertise-card {
@@ -431,16 +431,16 @@
         <div class="skills"><strong>Key Skills:</strong> Transformers, LoRA/QLoRA, RLHF/DPO, distributed training</div>
       </div>
       <div class="expertise-card">
+        <div class="expertise-icon"><i class="fas fa-dna"></i></div>
+        <h4>Life Sciences AI</h4>
+        <p>Applying deep learning across medical imaging and molecular modeling — from image synthesis and segmentation to compound property prediction and drug-like molecule generation.</p>
+        <div class="skills"><strong>Key Skills:</strong> U-Net segmentation, PSNR/SSIM, GCN/GAT, SMILES generation, RDKit</div>
+      </div>
+      <div class="expertise-card">
         <div class="expertise-icon"><i class="fas fa-cloud"></i></div>
         <h4>MLOps & Cloud Infrastructure</h4>
         <p>Production-ready ML deployment with containerization, orchestration, and monitoring.</p>
         <div class="skills"><strong>Key Skills:</strong> Docker, Kubernetes, AWS/Azure, CI/CD</div>
-      </div>
-      <div class="expertise-card">
-        <div class="expertise-icon"><i class="fas fa-hospital"></i></div>
-        <h4>Medical Imaging & Computer Vision</h4>
-        <p>Building deep learning solutions for medical image synthesis, segmentation, and analysis.</p>
-        <div class="skills"><strong>Key Skills:</strong> Image-to-image translation, U-Net segmentation, PSNR/SSIM</div>
       </div>
     </div>
   </div>
