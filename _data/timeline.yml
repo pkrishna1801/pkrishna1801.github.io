@@ -35,73 +35,74 @@
 #     like GoogleNet and CLAHE laid the groundwork for my current specialization
 #     in deep learning and computer vision.
 
-- title: Machine learning Engineer - Molecular Modeling
-  company: Alkermes Inc
+- title: Machine Learning Intern
+  company: Alkermes Inc.
   location: Waltham, MA, USA
   from: May 2026
   to: July 2026
   description: >
-    Building and benchmarking end-to-end machine learning pipelines for
-    computational drug discovery using Chemprop (DMPNN) in PyTorch. Exposed an existing ML workflow as REST endpoints with a
-    FastAPI service, bringing average request latency from about 2 seconds down
-    to 500 ms. Re-architected the ML codebase to standardize data flow between
-    components, making it easier to add new models and API endpoints.
-    Containerized the application with Docker, deployed it on HPC infrastructure
-    under Linux, and built a Dash dashboard to visualize model outputs.
+    Built supervised ML models (PyTorch, scikit-learn) predicting compound
+    properties from lab assay data, reaching 0.7 R² and 0.73 Spearman
+    correlation, with SHAP and conformal prediction for calibrated uncertainty.
+    Shipped a FastAPI serving layer (2.5x faster inference) and a Plotly Dash
+    dashboard adopted across 3 teams and 20+ users.
   technologies:
     - PyTorch
-    - Chemprop
-    - RDKIT
+    - scikit-learn
+    - SHAP
     - FastAPI
     - Docker
+    - Plotly Dash
+  achievements:
+    - 0.7 average R², 0.73 Spearman correlation
+    - 2.5x reduction in inference latency
+    - Adopted across 3 teams and 20+ users
 
-- title: ML Research Assistant
-  company: Northeastern University
+- title: Machine Learning Research Assistant
+  company: Northeastern University (Advisor Prof. Dino Konstantopoulos)
   location: Boston, MA, USA
   from: January 2025
-  to: December 2025
+  to: April 2026
   description: >
-    Designed and trained diffusion models for non-autoregressive text generation 
-    in BERT embedding space, achieving 92.3% reduction in validation loss and 50× 
-    faster inference through architectural innovations. Implemented advanced sampling 
-    techniques using DPM-Solver++ and optimized U-Net architectures for continuous 
-    embedding generation. Research focuses on achieving semantic fidelity while 
-    maintaining computational efficiency for production deployment.
+    Architected transformer and diffusion-based generative models using flow
+    matching for non-autoregressive text generation, scaling training across
+    8x H100 GPUs with PyTorch FSDP and NCCL at 95%+ GPU utilization. Cut
+    validation loss by 92.3% (0.93 BERT similarity) and reduced DPM-Solver++
+    discretization error to 0.65.
   technologies:
     - PyTorch
-    - Diffusion Models
-    - BERT
+    - FSDP
+    - NCCL
+    - Flow Matching
+    - spaCy
     - DPM-Solver++
-    - U-Net
   achievements:
-    - 0.93 BERT Similarity Score
-    - 50× faster inference speed
-    - 83M parameter model
+    - 92.3% reduction in diffusion validation loss
+    - 0.93 BERT semantic similarity score
+    - 95%+ GPU utilization across 8x H100 GPUs
+    - Discretization error reduced to 0.65
 
-- title: Graduate Teaching Assistant
+- title: Graduate Teaching Assistant, Cloud & Operations
   company: Northeastern University
   location: Boston, MA, USA
   from: May 2025
   to: August 2025
   description: >
-    Selected as top-performing TA for Advanced Cloud Computing course. Designed 
-    comprehensive multi-cloud ML labs for 20+ graduate students covering AWS, Azure, 
-    and GCP platforms. Engineered production-grade MLOps pipelines using Jenkins, 
-    Terraform, and Docker. Modernized course curriculum to include hands-on experience 
-    with distributed training, model deployment, and cloud-native ML architectures. 
-    Mentored students on best practices for building scalable ML systems.
+    Deployed object detection labs on AKS and EKS with Docker, backed by
+    Jenkins/Terraform MLOps pipelines and CloudWatch/Prometheus monitoring.
+    Recognized as top-performing TA for modernizing the MGEN 7220 cloud course
+    architecture.
   technologies:
-    - AWS
-    - Azure
-    - GCP
+    - Azure Kubernetes Service
+    - Amazon EKS
+    - Docker
     - Jenkins
     - Terraform
-    - Docker
-    - Kubernetes
+    - CloudWatch
+    - Prometheus
   achievements:
-    - Taught 20+ graduate students
-    - Designed 5+ hands-on cloud labs
-    - Selected as top-performing TA
+    - Recognized as top-performing TA
+    - Modernized MGEN 7220 course architecture
 
 - title: Graduate Student
   company: Northeastern University
@@ -125,56 +126,48 @@
     - Published thesis on diffusion models for text generation
     - Research in medical imaging and molecular modeling
 
-- title: Software Data Engineer
-  company: Société Générale
-  location: Bangalore, India
+- title: Software Engineer, Data
+  company: Societe Generale Global Solution Centre
+  location: Bangalore, KA
   from: September 2021
   to: December 2023
   description: >
-    Built and deployed 3+ containerized enterprise applications on Azure Kubernetes 
-    Service, processing 1M+ daily transactions with 99.9% uptime. Specialized in cloud 
-    migration, data pipeline automation, and real-time analytics systems. Modernized 
-    legacy enterprise applications on Microsoft Azure while ensuring minimal downtime 
-    and optimized deployment cycles. Developed transaction processing systems with 
-    AWS S3 integration for secure data management. Implemented Elasticsearch and Kibana 
-    monitoring dashboards that reduced incident resolution time by 30% and enabled 
-    self-service analytics for non-technical stakeholders.
+    Automated Azure Data Lake ETL pipelines and PySpark raw-to-silver processing,
+    and designed Parquet schemas unifying multi-format data. Refactored 50+
+    legacy scripts into Airflow DAGs and productionized 3+ Dockerized apps on
+    AKS handling 1M+ daily financial transactions.
   technologies:
-    - Azure Kubernetes Service
-    - AWS S3
-    - Elasticsearch
-    - Kibana
-    - Docker
-    - Python
     - SQL
+    - Azure Data Lake
+    - Parquet
+    - PySpark
+    - Airflow
+    - Azure Kubernetes Service
+    - Docker
   achievements:
-    - Deployed 3+ containerized applications
-    - Processed 1M+ daily transactions
-    - Reduced incident response time by 30%
-    - Achieved 99.9% uptime
+    - Refactored 50+ legacy scripts into Airflow DAGs
+    - Productionized 3+ Dockerized applications on AKS
+    - Processed 1M+ daily financial transactions
 
 - title: Software Engineering Intern
   company: Capgemini
-  location: India
+  location: Bangalore, KA
   from: March 2021
   to: May 2021
   description: >
-    Designed and built scalable multi-tenant microservices architecture with RESTful 
-    APIs serving multiple client applications. Implemented secure OAuth2 and JWT-based 
-    authentication and authorization systems ensuring data protection and granular 
-    access control. Developed backend services using Spring Boot and Node.js with 
-    PostgreSQL database integration. Gained hands-on experience with Agile development 
-    methodologies and CI/CD pipelines.
+    Built 15+ RESTful microservices in Java 17/Spring Boot for multi-tenant
+    enterprise clients, cutting API latency 35% via Hibernate JPA caching.
+    Backed by JUnit/Mockito test suites and SOLID/DRY coding practices.
   technologies:
+    - Java 17
     - Spring Boot
-    - Node.js
-    - PostgreSQL
-    - OAuth2
-    - JWT
+    - Hibernate JPA
+    - JUnit
+    - Mockito
     - RESTful APIs
   achievements:
-    - Built multi-tenant microservices architecture
-    - Implemented secure authentication system
+    - Built 15+ RESTful microservices
+    - Reduced API latency by 35%
 
 - title: Digital Signal Processing Engineer Intern
   company: PathPartner Technology
