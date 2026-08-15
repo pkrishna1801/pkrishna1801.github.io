@@ -40,10 +40,24 @@
   scene.add(group);
 
   /* FIX 5: Reduced opacity so shapes don't create a blue wash over content */
+  /* FIX 6: light-mode opacities are near-invisible against a near-black dark-mode
+     background, so scale them up when data-theme="dark" is active */
+  function isDarkTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'dark';
+  }
+
+  const baseOpacities = [0.10, 0.08, 0.07];
+  const darkOpacities  = [0.45, 0.36, 0.30];
+  const pointsOpacity  = { light: 0.35, dark: 0.55 };
+
+  function currentOpacities() {
+    return isDarkTheme() ? darkOpacities : baseOpacities;
+  }
+
   const materials = [
-    new THREE.MeshStandardMaterial({ color: 0x3b82f6, wireframe: true, transparent: true, opacity: 0.10 }),
-    new THREE.MeshStandardMaterial({ color: 0x6366f1, wireframe: true, transparent: true, opacity: 0.08 }),
-    new THREE.MeshStandardMaterial({ color: 0x60a5fa, wireframe: true, transparent: true, opacity: 0.07 }),
+    new THREE.MeshStandardMaterial({ color: 0x3b82f6, wireframe: true, transparent: true, opacity: currentOpacities()[0] }),
+    new THREE.MeshStandardMaterial({ color: 0x6366f1, wireframe: true, transparent: true, opacity: currentOpacities()[1] }),
+    new THREE.MeshStandardMaterial({ color: 0x60a5fa, wireframe: true, transparent: true, opacity: currentOpacities()[2] }),
   ];
   const geometries = [
     new THREE.IcosahedronGeometry(3, 1),
@@ -74,12 +88,21 @@
   const positions = new Float32Array(250 * 3);
   for (let i = 0; i < positions.length; i++) positions[i] = (Math.random() - 0.5) * 60;
   pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  scene.add(new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0x3b82f6, size: 0.07, transparent: true, opacity: 0.35 })));
+  const pointsMaterial = new THREE.PointsMaterial({ color: 0x3b82f6, size: 0.07, transparent: true, opacity: isDarkTheme() ? pointsOpacity.dark : pointsOpacity.light });
+  scene.add(new THREE.Points(pGeo, pointsMaterial));
 
   scene.add(new THREE.AmbientLight(0x3b82f6, 0.3));
   const dir = new THREE.DirectionalLight(0xffffff, 0.2);
   dir.position.set(5, 5, 5);
   scene.add(dir);
+
+  /* Keep opacities in sync if the user toggles light/dark mode after load */
+  new MutationObserver(() => {
+    const dark = isDarkTheme();
+    const op = dark ? darkOpacities : baseOpacities;
+    materials.forEach((m, i) => { m.opacity = op[i]; });
+    pointsMaterial.opacity = dark ? pointsOpacity.dark : pointsOpacity.light;
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
   let mx = 0, my = 0;
   document.addEventListener('mousemove', e => {
