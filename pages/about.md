@@ -8,7 +8,7 @@ weight: 3
 # **About Me**
 
 Hi I am **{{ site.author.name }}** :wave:,<br>
-I build machine learning systems that go the full distance, from research-grade modeling to production deployment.
+I convert data into decisions, building machine learning systems that go the full distance from research-grade modeling to production deployment.
 Right now I'm applying ML to computational drug discovery at Alkermes, where I've built end-to-end pipelines for compound prioritization and shipped them as fast, containerized APIs running on HPC infrastructure.
 Before that, I trained a text diffusion model on 8× H100 GPUs for my master's research at Northeastern, where I also taught a graduate cloud computing course as a TA.
 Earlier, I spent two years as a data engineer at Societe Generale processing 1M+ daily financial transactions, built RESTful microservices as an intern at Capgemini, and got my start optimizing embedded signal-processing code at PathPartner Technology.
