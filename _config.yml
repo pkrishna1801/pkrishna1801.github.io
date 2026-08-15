@@ -65,9 +65,9 @@ collections:
 
 ### Analytics ###
 analytics:
-  enabled: false                                        # Set true to enable analytics
+  enabled: true                                        # Set true to enable analytics
   google:
-    tracking_id: your-google-tracking-id
+    tracking_id: G-2N4X2R2CG7
 
 
 ### Defaults for collections ###
