@@ -1,0 +1,27 @@
+/* Company logo marker in the About timeline */
+.timeline-body .timeline-item .timeline-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  left: -12px;
+  top: 8px;
+  z-index: 11;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-body .timeline-item .timeline-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.timeline-body .timeline-item .content .company {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
