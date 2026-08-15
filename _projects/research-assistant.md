@@ -1,5 +1,6 @@
 ---
 name: Research Assistant
+title: Research Assistant
 order: 6
 tools: [Mistral-7B, FAISS, BM25, AWS EC2]
 image: /assets/projects/research-assistant.svg

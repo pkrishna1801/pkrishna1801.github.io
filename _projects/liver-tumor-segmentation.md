@@ -1,5 +1,6 @@
 ---
 name: Liver Tumor Segmentation Deep Learning Pipeline
+title: Liver Tumor Segmentation Deep Learning Pipeline
 order: 1
 tools: [U-Net, MLflow, DagsHub, AWS EC2]
 image: /assets/projects/liver-tumor-segmentation.svg

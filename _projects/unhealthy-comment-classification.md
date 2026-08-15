@@ -1,5 +1,6 @@
 ---
 name: Unhealthy Comment Classification
+title: Unhealthy Comment Classification
 order: 9
 tools: [Roberta]
 image: /assets/projects/unhealthy-comment-classification.svg

@@ -1,5 +1,6 @@
 ---
 name: Molecular Property Prediction
+title: Molecular Property Prediction
 order: 4
 tools: [GCN, GAT, PyTorch Geometric]
 image: /assets/projects/molecular-property-prediction.svg
