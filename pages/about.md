@@ -2,7 +2,7 @@
 layout: page
 title: Bio
 permalink: /about/
-weight: 4
+weight: 1
 ---
 
 # **Bio**
