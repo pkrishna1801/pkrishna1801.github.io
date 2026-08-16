@@ -1,11 +1,11 @@
 ---
 layout: page
-title: About
+title: Bio
 permalink: /about/
 weight: 4
 ---
 
-# **About Me**
+# **Bio**
 
 Hi I am **{{ site.author.name }}** :wave:,<br>
 I convert data into decisions, building machine learning systems that go the full distance from research-grade modeling to production deployment.
