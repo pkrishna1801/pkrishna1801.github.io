@@ -2,22 +2,26 @@
   percentage: 95
   color: primary
 
-- name: NLP/LLMs
+- name: Diffusion Models
   percentage: 95
   color: danger
-  
-- name: TensorFlow/Keras
+
+- name: NLP/LLMs
   percentage: 90
   color: danger
+
+- name: scikit-learn
+  percentage: 85
+  color: warning
 
 - name: Hugging Face Transformers
   percentage: 85
   color: warning
 
-- name: LangGraph/LangChain
+- name: Graph Neural Networks
   percentage: 80
   color: dark
 
-- name: CUDA/Parallel Computing
+- name: LangGraph/LangChain
   percentage: 75
-  color: info
+  color: dark
