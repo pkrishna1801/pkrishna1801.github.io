@@ -205,8 +205,12 @@
   .expertise-icon { font-size: 2rem; color: #3b82f6; margin-bottom: 16px; }
   .expertise-card h4 { font-size: 1.05rem; margin-bottom: 10px; font-weight: 700; }
   .expertise-card p { color: #94a3b8; font-size: 0.88rem; line-height: 1.6; margin-bottom: 12px; }
-  .expertise-card .skills { font-size: 0.8rem; color: #64748b; }
-  .expertise-card .skills strong { color: #94a3b8; }
+  .expertise-card .skills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag {
+    display: inline-block; background: rgba(128,128,128,0.1);
+    border: 1px solid rgba(128,128,128,0.2); padding: 4px 10px;
+    border-radius: 20px; font-size: 0.75rem; color: #94a3b8;
+  }
 
   .highlights-scroll {
     display: flex; gap: 24px; overflow-x: auto;
@@ -393,25 +397,46 @@
         <div class="expertise-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
         <h4>Diffusion Models & Generative AI</h4>
         <p>Expert in designing, training, and optimizing diffusion models for text and image generation.</p>
-        <div class="skills"><strong>Key Skills:</strong> DDPM, DPM-Solver++, U-Net, continuous embeddings</div>
+        <div class="skills">
+          <span class="skill-tag">DDPM</span>
+          <span class="skill-tag">DPM-Solver++</span>
+          <span class="skill-tag">U-Net</span>
+          <span class="skill-tag">continuous embeddings</span>
+        </div>
       </div>
       <div class="expertise-card">
         <div class="expertise-icon"><i class="fas fa-brain"></i></div>
         <h4>Large Language Models & NLP</h4>
         <p>Deep expertise in training, fine-tuning, and scaling large language models from scratch.</p>
-        <div class="skills"><strong>Key Skills:</strong> Transformers, LoRA/QLoRA, RLHF/DPO, distributed training</div>
+        <div class="skills">
+          <span class="skill-tag">Transformers</span>
+          <span class="skill-tag">LoRA/QLoRA</span>
+          <span class="skill-tag">RLHF/DPO</span>
+          <span class="skill-tag">distributed training</span>
+        </div>
       </div>
       <div class="expertise-card">
         <div class="expertise-icon"><i class="fas fa-dna"></i></div>
         <h4>Life Sciences AI</h4>
         <p>Applying deep learning across medical imaging and molecular modeling, from image synthesis and segmentation to compound property prediction and drug-like molecule generation.</p>
-        <div class="skills"><strong>Key Skills:</strong> U-Net segmentation, PSNR/SSIM, GCN/GAT, SMILES generation, RDKit</div>
+        <div class="skills">
+          <span class="skill-tag">U-Net segmentation</span>
+          <span class="skill-tag">PSNR/SSIM</span>
+          <span class="skill-tag">GCN/GAT</span>
+          <span class="skill-tag">SMILES generation</span>
+          <span class="skill-tag">RDKit</span>
+        </div>
       </div>
       <div class="expertise-card">
         <div class="expertise-icon"><i class="fas fa-cloud"></i></div>
         <h4>MLOps & Cloud Infrastructure</h4>
         <p>Production-ready ML deployment with containerization, orchestration, and monitoring.</p>
-        <div class="skills"><strong>Key Skills:</strong> Docker, Kubernetes, AWS/Azure, CI/CD</div>
+        <div class="skills">
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Kubernetes</span>
+          <span class="skill-tag">AWS/Azure</span>
+          <span class="skill-tag">CI/CD</span>
+        </div>
       </div>
     </div>
   </div>
