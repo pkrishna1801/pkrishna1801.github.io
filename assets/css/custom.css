@@ -39,7 +39,7 @@
   display: flex;
   align-items: stretch;
   gap: 32px;
-  margin: 24px 0;
+  margin: 24px 0 64px;
 }
 .skills-side-label {
   display: flex;
