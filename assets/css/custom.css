@@ -127,7 +127,8 @@
 
 .skill-tile-grid { display: flex; flex-wrap: wrap; gap: 12px; }
 .skill-tile {
-  width: 92px;
+  flex: 1 1 92px;
+  max-width: 160px;
   padding: 14px 8px 10px;
   text-align: center;
   border-radius: 12px;
