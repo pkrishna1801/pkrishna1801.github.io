@@ -52,6 +52,7 @@
     var count = cards.length;
     var step = 360 / count;
     var dragSensitivity = 0.4; // deg of rotation per px dragged
+    var perspective = 1200; // must match .skills-carousel's CSS perspective
 
     // Cards sit on a circle in 3D space, `steps` tracks how many step-sized
     // rotations the wheel has turned (can exceed +/-count for multi-spin).
@@ -62,9 +63,13 @@
 
     function layout() {
       var radius = Math.round(carousel.clientWidth / (2 * Math.tan(Math.PI / count)));
+      // Pushing the front-facing card toward the viewer via translateZ makes
+      // perspective magnify it; scale it back down by the exact inverse so
+      // it renders at its true (unmagnified) width.
+      var scale = (perspective - radius) / perspective;
       var maxHeight = 0;
       cards.forEach(function (card, i) {
-        card.style.transform = 'rotateY(' + (i * step) + 'deg) translateZ(' + radius + 'px)';
+        card.style.transform = 'rotateY(' + (i * step) + 'deg) translateZ(' + radius + 'px) scale(' + scale + ')';
         maxHeight = Math.max(maxHeight, card.scrollHeight);
       });
       // Cards are absolutely positioned (out of flow), so the carousel can't
