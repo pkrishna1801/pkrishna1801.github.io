@@ -26,3 +26,17 @@
   margin-bottom: 10px;
   font-weight: 600;
 }
+
+/* About page skill groups: plain tags instead of the theme's percentage progress bars */
+.skills-column { margin-bottom: 32px; }
+.skills-column h3 { margin-bottom: 16px; }
+.skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-pill {
+  display: inline-block;
+  background: rgba(128,128,128,0.1);
+  border: 1px solid rgba(128,128,128,0.2);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
