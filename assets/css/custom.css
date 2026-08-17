@@ -40,3 +40,47 @@
   font-size: 0.85rem;
   color: #94a3b8;
 }
+
+/* Project card hover: a tiny Factorio-style inserter-arm swipe instead of
+   the theme's default lift + shadow */
+.project.card {
+  position: relative;
+  overflow: visible;
+}
+.project.card:hover:not(.post) {
+  transform: none;
+  box-shadow: none;
+}
+.inserter-arm {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 5px;
+  height: 20px;
+  margin-left: -2.5px;
+  background: #cbd5e1;
+  border-radius: 3px;
+  transform-origin: top center;
+  transform: rotate(-35deg);
+  transition: transform 0.5s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+.inserter-arm::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: -4px;
+  width: 13px;
+  height: 8px;
+  background: #f5a623;
+  border-radius: 2px;
+}
+.project.card:hover .inserter-arm {
+  animation: inserter-swing 0.6s ease-in-out;
+}
+@keyframes inserter-swing {
+  0%   { transform: rotate(-35deg); }
+  50%  { transform: rotate(35deg); }
+  100% { transform: rotate(-35deg); }
+}
