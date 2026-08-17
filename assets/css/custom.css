@@ -62,9 +62,12 @@
   font-size: 1.8rem;
   font-weight: 800;
   letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+[data-theme="light"] .skills-side-label .label-text { color: #1e293b; }
+[data-theme="dark"] .skills-side-label .label-text {
   color: #f8fafc;
   text-shadow: 0 0 12px rgba(0,0,0,0.6);
-  white-space: nowrap;
 }
 
 .skills-carousel {
@@ -88,14 +91,21 @@
   inset: 0;
   box-sizing: border-box;
   padding: 24px;
-  background: rgba(20,22,28,0.55);
-  border: 1px solid rgba(128,128,128,0.25);
   border-radius: 14px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 .skills-card h3 { margin-bottom: 16px; }
+[data-theme="light"] .skills-card {
+  background: rgba(0,0,0,0.035);
+  border: 1px solid rgba(0,0,0,0.12);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+[data-theme="dark"] .skills-card {
+  background: rgba(20,22,28,0.55);
+  border: 1px solid rgba(128,128,128,0.25);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
 
 .skills-carousel-dots {
   display: flex;
@@ -109,19 +119,26 @@
   padding: 0;
   border: none;
   border-radius: 50%;
-  background: rgba(128,128,128,0.3);
   cursor: pointer;
 }
 .skills-dot.active { background: #3b82f6; }
+[data-theme="light"] .skills-dot { background: rgba(0,0,0,0.15); }
+[data-theme="dark"] .skills-dot { background: rgba(128,128,128,0.3); }
 
 .skill-tile-grid { display: flex; flex-wrap: wrap; gap: 12px; }
 .skill-tile {
   width: 92px;
   padding: 14px 8px 10px;
   text-align: center;
+  border-radius: 12px;
+}
+[data-theme="light"] .skill-tile {
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.12);
+}
+[data-theme="dark"] .skill-tile {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(128,128,128,0.15);
-  border-radius: 12px;
 }
 .skill-tile img,
 .skill-tile i {
@@ -137,8 +154,9 @@
   font-size: 0.68rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: #94a3b8;
 }
+[data-theme="light"] .skill-tile span { color: #475569; }
+[data-theme="dark"] .skill-tile span { color: #94a3b8; }
 
 @media (max-width: 600px) {
   .skills-section { flex-direction: column; }
@@ -164,7 +182,6 @@
   width: 5px;
   height: 20px;
   margin-left: -2.5px;
-  background: #cbd5e1;
   border-radius: 3px;
   transform-origin: top center;
   transform: rotate(-35deg);
@@ -172,6 +189,8 @@
   pointer-events: none;
   z-index: 5;
 }
+[data-theme="light"] .inserter-arm { background: #475569; }
+[data-theme="dark"] .inserter-arm { background: #cbd5e1; }
 .inserter-arm::after {
   content: '';
   position: absolute;
