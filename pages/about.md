@@ -20,9 +20,9 @@ I'm most useful in the gap between a model that works in a notebook and one that
 
 
 <div class="row">
-{% include about/skills.html title="Programming Skills" icon="fas fa-code" source=site.data.programming-skills %}
-{% include about/skills.html title="Machine Learning skills" icon="fas fa-brain" source=site.data.ML-skills %}
-{% include about/skills.html title="Other Skills" icon="fas fa-toolbox" source=site.data.other-skills %}
+{% include about/skills.html title="Programming Skills" source=site.data.programming-skills %}
+{% include about/skills.html title="Machine Learning skills" source=site.data.ML-skills %}
+{% include about/skills.html title="Other Skills" source=site.data.other-skills %}
 </div>
 
 <div class="row">
