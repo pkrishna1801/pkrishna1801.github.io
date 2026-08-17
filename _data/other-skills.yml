@@ -1,8 +1,31 @@
 - name: Docker
+  simple_icon: docker
+  color: "2496ED"
+
 - name: Git
+  simple_icon: git
+  color: "F05032"
+
 - name: Cloud (AWS, Azure)
+  fa_icon: fas fa-cloud
+  color: "3b82f6"
+
 - name: FastAPI
+  simple_icon: fastapi
+  color: "009688"
+
 - name: Kubernetes (AKS, EKS)
+  simple_icon: kubernetes
+  color: "326CE5"
+
 - name: Airflow
+  simple_icon: apacheairflow
+  color: "017CEE"
+
 - name: Terraform
+  simple_icon: terraform
+  color: "844FBA"
+
 - name: MLOps (MLflow, DVC)
+  simple_icon: mlflow
+  color: "0194E2"
