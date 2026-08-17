@@ -1,0 +1,8 @@
+<div class="col-md-4 skills-column">
+  <h3>{{ include.title }}</h3>
+  <div class="skill-pills">
+    {% for skill in include.source %}
+      <span class="skill-pill">{{ skill.name }}</span>
+    {% endfor %}
+  </div>
+</div>
