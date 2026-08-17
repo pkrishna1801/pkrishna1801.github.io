@@ -21,7 +21,3 @@
 - name: Graph Neural Networks
   fa_icon: fas fa-project-diagram
   color: "3b82f6"
-
-- name: LangGraph/LangChain
-  simple_icon: langchain
-  color: "1C3C3C"

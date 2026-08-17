@@ -28,11 +28,13 @@
 }
 
 /* About page skills: a vertical "Skills" side label (rotated text + gold
-   accent bar) next to a static grid of icon tiles per group, instead of the
-   theme's percentage progress bars. Real brand logos come from Simple Icons
-   (downloaded locally to assets/icons/skills); skills with no brand mark
-   (techniques, not products) fall back to a Font Awesome glyph in the
-   site's accent blue. No tabs, no scrolling, no hover animation. */
+   accent bar) next to a 3D carousel: one rectangular tab per group (name +
+   icon tiles), positioned as faces of a cylinder in 3D space. Dragging spins
+   the cylinder around its vertical axis; it's a real circle so it spins
+   indefinitely in either direction with no wrap-around seam. Real brand
+   logos come from Simple Icons (downloaded locally to assets/icons/skills);
+   skills with no brand mark (techniques, not products) fall back to a Font
+   Awesome glyph in the site's accent blue. */
 .skills-section {
   display: flex;
   align-items: stretch;
@@ -54,15 +56,60 @@
 .skills-side-label .label-text {
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #e2e8f0;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #f8fafc;
+  text-shadow: 0 0 12px rgba(0,0,0,0.6);
 }
 
-.skills-content { flex: 1 1 auto; min-width: 0; }
-.skills-group { margin-bottom: 28px; }
-.skills-group h3 { margin-bottom: 16px; }
+.skills-carousel {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 300px;
+  perspective: 1200px;
+  cursor: grab;
+  user-select: none;
+}
+.skills-carousel:active { cursor: grabbing; }
+.skills-carousel-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+.skills-card {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  padding: 24px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(128,128,128,0.25);
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  backface-visibility: hidden;
+}
+.skills-card h3 { margin-bottom: 16px; }
+
+.skills-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+.skills-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(128,128,128,0.3);
+  cursor: pointer;
+}
+.skills-dot.active { background: #3b82f6; }
 
 .skill-tile-grid { display: flex; flex-wrap: wrap; gap: 12px; }
 .skill-tile {
