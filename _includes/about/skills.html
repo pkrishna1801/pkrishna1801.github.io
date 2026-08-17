@@ -62,9 +62,14 @@
 
     function layout() {
       var radius = Math.round(carousel.clientWidth / (2 * Math.tan(Math.PI / count)));
+      var maxHeight = 0;
       cards.forEach(function (card, i) {
         card.style.transform = 'rotateY(' + (i * step) + 'deg) translateZ(' + radius + 'px)';
+        maxHeight = Math.max(maxHeight, card.scrollHeight);
       });
+      // Cards are absolutely positioned (out of flow), so the carousel can't
+      // auto-size to whichever one is tallest; size it explicitly instead.
+      carousel.style.height = maxHeight + 'px';
     }
 
     function render(rotation) {
@@ -125,6 +130,7 @@
     window.addEventListener('mouseup', onEnd);
 
     window.addEventListener('resize', layout);
+    window.addEventListener('load', layout);
     layout();
     settle();
   })();
