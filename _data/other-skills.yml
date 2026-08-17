@@ -36,7 +36,7 @@
 
 - name: Kafka
   simple_icon: apachekafka
-  color: "231F20"
+  color: "64748B" # official brand color is near-black and invisible on dark tiles
 
 - name: Elasticsearch
   simple_icon: elasticsearch
