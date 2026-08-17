@@ -74,7 +74,9 @@
       });
       // Cards are absolutely positioned (out of flow), so the carousel can't
       // auto-size to whichever one is tallest; size it explicitly instead.
-      carousel.style.height = maxHeight + 'px';
+      // +16px buffer: better to have a little empty space than to have tiles
+      // clip past the card's edge if the measurement comes up slightly short.
+      carousel.style.height = (maxHeight + 16) + 'px';
     }
 
     function render(rotation) {
