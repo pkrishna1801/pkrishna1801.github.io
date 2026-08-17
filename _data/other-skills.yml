@@ -29,3 +29,19 @@
 - name: MLOps (MLflow, DVC)
   simple_icon: mlflow
   color: "0194E2"
+
+- name: Spark
+  simple_icon: apachespark
+  color: "E25A1C"
+
+- name: Kafka
+  simple_icon: apachekafka
+  color: "231F20"
+
+- name: Elasticsearch
+  simple_icon: elasticsearch
+  color: "005571"
+
+- name: Oracle
+  fa_icon: fas fa-database
+  color: "F80000"
