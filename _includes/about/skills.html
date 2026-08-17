@@ -1,8 +1,35 @@
-<div class="col-md-4 skills-column">
-  <h3>{{ include.title }}</h3>
-  <div class="skill-pills">
-    {% for skill in include.source %}
-      <span class="skill-pill">{{ skill.name }}</span>
-    {% endfor %}
+<div class="skills-section">
+  <div class="skills-side-label">
+    <span class="bar"></span>
+    <span class="label-text">Skills</span>
+  </div>
+
+  <div class="skills-content">
+    <div class="skills-group">
+      <h3>Programming Skills</h3>
+      <div class="skill-tile-grid">
+        {% for skill in site.data.programming-skills %}
+          {% include about/skill-tile.html skill=skill %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <h3>Machine Learning skills</h3>
+      <div class="skill-tile-grid">
+        {% for skill in site.data.ML-skills %}
+          {% include about/skill-tile.html skill=skill %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <h3>Other Skills</h3>
+      <div class="skill-tile-grid">
+        {% for skill in site.data.other-skills %}
+          {% include about/skill-tile.html skill=skill %}
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </div>

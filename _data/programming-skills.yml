@@ -1,5 +1,19 @@
 - name: Python
+  simple_icon: python
+  color: "3776AB"
+
 - name: SQL
+  fa_icon: fas fa-database
+  color: "3b82f6"
+
 - name: Java
+  fa_icon: fab fa-java
+  color: "ED8B00"
+
 - name: CUDA
+  simple_icon: nvidia
+  color: "76B900"
+
 - name: bash
+  simple_icon: gnubash
+  color: "4EAA25"

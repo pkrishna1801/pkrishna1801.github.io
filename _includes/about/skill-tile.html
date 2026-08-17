@@ -1,0 +1,8 @@
+<div class="skill-tile">
+  {% if include.skill.simple_icon %}
+    <img src="{{ '/assets/icons/skills/' | relative_url }}{{ include.skill.simple_icon }}.svg" alt="{{ include.skill.name }}" loading="lazy">
+  {% else %}
+    <i class="{{ include.skill.fa_icon }}" style="color:#{{ include.skill.color }}"></i>
+  {% endif %}
+  <span>{{ include.skill.name }}</span>
+</div>

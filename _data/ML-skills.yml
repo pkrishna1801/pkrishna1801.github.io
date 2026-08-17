@@ -1,7 +1,27 @@
 - name: PyTorch
+  simple_icon: pytorch
+  color: "EE4C2C"
+
 - name: Diffusion Models
+  fa_icon: fas fa-magic
+  color: "3b82f6"
+
 - name: NLP/LLMs
+  fa_icon: fas fa-comments
+  color: "3b82f6"
+
 - name: scikit-learn
+  simple_icon: scikitlearn
+  color: "F7931E"
+
 - name: Hugging Face Transformers
+  simple_icon: huggingface
+  color: "FFD21E"
+
 - name: Graph Neural Networks
+  fa_icon: fas fa-project-diagram
+  color: "3b82f6"
+
 - name: LangGraph/LangChain
+  simple_icon: langchain
+  color: "1C3C3C"
