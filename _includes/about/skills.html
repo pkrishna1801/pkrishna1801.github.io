@@ -4,32 +4,128 @@
     <span class="label-text">Skills</span>
   </div>
 
-  <div class="skills-content">
-    <div class="skills-group">
-      <h3>Programming Skills</h3>
-      <div class="skill-tile-grid">
-        {% for skill in site.data.programming-skills %}
-          {% include about/skill-tile.html skill=skill %}
-        {% endfor %}
+  <div class="skills-carousel" id="skills-carousel">
+    <div class="skills-carousel-stage">
+      <div class="skills-card">
+        <h3>Programming Skills</h3>
+        <div class="skill-tile-grid">
+          {% for skill in site.data.programming-skills %}
+            {% include about/skill-tile.html skill=skill %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="skills-card">
+        <h3>Machine Learning skills</h3>
+        <div class="skill-tile-grid">
+          {% for skill in site.data.ML-skills %}
+            {% include about/skill-tile.html skill=skill %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="skills-card">
+        <h3>Other Skills</h3>
+        <div class="skill-tile-grid">
+          {% for skill in site.data.other-skills %}
+            {% include about/skill-tile.html skill=skill %}
+          {% endfor %}
+        </div>
       </div>
     </div>
 
-    <div class="skills-group">
-      <h3>Machine Learning skills</h3>
-      <div class="skill-tile-grid">
-        {% for skill in site.data.ML-skills %}
-          {% include about/skill-tile.html skill=skill %}
-        {% endfor %}
-      </div>
-    </div>
-
-    <div class="skills-group">
-      <h3>Other Skills</h3>
-      <div class="skill-tile-grid">
-        {% for skill in site.data.other-skills %}
-          {% include about/skill-tile.html skill=skill %}
-        {% endfor %}
-      </div>
+    <div class="skills-carousel-dots">
+      <button type="button" class="skills-dot active" data-index="0" aria-label="Programming Skills"></button>
+      <button type="button" class="skills-dot" data-index="1" aria-label="Machine Learning skills"></button>
+      <button type="button" class="skills-dot" data-index="2" aria-label="Other Skills"></button>
     </div>
   </div>
 </div>
+
+<script>
+  (function () {
+    var carousel = document.getElementById('skills-carousel');
+    if (!carousel) return;
+    var stage = carousel.querySelector('.skills-carousel-stage');
+    var cards = carousel.querySelectorAll('.skills-card');
+    var dots = carousel.querySelectorAll('.skills-dot');
+    var count = cards.length;
+    var step = 360 / count;
+    var dragSensitivity = 0.4; // deg of rotation per px dragged
+
+    // Cards sit on a circle in 3D space, `steps` tracks how many step-sized
+    // rotations the wheel has turned (can exceed +/-count for multi-spin).
+    var steps = 0;
+    var startX = 0;
+    var deltaDeg = 0;
+    var dragging = false;
+
+    function layout() {
+      var radius = Math.round(carousel.clientWidth / (2 * Math.tan(Math.PI / count)));
+      cards.forEach(function (card, i) {
+        card.style.transform = 'rotateY(' + (i * step) + 'deg) translateZ(' + radius + 'px)';
+      });
+    }
+
+    function render(rotation) {
+      stage.style.transform = 'rotateY(' + rotation + 'deg)';
+    }
+
+    function currentIndex(fromSteps) {
+      return (((-Math.round(fromSteps)) % count) + count) % count;
+    }
+
+    function settle() {
+      var target = Math.round(steps);
+      steps = target;
+      render(-target * step);
+      var idx = currentIndex(target);
+      dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+    }
+
+    function goToIndex(i) {
+      var currentMod = currentIndex(steps);
+      var diff = i - currentMod;
+      if (diff > count / 2) diff -= count;
+      if (diff < -count / 2) diff += count;
+      steps -= diff;
+      settle();
+    }
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { goToIndex(i); });
+    });
+
+    function onStart(x) {
+      dragging = true;
+      startX = x;
+      deltaDeg = 0;
+      stage.style.transition = 'none';
+    }
+    function onMove(x) {
+      if (!dragging) return;
+      deltaDeg = (x - startX) * dragSensitivity;
+      render(-steps * step + deltaDeg);
+    }
+    function onEnd() {
+      if (!dragging) return;
+      dragging = false;
+      stage.style.transition = '';
+      steps -= deltaDeg / step;
+      settle();
+      deltaDeg = 0;
+    }
+
+    carousel.addEventListener('touchstart', function (e) { onStart(e.touches[0].clientX); }, { passive: true });
+    carousel.addEventListener('touchmove', function (e) { onMove(e.touches[0].clientX); }, { passive: true });
+    carousel.addEventListener('touchend', onEnd);
+
+    carousel.addEventListener('mousedown', function (e) { onStart(e.clientX); e.preventDefault(); });
+    window.addEventListener('mousemove', function (e) { onMove(e.clientX); });
+    window.addEventListener('mouseup', onEnd);
+
+    window.addEventListener('resize', layout);
+    layout();
+    settle();
+  })();
+</script>
