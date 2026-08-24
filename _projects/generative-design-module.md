@@ -1,7 +1,7 @@
 ---
 name: Generative Design Module
 title: Generative Design Module
-order: 14
+order: 9
 tools: [VAE, Latent Diffusion, CAD, PyTorch]
 image: /assets/projects/generative-design-module.svg
 description: >-

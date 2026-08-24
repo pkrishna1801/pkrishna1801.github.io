@@ -1,7 +1,7 @@
 ---
 name: Text Generator
 title: Text Generator
-order: 11
+order: 13
 tools: [RNN, CBOW Embedding, TensorFlow]
 image: /assets/projects/text-generator.svg
 description: >-

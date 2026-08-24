@@ -1,7 +1,7 @@
 ---
 name: Bidirectional MRI Synthesis
 title: Bidirectional MRI Synthesis
-order: 2
+order: 5
 tools: [Unet, DDPM]
 image: /assets/projects/mri-synthesis.svg
 description: >-

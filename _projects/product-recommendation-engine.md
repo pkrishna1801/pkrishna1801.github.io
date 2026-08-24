@@ -1,7 +1,7 @@
 ---
 name: Product Recommendation Engine
 title: Product Recommendation Engine
-order: 8
+order: 2
 tools: [Flask, React, Heroku, Vercel, chat-GPT4o]
 image: /assets/projects/product-recommendation-engine.svg
 description: >-

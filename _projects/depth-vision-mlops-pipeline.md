@@ -1,7 +1,7 @@
 ---
 name: Depth Vision MLOps Pipeline
 title: Depth Vision MLOps Pipeline
-order: 12
+order: 3
 tools: [Depth-Anything-V2, YOLOv5, Terraform, AWS ECS, Docker]
 image: /assets/projects/depth-vision-mlops-pipeline.svg
 description: >-

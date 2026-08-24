@@ -1,7 +1,7 @@
 ---
 name: Conditional SMILES Generation Using GPT2
 title: Conditional SMILES Generation Using GPT2
-order: 5
+order: 6
 tools: [GPT2, Parallel Computation]
 image: /assets/projects/conditional-smiles-generation.svg
 description: >-

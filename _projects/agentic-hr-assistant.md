@@ -1,7 +1,7 @@
 ---
 name: Agentic HR Assistant
 title: Agentic HR Assistant
-order: 7
+order: 10
 tools: [LangGraph, GPT-4o, Streamlit]
 image: /assets/projects/agentic-hr-assistant.svg
 description: >-

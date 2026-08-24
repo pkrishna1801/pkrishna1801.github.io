@@ -1,7 +1,7 @@
 ---
 name: Chest X-ray Report Generation
 title: Chest X-ray Report Generation
-order: 3
+order: 7
 tools: [VIT, GPT-2]
 image: /assets/projects/chest-xray-report-generation.svg
 description: >-

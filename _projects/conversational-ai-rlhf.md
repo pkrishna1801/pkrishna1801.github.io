@@ -1,7 +1,7 @@
 ---
 name: Conversational AI with RLHF
 title: Conversational AI with RLHF
-order: 13
+order: 8
 tools: [GPT-2, PPO, RLHF, PyTorch]
 image: /assets/projects/conversational-ai-rlhf.svg
 description: >-

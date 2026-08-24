@@ -1,9 +1,9 @@
 ### Site Settings ###
 title               : Prarthana Krishnamurthy
 description         : >-
-                      ML Engineer and AI Researcher focused on medical imaging,
-                      molecular modeling, and retrieval-augmented generation.
-                      I turn complex research into scalable, production-ready AI.
+                      ML Engineer skilled in deep learning, MLOps, and LLM application
+                      development, with domain experience in medical imaging and
+                      molecular modeling.
 baseurl             : ""            # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 repository          : pkrishna1801/pkrishna1801.github.io  # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
 remote_theme        : yousinix/portfolYOU

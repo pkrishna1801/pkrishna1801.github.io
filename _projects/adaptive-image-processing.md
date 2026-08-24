@@ -1,7 +1,7 @@
 ---
 name: Adaptive Image Processing
 title: Adaptive Image Processing
-order: 10
+order: 12
 tools: [GoogleNet, CLAHE, Image Filtering]
 image: /assets/projects/adaptive-image-processing.svg
 description: >-
