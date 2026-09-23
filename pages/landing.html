@@ -1,158 +1,64 @@
 <style>
-  /* ══════════════════════════════════════
-     CTA BUTTON + NAV FX
-     ══════════════════════════════════════ */
-
-  /* Nav link highlight animation (targets real portfolYOU navbar) */
-  .nav-link.nav-glow {
-    animation: navGlow 2s ease-in-out forwards !important;
-    z-index: 1000;
-  }
-  @keyframes navGlow {
-    0%   { background: rgba(59,130,246,0); box-shadow: 0 0 0 0 rgba(59,130,246,0); color: inherit; transform: scale(1); }
-    12%  { background: rgba(59,130,246,0.35); box-shadow: 0 0 28px 8px rgba(59,130,246,0.5); color: #fff !important; transform: scale(1.18); border-radius: 8px; }
-    30%  { background: rgba(59,130,246,0.2); box-shadow: 0 0 18px 4px rgba(59,130,246,0.3); color: #fff !important; transform: scale(1.1); border-radius: 8px; }
-    60%  { background: rgba(59,130,246,0.08); box-shadow: 0 0 8px 1px rgba(59,130,246,0.15); transform: scale(1.03); }
-    100% { background: rgba(59,130,246,0); box-shadow: 0 0 0 0 rgba(59,130,246,0); transform: scale(1); }
-  }
-
-  /* Connector lines from button to nav */
-  .connector-line {
-    position: fixed;
-    height: 2.5px;
-    background: linear-gradient(90deg, rgba(59,130,246,0.9), rgba(96,165,250,0.5));
-    transform-origin: left center;
-    z-index: 9999;
-    pointer-events: none;
-    border-radius: 2px;
-    opacity: 0;
-    filter: drop-shadow(0 0 8px rgba(59,130,246,0.6));
-  }
-  .connector-line.shoot {
-    animation: lineShoot 0.7s ease-out forwards;
-  }
-  @keyframes lineShoot {
-    0%   { opacity: 0; clip-path: inset(0 100% 0 0); }
-    25%  { opacity: 1; clip-path: inset(0 50% 0 0); }
-    60%  { opacity: 1; clip-path: inset(0 0 0 0); }
-    100% { opacity: 0; clip-path: inset(0 0 0 0); }
-  }
-
-  /* Particle burst */
-  .burst-particle {
-    position: fixed;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-  }
-
-  /* ── Shared grid background for ALL sections ── */
   section {
     position: relative;
-    overflow: hidden;
-    padding: 56px 0;
-    z-index: 1; /* FIX 3: sections above canvas */
-  }
-  section::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(128,128,128,0.08)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-    pointer-events: none;
-    z-index: 0;
+    overflow: hidden; /* keeps wide children (cards, grids) from widening the page on phones */
+    padding: 64px 0;
+    z-index: 1; /* above the background canvas */
   }
   section > .container { position: relative; z-index: 1; }
 
-  /* Hero */
-  .hero-section { padding: 48px 0 56px; border-bottom: 1px solid rgba(128,128,128,0.15); }
-  .hero-section::before { opacity: 0.7; }
-
-  .profile-photo {
-    width: 170px; height: 170px; border-radius: 50%; object-fit: cover;
-    border: 4px solid rgba(255,255,255,0.15);
-    box-shadow: 0 0 40px rgba(59,130,246,0.15);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .profile-photo:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(59,130,246,0.25); }
-
-  .hero-title { font-size: 3.2rem; font-weight: 800; margin: 20px 0 8px; }
-  .hero-subtitle { font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 16px; }
-  .hero-desc { font-size: 1.1rem; color: var(--text-secondary); max-width: 650px; margin: 0 auto; line-height: 1.6; }
-  .hero-desc strong { color: var(--accent-text); }
-  .text-center { text-align: center; }
-
-  /* ── 3D CTA BUTTON ── */
-  .cta-wrapper {
-    perspective: 900px;
-    margin-top: 32px;
-  }
-  .cta-3d-btn {
-    display: inline-flex;
+  /* ── Hero: text left, photo right; stacks on small screens ── */
+  .hero-section { padding: 72px 0 88px; border-bottom: 1px solid rgba(128,128,128,0.15); }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 64px;
     align-items: center;
-    gap: 12px;
-    padding: 18px 40px;
-    font-size: 1.08rem;
-    font-weight: 700;
-    font-family: inherit;
-    color: #fff;
-    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 40%, #60a5fa 100%);
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    box-shadow:
-      0 7px 0 #1d4ed8,
-      0 10px 25px rgba(59,130,246,0.3),
-      0 0 50px rgba(59,130,246,0.1);
-    animation: btnFloat 3.5s ease-in-out infinite;
-    outline: none;
-    letter-spacing: -0.3px;
   }
-  .cta-3d-btn::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: 15px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 55%);
-    pointer-events: none;
+  .hero-role {
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent-text); margin-bottom: 14px;
   }
-  .cta-3d-btn .btn-icon {
-    font-size: 1.2rem;
-    animation: iconPulse 2.5s ease-in-out infinite;
+  .hero-title {
+    font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 700;
+    letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 22px;
   }
-  @keyframes iconPulse {
-    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-    50%      { transform: scale(1.2) rotate(8deg); opacity: 0.85; }
+  .hero-lead {
+    font-size: clamp(1.15rem, 1.6vw, 1.4rem); line-height: 1.55;
+    color: var(--text-secondary); max-width: 34ch; margin-bottom: 14px;
   }
-  @keyframes btnFloat {
-    0%, 100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
-    20%      { transform: translateY(-7px) rotateX(2deg) rotateY(-2deg); }
-    50%      { transform: translateY(-3px) rotateX(-2deg) rotateY(3deg); }
-    75%      { transform: translateY(-9px) rotateX(3deg) rotateY(-1deg); }
+  .hero-meta {
+    font-size: 1rem; line-height: 1.6; color: var(--text-tertiary);
+    max-width: 52ch; margin-bottom: 32px;
   }
-  .cta-3d-btn:hover {
-    animation-play-state: paused;
-    transform: translateY(-5px) rotateX(8deg) scale(1.05);
-    box-shadow:
-      0 12px 0 #1d4ed8,
-      0 16px 35px rgba(59,130,246,0.45),
-      0 0 70px rgba(59,130,246,0.2);
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .hero-btn {
+    display: inline-block; padding: 12px 26px; border-radius: 10px;
+    font-weight: 600; font-size: 1rem; text-decoration: none !important;
+    border: 1.5px solid transparent; transition: background-color 0.2s, color 0.2s, border-color 0.2s;
   }
-  .cta-3d-btn:active {
-    transform: translateY(3px) rotateX(0deg) scale(0.97);
-    box-shadow: 0 2px 0 #1d4ed8, 0 4px 10px rgba(59,130,246,0.25);
-    transition: transform 0.06s, box-shadow 0.06s;
+  .hero-btn-primary { background: #2563eb; color: #fff !important; }
+  .hero-btn-primary:hover { background: #1d4ed8; }
+  .hero-btn-outline { border-color: var(--accent-text); color: var(--accent-text) !important; }
+  .hero-btn-outline:hover { background: rgba(59,130,246,0.1); }
+  .hero-link {
+    padding: 12px 8px; font-weight: 600; color: var(--text-secondary) !important;
+    text-decoration: none !important;
   }
-  .cta-3d-btn .ripple-fx {
-    position: absolute; border-radius: 50%;
-    background: rgba(255,255,255,0.3);
-    transform: scale(0);
-    animation: rippleExpand 0.6s ease-out forwards;
-    pointer-events: none;
+  .hero-link:hover { color: var(--accent-text) !important; }
+  .hero-social { display: flex; gap: 18px; margin-top: 28px; font-size: 1.25rem; }
+  .hero-social a { color: var(--text-tertiary); transition: color 0.2s; }
+  .hero-social a:hover { color: var(--accent-text); }
+  .hero-photo { justify-self: end; width: 100%; max-width: 380px; }
+  .hero-photo img {
+    display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
+    border-radius: 24px; border: 1px solid rgba(128,128,128,0.2);
   }
-  @keyframes rippleExpand { to { transform: scale(4); opacity: 0; } }
+  @media (max-width: 991px) {
+    .hero-section { padding: 40px 0 56px; }
+    .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+    .hero-photo { order: -1; justify-self: start; max-width: 200px; }
+  }
 
   /* ══════════════════════════════════════
      YOUR EXISTING SECTION STYLES
@@ -294,28 +200,33 @@
   @keyframes bounceX { 0%,100%{transform:translateX(0)} 50%{transform:translateX(6px)} }
 
   @media (prefers-reduced-motion: reduce) {
-    .cta-3d-btn, .cta-3d-btn .btn-icon, .scroll-hint i { animation: none; }
+    .scroll-hint i { animation: none; }
   }
 </style>
 
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero-section">
-  <div class="container text-center">
-    <div class="profile-photo-container mb-4">
-      <img src="{{ site.author.image }}" alt="{{ site.author.name }}" class="profile-photo">
-    </div>
-    <h1 class="hero-title">Prarthana Krishnamurthy</h1>
-    <h2 class="hero-subtitle">Machine Learning Engineer & AI Researcher</h2>
-    <p class="hero-desc">
-      Specializing in <strong>Large Language Models</strong>, <strong>Diffusion Models</strong>,
-      <strong>Generative AI</strong>, and <strong>Production ML Systems</strong>
-    </p>
-
-    <!-- ★ 3D CTA BUTTON — FIX 4: closed the <span> tag properly ★ -->
-    <div class="cta-wrapper">
-      <button class="cta-3d-btn" id="knowMoreBtn">
-        View My Portfolio
-      </button>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <p class="hero-role">Machine Learning Engineer</p>
+        <h1 class="hero-title">Prarthana Krishnamurthy</h1>
+        <p class="hero-lead">I build ML systems that hold up outside the notebook, from generative models to production pipelines for drug discovery.</p>
+        <p class="hero-meta">Most recently molecular property prediction at Alkermes. Before that, text diffusion models trained on 8× H100s at Northeastern.</p>
+        <div class="hero-actions">
+          <a href="{{ '/projects/' | relative_url }}" class="hero-btn hero-btn-primary">View projects</a>
+          <a href="{{ '/resume/' | relative_url }}" class="hero-btn hero-btn-outline">Resume</a>
+          <a href="{{ '/about/' | relative_url }}" class="hero-link">About me &rarr;</a>
+        </div>
+        <div class="hero-social">
+          <a href="mailto:{{ site.author.email }}" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://linkedin.com/in/{{ site.author.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="{{ site.author.image }}" alt="{{ site.author.name }}">
+      </div>
     </div>
   </div>
 </section>
@@ -368,7 +279,7 @@
 <section id="research">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Current Research</h2>
+      <h2 class="section-title">Research</h2>
       <p class="section-subtitle">Master's Thesis at Northeastern University</p>
     </div>
     <div class="research-card">
@@ -479,103 +390,5 @@
   const update = () => { hint.hidden = row.scrollWidth <= row.clientWidth + 1; };
   update();
   window.addEventListener('resize', update);
-})();
-
-/* ═══════════════════════════════════════
-   CTA BUTTON → Detect & Highlight REAL
-   portfolYOU Nav Links
-   ═══════════════════════════════════════ */
-(function () {
-  const btn = document.getElementById('knowMoreBtn');
-  if (!btn) return;
-
-  function findNavLinks() {
-    const targets = ['bio', 'projects', 'blog', 'resume'];
-    const allLinks = document.querySelectorAll('.navbar-nav .nav-link, .nav-item .nav-link, nav a');
-    const found = [];
-
-    targets.forEach(target => {
-      for (const link of allLinks) {
-        if (link.textContent.trim().toLowerCase().includes(target)) {
-          found.push(link);
-          break;
-        }
-      }
-    });
-
-    if (found.length === 0) {
-      document.querySelectorAll('a.nav-link').forEach(link => {
-        const text = link.textContent.trim().toLowerCase();
-        if (targets.some(t => text.includes(t))) found.push(link);
-      });
-    }
-
-    return found;
-  }
-
-  btn.addEventListener('click', function (e) {
-    const navLinks = findNavLinks();
-    if (navLinks.length === 0) return;
-
-    const btnRect = btn.getBoundingClientRect();
-    const cx = btnRect.left + btnRect.width / 2;
-    const cy = btnRect.top + btnRect.height / 2;
-
-    // 1) Ripple on button
-    const rip = document.createElement('span');
-    rip.className = 'ripple-fx';
-    rip.style.left = (e.clientX - btnRect.left) + 'px';
-    rip.style.top = (e.clientY - btnRect.top) + 'px';
-    rip.style.width = rip.style.height = '18px';
-    btn.appendChild(rip);
-    setTimeout(() => rip.remove(), 600);
-
-    // 2) Particle burst
-    const colors = ['#3b82f6', '#60a5fa', '#93c5fd', '#2563eb', '#fff'];
-    for (let i = 0; i < 18; i++) {
-      const p = document.createElement('div');
-      p.className = 'burst-particle';
-      p.style.left = cx + 'px';
-      p.style.top = cy + 'px';
-      p.style.background = colors[i % colors.length];
-      const s = 3 + Math.random() * 5;
-      p.style.width = p.style.height = s + 'px';
-      document.body.appendChild(p);
-      const angle = (Math.PI * 2 / 18) * i + (Math.random() - 0.5) * 0.4;
-      const dist = 50 + Math.random() * 90;
-      p.animate([
-        { transform: 'translate(0,0) scale(1)', opacity: 1 },
-        { transform: `translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px) scale(0)`, opacity: 0 }
-      ], { duration: 550 + Math.random() * 250, easing: 'cubic-bezier(0,.8,.3,1)' });
-      setTimeout(() => p.remove(), 850);
-    }
-
-    // 3) Connector lines + nav glow (staggered)
-    navLinks.forEach((link, i) => {
-      setTimeout(() => {
-        const lr = link.getBoundingClientRect();
-        const ex = lr.left + lr.width / 2;
-        const ey = lr.top + lr.height / 2;
-        const dx = ex - cx, dy = ey - cy;
-        const len = Math.sqrt(dx * dx + dy * dy);
-        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-
-        const line = document.createElement('div');
-        line.className = 'connector-line';
-        line.style.left = cx + 'px';
-        line.style.top = cy + 'px';
-        line.style.width = len + 'px';
-        line.style.transform = `rotate(${angle}deg)`;
-        document.body.appendChild(line);
-        requestAnimationFrame(() => line.classList.add('shoot'));
-        setTimeout(() => line.remove(), 900);
-
-        link.classList.remove('nav-glow');
-        void link.offsetWidth;
-        link.classList.add('nav-glow');
-        setTimeout(() => link.classList.remove('nav-glow'), 2200);
-      }, i * 220);
-    });
-  });
 })();
 </script>

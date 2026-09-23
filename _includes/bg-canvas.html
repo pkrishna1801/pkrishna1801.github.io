@@ -46,10 +46,11 @@
     return document.documentElement.getAttribute('data-theme') === 'dark';
   }
 
-  const baseOpacities = [0.10, 0.08, 0.07];
-  /* FIX 7: dark values halved; at 0.45 the wireframes competed with body text */
-  const darkOpacities  = [0.22, 0.18, 0.15];
-  const pointsOpacity  = { light: 0.35, dark: 0.4 };
+  /* FIX 7: kept to a faint texture; stronger values crossed over headings
+     and body text and made pages look busy */
+  const baseOpacities = [0.045, 0.035, 0.03];
+  const darkOpacities  = [0.12, 0.10, 0.08];
+  const pointsOpacity  = { light: 0.2, dark: 0.3 };
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function currentOpacities() {
