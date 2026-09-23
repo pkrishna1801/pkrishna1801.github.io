@@ -1,46 +1,66 @@
-- name: Docker
-  simple_icon: docker
-  color: "2496ED"
-
-- name: Git
-  simple_icon: git
-  color: "F05032"
-
-- name: Cloud (AWS, Azure)
-  fa_icon: fas fa-cloud
-  color: "3b82f6"
-
 - name: FastAPI
   simple_icon: fastapi
   color: "009688"
+
+- name: MCP Servers
+  fa_icon: fas fa-plug
+  color: "3b82f6"
+
+- name: Docker
+  simple_icon: docker
+  color: "2496ED"
 
 - name: Kubernetes (AKS, EKS)
   simple_icon: kubernetes
   color: "326CE5"
 
+- name: AWS
+  simple_icon: amazonwebservices
+  color: "FF9900"
+
+- name: Azure
+  fa_icon: fab fa-microsoft
+  color: "0078D4"
+
+- name: CI/CD (GitLab, Jenkins)
+  simple_icon: gitlab
+  color: "FC6D26"
+
 - name: Airflow
   simple_icon: apacheairflow
   color: "017CEE"
+
+- name: PySpark
+  simple_icon: apachespark
+  color: "E25A1C"
+
+- name: Pytest
+  simple_icon: pytest
+  color: "0A9EDC"
 
 - name: Terraform
   simple_icon: terraform
   color: "844FBA"
 
-- name: MLOps (MLflow, DVC)
-  simple_icon: mlflow
-  color: "0194E2"
-
-- name: Spark
-  simple_icon: apachespark
-  color: "E25A1C"
-
 - name: Kafka
   simple_icon: apachekafka
   color: "64748B" # official brand color is near-black and invisible on dark tiles
 
+- name: Apache Flink
+  simple_icon: apacheflink
+  color: "E6526F"
+
+- name: Hadoop
+  simple_icon: apachehadoop
+  color: "66CCFF"
+
 - name: Elasticsearch
   simple_icon: elasticsearch
   color: "005571"
+
+- name: REST APIs & Microservices
+  fa_icon: fas fa-network-wired
+  color: "3b82f6"
 
 - name: Oracle
   fa_icon: fas fa-database

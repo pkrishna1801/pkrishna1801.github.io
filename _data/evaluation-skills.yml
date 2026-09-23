@@ -1,0 +1,31 @@
+- name: Automated Evaluation Harnesses
+  fa_icon: fas fa-vial
+  color: "3b82f6"
+
+- name: Conformal Prediction
+  fa_icon: fas fa-arrows-alt-h
+  color: "3b82f6"
+
+- name: SHAP
+  fa_icon: fas fa-chart-bar
+  color: "3b82f6"
+
+- name: BLEU / ROUGE / BERTScore
+  fa_icon: fas fa-spell-check
+  color: "3b82f6"
+
+- name: R² / Spearman
+  fa_icon: fas fa-chart-area
+  color: "3b82f6"
+
+- name: Model Validation
+  fa_icon: fas fa-check-double
+  color: "3b82f6"
+
+- name: MLflow
+  simple_icon: mlflow
+  color: "0194E2"
+
+- name: Weights & Biases
+  simple_icon: weightsandbiases
+  color: "FFBE00"

@@ -5,39 +5,28 @@
   </div>
 
   <div class="skills-carousel" id="skills-carousel">
+    {%- comment -%} One card per group: "Title|data file name" {%- endcomment -%}
+    {%- assign skill_groups = "Programming|programming-skills;LLMs & Agentic AI|llm-skills;ML & Deep Learning|ML-skills;Evaluation & Reliability|evaluation-skills;Life Sciences|lifesci-skills;Serving, Cloud & Data|other-skills" | split: ";" -%}
     <div class="skills-carousel-stage">
+      {%- for group in skill_groups -%}
+      {%- assign parts = group | split: "|" -%}
+      {%- assign data_key = parts[1] %}
       <div class="skills-card">
-        <h3>Programming Skills</h3>
+        <h3>{{ parts[0] | escape }}</h3>
         <div class="skill-tile-grid">
-          {% for skill in site.data.programming-skills %}
+          {% for skill in site.data[data_key] %}
             {% include about/skill-tile.html skill=skill %}
           {% endfor %}
         </div>
       </div>
-
-      <div class="skills-card">
-        <h3>Machine Learning skills</h3>
-        <div class="skill-tile-grid">
-          {% for skill in site.data.ML-skills %}
-            {% include about/skill-tile.html skill=skill %}
-          {% endfor %}
-        </div>
-      </div>
-
-      <div class="skills-card">
-        <h3>Other Skills</h3>
-        <div class="skill-tile-grid">
-          {% for skill in site.data.other-skills %}
-            {% include about/skill-tile.html skill=skill %}
-          {% endfor %}
-        </div>
-      </div>
+      {%- endfor %}
     </div>
 
     <div class="skills-carousel-dots">
-      <button type="button" class="skills-dot active" data-index="0" aria-label="Programming Skills"></button>
-      <button type="button" class="skills-dot" data-index="1" aria-label="Machine Learning skills"></button>
-      <button type="button" class="skills-dot" data-index="2" aria-label="Other Skills"></button>
+      {%- for group in skill_groups -%}
+      {%- assign parts = group | split: "|" %}
+      <button type="button" class="skills-dot{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}" aria-label="{{ parts[0] | escape }}"></button>
+      {%- endfor %}
     </div>
   </div>
 </div>
@@ -52,7 +41,7 @@
     var count = cards.length;
     var step = 360 / count;
     var dragSensitivity = 0.4; // deg of rotation per px dragged
-    var perspective = 1200; // must match .skills-carousel's CSS perspective
+    var perspective = 3000; // must match .skills-carousel's CSS perspective
 
     // Cards sit on a circle in 3D space, `steps` tracks how many step-sized
     // rotations the wheel has turned (can exceed +/-count for multi-spin).
@@ -81,10 +70,19 @@
 
     function render(rotation) {
       stage.style.transform = 'rotateY(' + rotation + 'deg)';
+      // With more than 4 faces the neighbours (at +/-step) still face the
+      // viewer and poke out at the screen edges; fade each card by how far it
+      // has rotated from the front so only the front one shows at rest.
+      cards.forEach(function (card, i) {
+        var rel = ((i * step + rotation) % 360 + 540) % 360 - 180;
+        card.style.opacity = Math.max(0, 1 - Math.abs(rel) / step);
+        card.style.pointerEvents = Math.abs(rel) < step / 2 ? '' : 'none';
+      });
     }
 
+    // Stage rotation is -steps * step, so card k is in front when steps == k
     function currentIndex(fromSteps) {
-      return (((-Math.round(fromSteps)) % count) + count) % count;
+      return ((Math.round(fromSteps) % count) + count) % count;
     }
 
     function settle() {
@@ -100,7 +98,7 @@
       var diff = i - currentMod;
       if (diff > count / 2) diff -= count;
       if (diff < -count / 2) diff += count;
-      steps -= diff;
+      steps += diff;
       settle();
     }
 

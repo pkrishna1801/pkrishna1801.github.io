@@ -1,0 +1,27 @@
+- name: Molecular Property Prediction
+  fa_icon: fas fa-atom
+  color: "3b82f6"
+
+- name: DMTA Cycles
+  fa_icon: fas fa-sync-alt
+  color: "3b82f6"
+
+- name: RDKit
+  fa_icon: fas fa-flask
+  color: "3b82f6"
+
+- name: MACCS Fingerprints
+  fa_icon: fas fa-fingerprint
+  color: "3b82f6"
+
+- name: FAIR Data
+  fa_icon: fas fa-folder-open
+  color: "3b82f6"
+
+- name: DeepChem
+  fa_icon: fas fa-vials
+  color: "3b82f6"
+
+- name: PyMol
+  fa_icon: fas fa-dna
+  color: "3b82f6"

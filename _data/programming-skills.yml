@@ -10,10 +10,38 @@
   fa_icon: fab fa-java
   color: "ED8B00"
 
+- name: Bash
+  simple_icon: gnubash
+  color: "4EAA25"
+
+- name: Linux
+  simple_icon: linux
+  color: "FCC624"
+
+- name: Git
+  simple_icon: git
+  color: "F05032"
+
+- name: NumPy
+  simple_icon: numpy
+  color: "4DABCF"
+
+- name: SciPy
+  simple_icon: scipy
+  color: "8CAAE6"
+
+- name: Pandas
+  simple_icon: pandas
+  color: "E70488"
+
+- name: Matplotlib
+  fa_icon: fas fa-chart-line
+  color: "3b82f6"
+
 - name: CUDA
   simple_icon: nvidia
   color: "76B900"
 
-- name: bash
-  simple_icon: gnubash
-  color: "4EAA25"
+- name: React
+  simple_icon: react
+  color: "61DAFB"

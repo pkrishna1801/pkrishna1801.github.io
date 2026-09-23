@@ -2,22 +2,46 @@
   simple_icon: pytorch
   color: "EE4C2C"
 
-- name: Diffusion Models
-  fa_icon: fas fa-magic
-  color: "3b82f6"
-
-- name: NLP/LLMs
-  fa_icon: fas fa-comments
-  color: "3b82f6"
-
 - name: scikit-learn
   simple_icon: scikitlearn
   color: "F7931E"
 
-- name: Hugging Face Transformers
-  simple_icon: huggingface
-  color: "FFD21E"
+- name: TensorFlow
+  simple_icon: tensorflow
+  color: "FF6F00"
 
-- name: Graph Neural Networks
+- name: Keras
+  simple_icon: keras
+  color: "D00000"
+
+- name: XGBoost
+  fa_icon: fas fa-tree
+  color: "3b82f6"
+
+- name: LightGBM
+  fa_icon: fas fa-leaf
+  color: "3b82f6"
+
+- name: Graph Neural Networks (Chemprop)
   fa_icon: fas fa-project-diagram
+  color: "3b82f6"
+
+- name: Diffusion Models
+  fa_icon: fas fa-magic
+  color: "3b82f6"
+
+- name: Flow Matching
+  fa_icon: fas fa-wave-square
+  color: "3b82f6"
+
+- name: Reinforcement Learning (REINVENT4)
+  fa_icon: fas fa-redo
+  color: "3b82f6"
+
+- name: Bayesian Optimization (Optuna)
+  fa_icon: fas fa-bullseye
+  color: "3b82f6"
+
+- name: Distributed Training (FSDP, DDP)
+  fa_icon: fas fa-server
   color: "3b82f6"

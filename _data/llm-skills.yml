@@ -1,0 +1,31 @@
+- name: LangGraph (multi-step agents)
+  fa_icon: fas fa-sitemap
+  color: "3b82f6"
+
+- name: MCP (agent tool calling)
+  fa_icon: fas fa-plug
+  color: "3b82f6"
+
+- name: RAG (BM25 + dense retrieval)
+  fa_icon: fas fa-search
+  color: "3b82f6"
+
+- name: Fine-Tuning
+  fa_icon: fas fa-sliders-h
+  color: "3b82f6"
+
+- name: Domain Adaptation
+  fa_icon: fas fa-exchange-alt
+  color: "3b82f6"
+
+- name: Prompt Engineering
+  fa_icon: fas fa-terminal
+  color: "3b82f6"
+
+- name: Hugging Face Transformers
+  simple_icon: huggingface
+  color: "FFD21E"
+
+- name: spaCy
+  simple_icon: spacy
+  color: "09A3D5"
