@@ -14,6 +14,12 @@
 }
 [data-theme="dark"] .text-muted { color: var(--text-tertiary) !important; }
 
+/* Wider layout on large screens: Bootstrap caps .container at 1140px, which
+   left ~40% of a 1920px screen empty. Nested .container elements (landing
+   sections) inherit the same caps. */
+@media (min-width: 1400px) { .container { max-width: 1320px; } }
+@media (min-width: 1700px) { .container { max-width: 1560px; } }
+
 /* Long-form prose (bio, posts, project pages): cap line length and loosen
    line spacing so paragraphs don't run ~110 characters wide */
 .markdown-body > p,
