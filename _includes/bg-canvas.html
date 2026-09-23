@@ -47,8 +47,10 @@
   }
 
   const baseOpacities = [0.10, 0.08, 0.07];
-  const darkOpacities  = [0.45, 0.36, 0.30];
-  const pointsOpacity  = { light: 0.35, dark: 0.55 };
+  /* FIX 7: dark values halved; at 0.45 the wireframes competed with body text */
+  const darkOpacities  = [0.22, 0.18, 0.15];
+  const pointsOpacity  = { light: 0.35, dark: 0.4 };
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function currentOpacities() {
     return isDarkTheme() ? darkOpacities : baseOpacities;
@@ -111,6 +113,7 @@
   });
 
   (function animate(t) {
+    if (reduceMotion) { renderer.render(scene, camera); return; }
     requestAnimationFrame(animate);
     const time = t * 0.001;
     group.rotation.y += (mx * 0.04 - group.rotation.y) * 0.018;

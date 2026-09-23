@@ -76,9 +76,9 @@
   .profile-photo:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(59,130,246,0.25); }
 
   .hero-title { font-size: 3.2rem; font-weight: 800; margin: 20px 0 8px; }
-  .hero-subtitle { font-size: 1.3rem; color: #94a3b8; margin-bottom: 16px; }
-  .hero-desc { font-size: 1.05rem; color: #94a3b8; max-width: 650px; margin: 0 auto; line-height: 1.6; }
-  .hero-desc strong { color: #60a5fa; }
+  .hero-subtitle { font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 16px; }
+  .hero-desc { font-size: 1.1rem; color: var(--text-secondary); max-width: 650px; margin: 0 auto; line-height: 1.6; }
+  .hero-desc strong { color: var(--accent-text); }
   .text-center { text-align: center; }
 
   /* ── 3D CTA BUTTON ── */
@@ -159,7 +159,7 @@
      ══════════════════════════════════════ */
   .section-header { text-align: center; margin-bottom: 50px; }
   .section-title { font-size: 2.4rem; font-weight: 700; margin-bottom: 8px; }
-  .section-subtitle { color: #64748b; font-size: 1.05rem; }
+  .section-subtitle { color: var(--text-tertiary); font-size: 1.1rem; }
 
   .research-card {
     border-radius: 16px; padding: 40px;
@@ -168,18 +168,18 @@
     max-width: 900px; margin: 0 auto;
   }
   .research-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
-  .research-meta { color: #64748b; font-size: 0.9rem; margin-bottom: 16px; }
-  .research-desc { color: #94a3b8; line-height: 1.7; margin-bottom: 20px; }
+  .research-meta { color: var(--text-tertiary); font-size: 0.95rem; margin-bottom: 16px; }
+  .research-desc { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.75; margin-bottom: 20px; }
   .metric-badge {
     display: inline-block; background: rgba(59,130,246,0.1);
     border: 1px solid rgba(59,130,246,0.25); padding: 6px 14px;
-    border-radius: 8px; font-size: 0.85rem; font-weight: 600;
-    color: #60a5fa; margin: 4px;
+    border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+    color: var(--accent-text); margin: 4px;
   }
   .tech-badge {
     display: inline-block; background: rgba(128,128,128,0.1);
     border: 1px solid rgba(128,128,128,0.2); padding: 6px 14px;
-    border-radius: 20px; font-size: 0.82rem; color: #94a3b8; margin: 3px;
+    border-radius: 20px; font-size: 0.85rem; color: var(--text-secondary); margin: 3px;
   }
 
   .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
@@ -203,13 +203,13 @@
   }
   .expertise-card:hover::before { height: 100%; }
   .expertise-icon { font-size: 2rem; color: #3b82f6; margin-bottom: 16px; }
-  .expertise-card h4 { font-size: 1.05rem; margin-bottom: 10px; font-weight: 700; }
-  .expertise-card p { color: #94a3b8; font-size: 0.88rem; line-height: 1.6; margin-bottom: 12px; }
+  .expertise-card h4 { font-size: 1.15rem; margin-bottom: 10px; font-weight: 700; }
+  .expertise-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.65; margin-bottom: 12px; }
   .expertise-card .skills { display: flex; flex-wrap: wrap; gap: 6px; }
   .skill-tag {
     display: inline-block; background: rgba(128,128,128,0.1);
     border: 1px solid rgba(128,128,128,0.2); padding: 4px 10px;
-    border-radius: 20px; font-size: 0.75rem; color: #94a3b8;
+    border-radius: 20px; font-size: 0.8rem; color: var(--text-secondary);
   }
 
   .highlights-scroll {
@@ -235,26 +235,26 @@
   }
   .thesis-placeholder {
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    color: #60a5fa; gap: 8px;
+    color: var(--accent-text); gap: 8px;
   }
   .thesis-placeholder i { font-size: 3rem; }
   .thesis-placeholder span { font-size: 1.1rem; font-weight: 600; }
-  .thesis-placeholder small { color: #64748b; font-size: 0.85rem; }
+  .thesis-placeholder small { color: var(--text-tertiary); font-size: 0.85rem; }
   .highlight-info { padding: 20px; }
-  .highlight-info h4 { font-size: 1rem; margin-bottom: 6px; }
-  .highlight-info p { color: #64748b; font-size: 0.85rem; margin-bottom: 12px; }
+  .highlight-info h4 { font-size: 1.1rem; margin-bottom: 6px; }
+  .highlight-info p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.55; margin-bottom: 12px; }
   .highlight-tag {
     display: inline-block; background: rgba(59,130,246,0.1);
     border: 1px solid rgba(59,130,246,0.2);
     padding: 3px 10px; border-radius: 12px;
-    font-size: 0.75rem; color: #60a5fa; margin-right: 6px;
+    font-size: 0.8rem; color: var(--accent-text); margin-right: 6px;
   }
   .highlight-link {
     display: inline-block; margin-top: 10px;
-    color: #60a5fa; font-size: 0.85rem; font-weight: 600;
+    color: var(--accent-text); font-size: 0.92rem; font-weight: 600;
     text-decoration: none; transition: color 0.2s;
   }
-  .highlight-link:hover { color: #93c5fd; }
+  .highlight-link:hover { color: var(--accent-text); text-decoration: underline; }
 
   .contact-card {
     background: linear-gradient(135deg, rgba(59,130,246,0.15) 0%, rgba(128,128,128,0.08) 100%);
@@ -263,14 +263,15 @@
     max-width: 700px; margin: 0 auto;
   }
   .contact-card h2 { font-size: 2rem; margin-bottom: 12px; }
-  .contact-card .lead { color: #94a3b8; font-size: 1rem; margin-bottom: 24px; }
+  .contact-card .lead { color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 24px; }
   .social-link {
     display: inline-flex; align-items: center; justify-content: center;
     width: 48px; height: 48px; border-radius: 50%;
-    background: rgba(255,255,255,0.1); color: #e0e0e0;
     margin: 0 6px; text-decoration: none; font-size: 1.1rem;
     transition: background 0.3s, transform 0.3s;
   }
+  [data-theme="light"] .social-link { background: rgba(0,0,0,0.06); color: #334155; }
+  [data-theme="dark"] .social-link { background: rgba(255,255,255,0.1); color: #e0e0e0; }
   .social-link:hover { background: rgba(59,130,246,0.4); transform: translateY(-3px); }
   .btn-cta {
     display: inline-block; margin-top: 20px;
@@ -282,10 +283,14 @@
   .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59,130,246,0.35); }
   .scroll-hint {
     display: flex; align-items: center; gap: 8px;
-    color: #64748b; font-size: 0.85rem; margin-bottom: 16px;
+    color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 16px;
   }
   .scroll-hint i { animation: bounceX 1.5s infinite; }
   @keyframes bounceX { 0%,100%{transform:translateX(0)} 50%{transform:translateX(6px)} }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-3d-btn, .cta-3d-btn .btn-icon, .scroll-hint i { animation: none; }
+  }
 </style>
 
 <!-- ═══════════ HERO ═══════════ -->

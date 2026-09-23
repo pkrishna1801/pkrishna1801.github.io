@@ -1,3 +1,30 @@
+/* Readability: theme-aware text colors that clear WCAG AA (4.5:1) against
+   the theme's backgrounds (white in light mode; #17191a page and #343a40
+   timeline card in dark mode). Pages use these instead of fixed greys,
+   which were ~2.5:1 on white. */
+[data-theme="light"] {
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --accent-text: #1d4ed8;
+}
+[data-theme="dark"] {
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #a3b1c6;
+  --accent-text: #60a5fa;
+}
+[data-theme="dark"] .text-muted { color: var(--text-tertiary) !important; }
+
+/* Long-form prose (bio, posts, project pages): cap line length and loosen
+   line spacing so paragraphs don't run ~110 characters wide */
+.markdown-body > p,
+.markdown-body > ul,
+.markdown-body > ol,
+.markdown-body > blockquote {
+  max-width: 72ch;
+  line-height: 1.75;
+}
+.markdown-body li { margin-bottom: 0.35em; }
+
 /* Company logo marker in the About timeline */
 .timeline-body .timeline-item .timeline-logo {
   width: 48px;
@@ -25,6 +52,29 @@
   margin-top: -10px;
   margin-bottom: 10px;
   font-weight: 600;
+}
+
+.timeline-body .timeline-item .content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.timeline-body .timeline-item .content .date {
+  color: var(--text-tertiary);
+}
+.timeline-body .timeline-item .content p {
+  max-width: 72ch;
+  line-height: 1.7;
+}
+.timeline-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.timeline-tech .badge,
+.project.card .badge {
+  font-size: 0.8rem;
+  color: var(--accent-text) !important;
+  border-color: var(--accent-text) !important;
 }
 
 /* About page skills: a vertical "Skills" side label (rotated text + gold
@@ -151,7 +201,7 @@
 }
 .skill-tile span {
   display: block;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }

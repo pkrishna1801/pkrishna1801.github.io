@@ -59,7 +59,7 @@
     - 2.5x reduction in inference latency
     - Adopted across 3 teams and 20+ users
 
-- title: Machine Learning Research Assistant
+- title: Machine Learning Researcher
   company: Northeastern University (Advisor Prof. Dino Konstantopoulos)
   logo: https://www.google.com/s2/favicons?domain=northeastern.edu&sz=128
   location: Boston, MA, USA
@@ -130,16 +130,15 @@
     - Published thesis on diffusion models for text generation
     - Research in medical imaging and molecular modeling
 
-- title: Software Engineer, Data
+- title: Software Engineer
   company: Societe Generale Global Solution Centre
   logo: https://www.google.com/s2/favicons?domain=societegenerale.com&sz=128
   location: Bangalore, KA
   from: September 2021
   to: December 2023
   description: >
-    Automated Azure Data Lake ETL pipelines and PySpark raw-to-silver processing,
-    and designed Parquet schemas unifying multi-format data. Refactored 50+
-    legacy scripts into Airflow DAGs and productionized 3+ Dockerized apps on
+    Architected AWS data lake supporting 1M+ daily records, designing ingestion and partitioning strategies for high-throughput SaaS data processing and compliance reporting. Refactored 50+
+    legacy scripts into Airflow DAGs and productionized 3+ ML Dockerized apps on
     AKS handling 1M+ daily financial transactions.
   technologies:
     - SQL
