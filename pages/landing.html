@@ -217,6 +217,10 @@
     padding: 10px 0 20px; scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
+  /* Auto margins center the row when it fits, but (unlike justify-content:
+     center) still let it scroll from the first card when it overflows */
+  .highlights-scroll > :first-child { margin-left: auto; }
+  .highlights-scroll > :last-child { margin-right: auto; }
   .highlights-scroll::-webkit-scrollbar { height: 6px; }
   .highlights-scroll::-webkit-scrollbar-track { background: rgba(128,128,128,0.1); border-radius: 3px; }
   .highlights-scroll::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.4); border-radius: 3px; }
@@ -282,9 +286,10 @@
   }
   .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59,130,246,0.35); }
   .scroll-hint {
-    display: flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
     color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 16px;
   }
+  .scroll-hint[hidden] { display: none; }
   .scroll-hint i { animation: bounceX 1.5s infinite; }
   @keyframes bounceX { 0%,100%{transform:translateX(0)} 50%{transform:translateX(6px)} }
 
@@ -466,6 +471,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <script>
+/* Show the "Scroll to explore" hint only when the highlight cards overflow */
+(function () {
+  const row = document.querySelector('.highlights-scroll');
+  const hint = document.querySelector('.scroll-hint');
+  if (!row || !hint) return;
+  const update = () => { hint.hidden = row.scrollWidth <= row.clientWidth + 1; };
+  update();
+  window.addEventListener('resize', update);
+})();
+
 /* ═══════════════════════════════════════
    CTA BUTTON → Detect & Highlight REAL
    portfolYOU Nav Links

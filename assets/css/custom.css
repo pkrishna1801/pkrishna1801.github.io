@@ -20,6 +20,34 @@
 @media (min-width: 1400px) { .container { max-width: 1320px; } }
 @media (min-width: 1700px) { .container { max-width: 1560px; } }
 
+/* Resume: size the viewer to one letter page (8.5 x 11) with the PDF fit
+   to width, instead of a wide grey box with a small page in the middle */
+.resume-frame {
+  max-width: 920px;
+  margin: 0 auto 48px;
+  aspect-ratio: 8.5 / 11;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+.resume-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+
+/* Blog: three columns on wide screens (theme hard-codes col-lg-6) */
+@media (min-width: 1400px) {
+  .blog-list .card-group > .col-lg-6 { flex: 0 0 33.333%; max-width: 33.333%; }
+}
+/* Blog card text contrast. The theme's `.bg-dark *` rule forces white text
+   onto badge-light tags (white on light grey), and white text on the info,
+   success and warning fills is under 4.5:1, so darken those fills and use
+   dark text on yellow. */
+.post.card .badge.badge-light { color: #343a40 !important; }
+.post.card.bg-info    { background-color: #117a8b !important; }
+.post.card.bg-success { background-color: #1e7e34 !important; }
+.post.card.bg-primary { background-color: #0062cc !important; }
+.post.card.bg-warning,
+.post.card.bg-warning * { color: #343a40 !important; }
+.post.card.bg-warning .badge { color: #343a40 !important; background: rgba(255,255,255,0.7); }
+
 /* Long-form prose (bio, posts, project pages): cap line length and loosen
    line spacing so paragraphs don't run ~110 characters wide */
 .markdown-body > p,
