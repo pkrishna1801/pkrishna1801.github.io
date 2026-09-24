@@ -59,39 +59,8 @@
 }
 .markdown-body li { margin-bottom: 0.35em; }
 
-/* Bio page: text on the left, quick-facts card on the right */
-.bio-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
-  gap: 56px;
-  align-items: start;
-}
-.bio-text p { max-width: 72ch; line-height: 1.75; }
-.bio-facts {
-  margin-top: 32px;
-  padding: 24px 26px;
-  border-radius: 14px;
-  border: 1px solid rgba(128,128,128,0.2);
-  background: rgba(128,128,128,0.05);
-}
-.bio-facts dl { margin: 0; }
-.bio-facts dt {
-  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--text-tertiary);
-}
-.bio-facts dd { margin: 2px 0 14px; line-height: 1.5; }
-.bio-facts-actions {
-  display: flex; align-items: center; gap: 16px;
-  margin-top: 18px; font-size: 1.15rem;
-}
-.bio-facts-actions .btn { font-size: 0.95rem; font-weight: 600; border-radius: 10px; }
-.bio-facts-actions a:not(.btn) { color: var(--text-tertiary); }
-.bio-facts-actions a:not(.btn):hover { color: var(--accent-text); }
-.bio-facts-actions a::after { display: none !important; } /* no markdown link underline */
-@media (max-width: 991px) {
-  .bio-grid { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-  .bio-facts { margin-top: 0; }
-}
+/* Bio page: let the intro text use the full content width */
+.bio-text p { max-width: none; line-height: 1.75; }
 
 /* Company logo marker in the About timeline */
 .timeline-body .timeline-item .timeline-logo {
