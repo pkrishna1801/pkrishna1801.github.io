@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skills preview (local, delete before deploying)</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+<style>
+  body {
+    background: #0d1117;
+    color: #e2e8f0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding: 40px;
+    max-width: 700px;
+  }
+  h1 { font-size: 1.1rem; color: #64748b; margin-bottom: 30px; }
+
+  .skills-section {
+    display: flex;
+    align-items: stretch;
+    gap: 32px;
+    margin: 40px 0 64px;
+  }
+  .skills-side-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 0 0 56px;
+    width: 56px;
+  }
+  .skills-side-label .bar {
+    align-self: stretch;
+    width: 4px;
+    flex-shrink: 0;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #f5b942, #f0a500);
+  }
+  .skills-side-label .label-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #f8fafc;
+    text-shadow: 0 0 12px rgba(0,0,0,0.6);
+    white-space: nowrap;
+  }
+
+  .skills-carousel {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 300px;
+    perspective: 1200px;
+    cursor: grab;
+    user-select: none;
+  }
+  .skills-carousel:active { cursor: grabbing; }
+  .skills-carousel-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+  }
+  .skills-card {
+    position: absolute;
+    inset: 0;
+    box-sizing: border-box;
+    padding: 24px;
+    background: rgba(20,22,28,0.55);
+    border: 1px solid rgba(128,128,128,0.25);
+    border-radius: 14px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .skills-card h3 { margin-bottom: 16px; }
+
+  .skills-carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .skills-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(128,128,128,0.3);
+    cursor: pointer;
+  }
+  .skills-dot.active { background: #3b82f6; }
+
+  .skill-tile-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+  .skill-tile {
+    width: 108px;
+    padding: 14px 8px 10px;
+    text-align: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(128,128,128,0.15);
+    border-radius: 12px;
+  }
+  .skill-tile img,
+  .skill-tile i {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto 10px;
+    font-size: 28px;
+    line-height: 30px;
+  }
+  .skill-tile span {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #94a3b8;
+  }
+</style>
+</head>
+<body>
+  <h1>Local preview only &mdash; not part of the site build. Delete this file once you've reviewed the look. Drag left/right (or swipe on touch) to spin the wheel; it rotates continuously in either direction.</h1>
+
+  <div class="skills-section">
+    <div class="skills-side-label">
+      <span class="bar"></span>
+      <span class="label-text">Skills</span>
+    </div>
+
+    <div class="skills-carousel" id="skills-carousel">
+      <div class="skills-carousel-stage">
+        <div class="skills-card">
+          <h3>Programming Skills</h3>
+          <div class="skill-tile-grid">
+            <div class="skill-tile"><img src="assets/icons/skills/python.svg" alt="Python"><span>Python</span></div>
+            <div class="skill-tile"><i class="fas fa-database" style="color:#3b82f6"></i><span>SQL</span></div>
+            <div class="skill-tile"><i class="fab fa-java" style="color:#ED8B00"></i><span>Java</span></div>
+            <div class="skill-tile"><img src="assets/icons/skills/nvidia.svg" alt="CUDA"><span>CUDA</span></div>
+            <div class="skill-tile"><img src="assets/icons/skills/gnubash.svg" alt="bash"><span>bash</span></div>
+          </div>
+        </div>
+
+        <div class="skills-card">
+          <h3>Machine Learning skills</h3>
+          <div class="skill-tile-grid">
+            <div class="skill-tile"><img src="assets/icons/skills/pytorch.svg" alt="PyTorch"><span>PyTorch</span></div>
+            <div class="skill-tile"><i class="fas fa-magic" style="color:#3b82f6"></i><span>Diffusion Models</span></div>
+            <div class="skill-tile"><i class="fas fa-comments" style="color:#3b82f6"></i><span>NLP/LLMs</span></div>
+            <div class="skill-tile"><img src="assets/icons/skills/scikitlearn.svg" alt="scikit-learn"><span>scikit-learn</span></div>
+            <div class="skill-tile"><img src="assets/icons/skills/huggingface.svg" alt="Hugging Face Transformers"><span>Hugging Face Transformers</span></div>
+            <div class="skill-tile"><i class="fas fa-project-diagram" style="color:#3b82f6"></i><span>Graph Neural Networks</span></div>
+          </div>
+        </div>
+
+        <div class="skills-card">
+          <h3>Other Skills</h3>
+          <div class="skill-tile-grid">
+            <div class="skill-tile"><img src="assets/icons/skills/docker.svg" alt="Docker"><span>Docker</span></div>
+            <div class="skill-tile"><img src="assets/icons/skills/git.svg" alt="Git"><span>Git</span></div>
+            <div class="skill-tile"><i class="fas fa-cloud" style="color:#3b82f6"></i><span>Cloud (AWS, Azure)</span></div>
+            <div class="skill-tile"><img src="assets/icons/skills/fastapi.svg" alt="FastAPI"><span>FastAPI</span></div>
+            <div class="skill-tile"><img src="assets/icons/skills/kubernetes.svg" alt="Kubernetes (AKS, EKS)"><span>Kubernetes (AKS, EKS)</span></div>
+            <div class="skill-tile"><img src="assets/icons/skills/apacheairflow.svg" alt="Airflow"><span>Airflow</span></div>
+            <div class="skill-tile"><img src="assets/icons/skills/terraform.svg" alt="Terraform"><span>Terraform</span></div>
+            <div class="skill-tile"><img src="assets/icons/skills/mlflow.svg" alt="MLOps (MLflow, DVC)"><span>MLOps (MLflow, DVC)</span></div>
+            <div class="skill-tile"><img src="assets/icons/skills/apachespark.svg" alt="Spark"><span>Spark</span></div>
+            <div class="skill-tile"><img src="assets/icons/skills/apachekafka.svg" alt="Kafka"><span>Kafka</span></div>
+            <div class="skill-tile"><img src="assets/icons/skills/elasticsearch.svg" alt="Elasticsearch"><span>Elasticsearch</span></div>
+            <div class="skill-tile"><i class="fas fa-database" style="color:#F80000"></i><span>Oracle</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-carousel-dots">
+        <button type="button" class="skills-dot active" data-index="0" aria-label="Programming Skills"></button>
+        <button type="button" class="skills-dot" data-index="1" aria-label="Machine Learning skills"></button>
+        <button type="button" class="skills-dot" data-index="2" aria-label="Other Skills"></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var carousel = document.getElementById('skills-carousel');
+      var stage = carousel.querySelector('.skills-carousel-stage');
+      var cards = carousel.querySelectorAll('.skills-card');
+      var dots = carousel.querySelectorAll('.skills-dot');
+      var count = cards.length;
+      var step = 360 / count;
+      var dragSensitivity = 0.4;
+      var perspective = 1200;
+
+      var steps = 0;
+      var startX = 0;
+      var deltaDeg = 0;
+      var dragging = false;
+
+      function layout() {
+        var radius = Math.round(carousel.clientWidth / (2 * Math.tan(Math.PI / count)));
+        var scale = (perspective - radius) / perspective;
+        var maxHeight = 0;
+        cards.forEach(function (card, i) {
+          card.style.transform = 'rotateY(' + (i * step) + 'deg) translateZ(' + radius + 'px) scale(' + scale + ')';
+          maxHeight = Math.max(maxHeight, card.scrollHeight);
+        });
+        carousel.style.height = (maxHeight + 16) + 'px';
+      }
+
+      function render(rotation) {
+        stage.style.transform = 'rotateY(' + rotation + 'deg)';
+      }
+
+      function currentIndex(fromSteps) {
+        return (((-Math.round(fromSteps)) % count) + count) % count;
+      }
+
+      function settle() {
+        var target = Math.round(steps);
+        steps = target;
+        render(-target * step);
+        var idx = currentIndex(target);
+        dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+      }
+
+      function goToIndex(i) {
+        var currentMod = currentIndex(steps);
+        var diff = i - currentMod;
+        if (diff > count / 2) diff -= count;
+        if (diff < -count / 2) diff += count;
+        steps -= diff;
+        settle();
+      }
+
+      dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () { goToIndex(i); });
+      });
+
+      function onStart(x) {
+        dragging = true;
+        startX = x;
+        deltaDeg = 0;
+        stage.style.transition = 'none';
+      }
+      function onMove(x) {
+        if (!dragging) return;
+        deltaDeg = (x - startX) * dragSensitivity;
+        render(-steps * step + deltaDeg);
+      }
+      function onEnd() {
+        if (!dragging) return;
+        dragging = false;
+        stage.style.transition = '';
+        steps -= deltaDeg / step;
+        settle();
+        deltaDeg = 0;
+      }
+
+      carousel.addEventListener('touchstart', function (e) { onStart(e.touches[0].clientX); }, { passive: true });
+      carousel.addEventListener('touchmove', function (e) { onMove(e.touches[0].clientX); }, { passive: true });
+      carousel.addEventListener('touchend', onEnd);
+
+      carousel.addEventListener('mousedown', function (e) { onStart(e.clientX); e.preventDefault(); });
+      window.addEventListener('mousemove', function (e) { onMove(e.clientX); });
+      window.addEventListener('mouseup', onEnd);
+
+      window.addEventListener('resize', layout);
+      window.addEventListener('load', layout);
+      layout();
+      settle();
+    })();
+  </script>
+</body>
+</html>
