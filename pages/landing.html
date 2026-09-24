@@ -64,30 +64,9 @@
     .hero-photo { order: -1; justify-self: start; max-width: 200px; }
   }
 
-  /* ── Sections below the hero: compact, left-aligned with the hero ── */
-  #highlights { padding: 36px 0; }
-  #highlights .section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; }
-
-  .card-soft {
-    border: 1px solid rgba(128,128,128,0.18);
-    background: rgba(128,128,128,0.05);
-    border-radius: 14px;
-  }
-
-  /* Highlights: three link cards */
-  .highlights-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-  .highlight-card {
-    display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px;
-    text-decoration: none !important; color: inherit !important;
-    transition: border-color 0.2s;
-  }
-  .highlight-card:hover { border-color: var(--accent-text); }
-  .highlight-card > i { font-size: 1.4rem; color: var(--accent-text); margin-top: 3px; width: 24px; text-align: center; }
-  .highlight-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
-  .highlight-card p { font-size: 0.9rem; color: var(--text-secondary); margin: 0; line-height: 1.5; }
-  .highlight-card .go { color: var(--accent-text); font-size: 0.85rem; font-weight: 600; margin-top: 6px; display: inline-block; }
-
-  /* Research, Core Expertise, Contact */
+  /* ══════════════════════════════════════
+     YOUR EXISTING SECTION STYLES
+     ══════════════════════════════════════ */
   .section-header { text-align: center; margin-bottom: 32px; }
   .section-title { font-size: 2.4rem; font-weight: 700; margin-bottom: 8px; }
   .section-subtitle { color: var(--text-tertiary); font-size: 1.1rem; }
@@ -143,6 +122,54 @@
     border-radius: 20px; font-size: 0.8rem; color: var(--text-secondary);
   }
 
+  .highlights-scroll {
+    display: flex; gap: 24px; overflow-x: auto;
+    padding: 10px 0 20px; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Auto margins center the row when it fits, but (unlike justify-content:
+     center) still let it scroll from the first card when it overflows */
+  .highlights-scroll > :first-child { margin-left: auto; }
+  .highlights-scroll > :last-child { margin-right: auto; }
+  .highlights-scroll::-webkit-scrollbar { height: 6px; }
+  .highlights-scroll::-webkit-scrollbar-track { background: rgba(128,128,128,0.1); border-radius: 3px; }
+  .highlights-scroll::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.4); border-radius: 3px; }
+  .highlight-card {
+    flex: 0 0 350px; scroll-snap-align: start;
+    border: 1px solid rgba(128,128,128,0.15);
+    border-radius: 16px; overflow: hidden;
+    background: rgba(128,128,128,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .highlight-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  .highlight-preview {
+    width: 100%; height: 320px; object-fit: cover; object-position: top;
+    border-bottom: 1px solid rgba(128,128,128,0.15);
+    background: rgba(128,128,128,0.08); border: none;
+  }
+  .thesis-placeholder {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: var(--accent-text); gap: 8px;
+  }
+  .thesis-placeholder i { font-size: 3rem; }
+  .thesis-placeholder span { font-size: 1.1rem; font-weight: 600; }
+  .thesis-placeholder small { color: var(--text-tertiary); font-size: 0.85rem; }
+  .highlight-info { padding: 20px; }
+  .highlight-info h4 { font-size: 1.1rem; margin-bottom: 6px; }
+  .highlight-info p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.55; margin-bottom: 12px; }
+  .highlight-tag {
+    display: inline-block; background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.2);
+    padding: 3px 10px; border-radius: 12px;
+    font-size: 0.8rem; color: var(--accent-text); margin-right: 6px;
+  }
+  .highlight-link {
+    display: inline-block; margin-top: 10px;
+    color: var(--accent-text); font-size: 0.92rem; font-weight: 600;
+    text-decoration: none; transition: color 0.2s;
+  }
+  .highlight-link:hover { color: var(--accent-text); text-decoration: underline; }
+
   .contact-card {
     background: linear-gradient(135deg, rgba(59,130,246,0.15) 0%, rgba(128,128,128,0.08) 100%);
     border: 1px solid rgba(59,130,246,0.2);
@@ -168,9 +195,16 @@
     transition: transform 0.2s, box-shadow 0.2s;
   }
   .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59,130,246,0.35); }
+  .scroll-hint {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 16px;
+  }
+  .scroll-hint[hidden] { display: none; }
+  .scroll-hint i { animation: bounceX 1.5s infinite; }
+  @keyframes bounceX { 0%,100%{transform:translateX(0)} 50%{transform:translateX(6px)} }
 
-  @media (max-width: 991px) {
-    .highlights-grid { grid-template-columns: minmax(0, 1fr); }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-hint i { animation: none; }
   }
 </style>
 
@@ -204,32 +238,43 @@
 <!-- ═══════════ HIGHLIGHTS ═══════════ -->
 <section id="highlights">
   <div class="container">
-    <h2 class="section-title">Highlights</h2>
-    <div class="highlights-grid">
-      <a class="highlight-card card-soft" href="https://drive.google.com/file/d/1GjBu_u-TpPAOunYpPEcWhbjTJN_FToL5/view?usp=sharing" target="_blank" rel="noopener">
-        <i class="fas fa-envelope-open-text"></i>
-        <div>
+    <div class="section-header">
+      <h2 class="section-title">Highlights</h2>
+      <p class="section-subtitle">Credentials, recommendations, and milestones</p>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll to explore</span>
+      <i class="fas fa-arrow-right"></i>
+    </div>
+    <div class="highlights-scroll">
+      <div class="highlight-card">
+        <iframe src="https://drive.google.com/file/d/1GjBu_u-TpPAOunYpPEcWhbjTJN_FToL5/preview" class="highlight-preview" allow="autoplay" loading="lazy"></iframe>
+        <div class="highlight-info">
           <h4>Letter of Recommendation</h4>
-          <p>Prof. Dino Konstantopoulos, Northeastern University</p>
-          <span class="go">View PDF ↗</span>
+          <p>Prof. Dino Konstantopoulos, Teaching Professor, Northeastern University</p>
+          <a href="https://drive.google.com/file/d/1GjBu_u-TpPAOunYpPEcWhbjTJN_FToL5/view?usp=sharing" target="_blank" class="highlight-link">View Full PDF ↗</a>
         </div>
-      </a>
-      <a class="highlight-card card-soft" href="https://www.proquest.com/openview/c4a7c3f9ffc3778747ec546c0b1820d5/1?pq-origsite=gscholar&cbl=18750&diss=y" target="_blank" rel="noopener">
-        <i class="fas fa-book"></i>
-        <div>
-          <h4>Master's Thesis</h4>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-preview thesis-placeholder">
+          <i class="fas fa-file-alt"></i>
+          <span>Master's Thesis</span>
+          <small>ProQuest Publication</small>
+        </div>
+        <div class="highlight-info">
+          <h4>Master's Thesis Publication</h4>
           <p>Non-Autoregressive Text Generation Using Diffusion Models, ProQuest 2025</p>
-          <span class="go">View on ProQuest ↗</span>
+          <a href="https://www.proquest.com/openview/c4a7c3f9ffc3778747ec546c0b1820d5/1?pq-origsite=gscholar&cbl=18750&diss=y" target="_blank" class="highlight-link">View on ProQuest ↗</a>
         </div>
-      </a>
-      <a class="highlight-card card-soft" href="https://drive.google.com/file/d/1md2wJmGABuxSMxVUDmzjF_ytofqimPsz/view?usp=sharing" target="_blank" rel="noopener">
-        <i class="fas fa-graduation-cap"></i>
-        <div>
-          <h4>M.S., Northeastern University</h4>
-          <p>College of Engineering, December 2025</p>
-          <span class="go">View PDF ↗</span>
+      </div>
+      <div class="highlight-card">
+        <iframe src="https://drive.google.com/file/d/1md2wJmGABuxSMxVUDmzjF_ytofqimPsz/preview" class="highlight-preview" allow="autoplay" loading="lazy"></iframe>
+        <div class="highlight-info">
+          <h4>Master of Science in Information Systems</h4>
+          <p>Northeastern University, College of Engineering, December 2025</p>
+          <a href="https://drive.google.com/file/d/1md2wJmGABuxSMxVUDmzjF_ytofqimPsz/view?usp=sharing" target="_blank" class="highlight-link">View Full PDF ↗</a>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
@@ -339,3 +384,15 @@
 </section>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script>
+/* Show the "Scroll to explore" hint only when the highlight cards overflow */
+(function () {
+  const row = document.querySelector('.highlights-scroll');
+  const hint = document.querySelector('.scroll-hint');
+  if (!row || !hint) return;
+  const update = () => { hint.hidden = row.scrollWidth <= row.clientWidth + 1; };
+  update();
+  window.addEventListener('resize', update);
+})();
+</script>
