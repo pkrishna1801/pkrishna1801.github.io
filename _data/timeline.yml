@@ -122,7 +122,9 @@
   from: September 2021
   to: December 2023
   description: >
-    Architected AWS data lake supporting 1M+ daily records, designing ingestion and partitioning strategies for high-throughput SaaS data processing and compliance reporting. Refactored 50+
+    Productionized card fraud detection models for a 500K-transaction-per-day
+    portfolio, from feature engineering and model selection through Kubernetes
+    serving and drift monitoring. Architected AWS data lake supporting 1M+ daily records, designing ingestion and partitioning strategies for high-throughput SaaS data processing and compliance reporting. Refactored 50+
     legacy scripts into Airflow DAGs and productionized 3+ ML Dockerized apps on
     AKS handling 1M+ daily financial transactions.
   technologies:
@@ -134,30 +136,26 @@
     - Azure Kubernetes Service
     - Docker
   achievements:
+    - Productionized fraud detection for 500K daily transactions
     - Refactored 50+ legacy scripts into Airflow DAGs
     - Productionized 3+ Dockerized applications on AKS
     - Processed 1M+ daily financial transactions
 
-- title: Software Engineering Intern
+- title: Software Engineer, ML Intern
   company: Capgemini
   logo: https://www.google.com/s2/favicons?domain=capgemini.com&sz=128
-  location: Bangalore, KA
+  location: Bangalore, India
   from: March 2021
   to: May 2021
   description: >
-    Built 15+ RESTful microservices in Java 17/Spring Boot for multi-tenant
-    enterprise clients, cutting API latency 35% via Hibernate JPA caching.
-    Backed by JUnit/Mockito test suites and SOLID/DRY coding practices.
+    Delivered a retail banking churn proof of concept spanning SQL analysis of
+    250K customers, calibrated modeling, and a stakeholder dashboard.
   technologies:
-    - Java 17
-    - Spring Boot
-    - Hibernate JPA
-    - JUnit
-    - Mockito
-    - RESTful APIs
+    - SQL
+    - Python
+    - scikit-learn
   achievements:
-    - Built 15+ RESTful microservices
-    - Reduced API latency by 35%
+    - Churn proof of concept on 250K customers
 
 - title: Digital Signal Processing Engineer Intern
   company: PathPartner Technology
