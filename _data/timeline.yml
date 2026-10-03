@@ -27,11 +27,7 @@
   from: May 2026
   to: July 2026
   description: >
-    Built supervised ML models (PyTorch, scikit-learn) predicting compound
-    properties from lab assay data, reaching 0.7 R² and 0.73 Spearman
-    correlation, with SHAP and conformal prediction for calibrated uncertainty.
-    Shipped a FastAPI serving layer (2.5x faster inference) and a Plotly Dash
-    dashboard adopted across 3 teams and 20+ users.
+    Built the predictive modeling and scoring stack for a research program, spanning data consolidation, model development, and deployed services
   technologies:
     - PyTorch
     - scikit-learn
@@ -115,7 +111,7 @@
     - Published thesis on diffusion models for text generation
     - Research in medical imaging and molecular modeling
 
-- title: Software Engineer
+- title: Software Engineer, ML
   company: Societe Generale Global Solution Centre
   logo: https://www.google.com/s2/favicons?domain=societegenerale.com&sz=128
   location: Bangalore, KA
